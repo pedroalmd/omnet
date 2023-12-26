@@ -46,12 +46,12 @@ Define_Module(Controller);
 
 void Controller::initialize()
 {
-//    EV << "Generating keepalive!\n";
-//
-//    for (int i = 0; i < 2; i++) {
-//        ContentMsg *msg = generateMessage('k', i); // r = request (comes from client)
-//        send(msg, "server_gate$o", i); // 0 is always the switch
-//    }
+    int servers_amount = 2;
+
+    for (int i = 0; i < servers_amount; i++) {
+        ContentMsg *msg = generateMessage('k', i); // r = request (comes from client)
+        scheduleAt(0.0, msg);
+    }
 }
 
 void Controller::handleMessage(cMessage *msg)
@@ -60,30 +60,22 @@ void Controller::handleMessage(cMessage *msg)
 
     char request = 'r';
     char tcp = 't';
+    char keepalive = 'k';
+    char alive = 'a';
+    char dead = 'd';
 
-    if (ttmsg->getContent() == tcp) {
-        if (ttmsg->getTcp_type() == 1) {
-                EV << "Generating syn+ack. \n";
+    if (ttmsg->getContent() == keepalive) {
+            EV << "Generating keepalive check. \n";
 
-                ContentMsg *msg = generateMessage('t', ttmsg->getSource_num(), 2);
-                send(msg, "gate$o", 0);
-        }
-
-        else if (ttmsg->getTcp_type() == 3) {
-            bubble("TCP connection established");
-        }
+            ContentMsg *msg = generateMessage('k', ttmsg->getDestination());
+            send(msg, "server_gate$o", ttmsg->getDestination());
     }
 
-    if (ttmsg->getDestination() == getIndex()) {
-        // Message arrived.
-        EV << "Message " << ttmsg->getContent() << " arrived from client " << ttmsg->getSource_num() << "\n";
-    }
+    else if (ttmsg->getContent() == alive) {
+        EV << "Server " << ttmsg->getSource_num() << " is alive. \n";
 
-    if (ttmsg->getContent() == request) {
-        EV << "Generating response. \n";
-
-        ContentMsg *msg = generateMessage('c', ttmsg->getSource_num());
-        send(msg, "gate$o", 0);
+        ContentMsg *msg = generateMessage('k', ttmsg->getSource_num());
+        scheduleAt(simTime() + 0.5, msg);
     }
 }
 

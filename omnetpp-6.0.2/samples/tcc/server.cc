@@ -54,6 +54,9 @@ void Server::handleMessage(cMessage *msg)
 
     char request = 'r';
     char tcp = 't';
+    char keepalive = 'k';
+    char alive = 'a';
+    char dead = 'd';
 
     if (ttmsg->getContent() == tcp) {
         if (ttmsg->getTcp_type() == 1) {
@@ -67,6 +70,15 @@ void Server::handleMessage(cMessage *msg)
             bubble("TCP connection established");
         }
     }
+
+    else if (ttmsg->getContent() == keepalive) {
+        // Message arrived.
+        EV << "Keepalive msg arrived. \n";
+
+        ContentMsg *msg = generateMessage('a', ttmsg->getSource_num());
+        send(msg, "controller_gate$o", 0);
+    }
+
 
     if (ttmsg->getDestination() == getIndex()) {
         // Message arrived.

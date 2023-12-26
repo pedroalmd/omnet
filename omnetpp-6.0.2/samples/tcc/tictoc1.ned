@@ -5,6 +5,7 @@ simple Server
 
     gates:
         inout gate[];  // declare two way connections
+        inout controller_gate[];
 }
 
 simple Client
@@ -58,8 +59,8 @@ network Tictoc1
         switch[0].client_gate++ <--> Channel <--> client[0].gate++;
         switch[0].server_gate++ <--> Channel <--> server[0].gate++;
         switch[0].client_gate++ <--> Channel <--> client[1].gate++;
-        controller[0].server_gate++ <--> Channel <--> server[0].gate++;
-        controller[0].server_gate++ <--> Channel <--> server[1].gate++;
+        controller[0].server_gate++ <--> Channel <--> server[0].controller_gate++;
+        controller[0].server_gate++ <--> Channel <--> server[1].controller_gate++;
 
 //        switch[0].server_gate++ <--> Channel <--> server[1].gate++;
 }
