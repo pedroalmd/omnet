@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <omnetpp.h>
+#include "contentO.h"
+
 
 using namespace omnetpp;
 
@@ -37,6 +39,9 @@ using namespace omnetpp;
 class Controller : public cSimpleModule
 {
   protected:
+    int myNum = 0;
+    contentO video;
+
     virtual ContentMsg *generateMessage(char content, int destination, int tcp_type = 0);
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
@@ -47,6 +52,7 @@ Define_Module(Controller);
 void Controller::initialize()
 {
     int servers_amount = 2;
+
 
     for (int i = 0; i < servers_amount; i++) {
         ContentMsg *msg = generateMessage('k', i); // r = request (comes from client)
@@ -64,8 +70,15 @@ void Controller::handleMessage(cMessage *msg)
     char alive = 'a';
     char dead = 'd';
 
+
+    myNum++;
+
+    EV << "Video: " << video.getName() << "\n";
+
+    video.setName('d');
+
     if (ttmsg->getContent() == keepalive) {
-            EV << "Generating keepalive check. \n";
+            EV << "Generating keepalive check. " << myNum << "\n";
 
             ContentMsg *msg = generateMessage('k', ttmsg->getDestination());
             send(msg, "server_gate$o", ttmsg->getDestination());

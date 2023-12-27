@@ -34,11 +34,13 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
 OBJS = \
-    $O/client.o \
-    $O/controller.o \
-    $O/server.o \
+    $O/contentO.o \
+    $O/peer.o \
     $O/switch.o \
-    $O/txc1.o \
+    $O/dont_compile/client.o \
+    $O/dont_compile/controller.o \
+    $O/dont_compile/server.o \
+    $O/dont_compile/txc1.o \
     $O/content_m.o \
     $O/tcp_m.o
 

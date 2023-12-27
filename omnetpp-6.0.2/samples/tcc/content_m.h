@@ -23,7 +23,7 @@ class ContentMsg;
  * message ContentMsg
  * {
  *     int source_num;
- *     char source_type;
+ *     char type;
  *     int destination;
  *     int hopCount = 0;
  *     char content;
@@ -35,7 +35,7 @@ class ContentMsg : public ::omnetpp::cMessage
 {
   protected:
     int source_num = 0;
-    char source_type = 0;
+    char type = 0;
     int destination = 0;
     int hopCount = 0;
     char content = 0;
@@ -59,8 +59,8 @@ class ContentMsg : public ::omnetpp::cMessage
     virtual int getSource_num() const;
     virtual void setSource_num(int source_num);
 
-    virtual char getSource_type() const;
-    virtual void setSource_type(char source_type);
+    virtual char getType() const;
+    virtual void setType(char type);
 
     virtual int getDestination() const;
     virtual void setDestination(int destination);

@@ -176,7 +176,7 @@ ContentMsg& ContentMsg::operator=(const ContentMsg& other)
 void ContentMsg::copy(const ContentMsg& other)
 {
     this->source_num = other.source_num;
-    this->source_type = other.source_type;
+    this->type = other.type;
     this->destination = other.destination;
     this->hopCount = other.hopCount;
     this->content = other.content;
@@ -187,7 +187,7 @@ void ContentMsg::parsimPack(omnetpp::cCommBuffer *b) const
 {
     ::omnetpp::cMessage::parsimPack(b);
     doParsimPacking(b,this->source_num);
-    doParsimPacking(b,this->source_type);
+    doParsimPacking(b,this->type);
     doParsimPacking(b,this->destination);
     doParsimPacking(b,this->hopCount);
     doParsimPacking(b,this->content);
@@ -198,7 +198,7 @@ void ContentMsg::parsimUnpack(omnetpp::cCommBuffer *b)
 {
     ::omnetpp::cMessage::parsimUnpack(b);
     doParsimUnpacking(b,this->source_num);
-    doParsimUnpacking(b,this->source_type);
+    doParsimUnpacking(b,this->type);
     doParsimUnpacking(b,this->destination);
     doParsimUnpacking(b,this->hopCount);
     doParsimUnpacking(b,this->content);
@@ -215,14 +215,14 @@ void ContentMsg::setSource_num(int source_num)
     this->source_num = source_num;
 }
 
-char ContentMsg::getSource_type() const
+char ContentMsg::getType() const
 {
-    return this->source_type;
+    return this->type;
 }
 
-void ContentMsg::setSource_type(char source_type)
+void ContentMsg::setType(char type)
 {
-    this->source_type = source_type;
+    this->type = type;
 }
 
 int ContentMsg::getDestination() const
@@ -271,7 +271,7 @@ class ContentMsgDescriptor : public omnetpp::cClassDescriptor
     mutable const char **propertyNames;
     enum FieldConstants {
         FIELD_source_num,
-        FIELD_source_type,
+        FIELD_type,
         FIELD_destination,
         FIELD_hopCount,
         FIELD_content,
@@ -355,7 +355,7 @@ unsigned int ContentMsgDescriptor::getFieldTypeFlags(int field) const
     }
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,    // FIELD_source_num
-        FD_ISEDITABLE,    // FIELD_source_type
+        FD_ISEDITABLE,    // FIELD_type
         FD_ISEDITABLE,    // FIELD_destination
         FD_ISEDITABLE,    // FIELD_hopCount
         FD_ISEDITABLE,    // FIELD_content
@@ -374,7 +374,7 @@ const char *ContentMsgDescriptor::getFieldName(int field) const
     }
     static const char *fieldNames[] = {
         "source_num",
-        "source_type",
+        "type",
         "destination",
         "hopCount",
         "content",
@@ -388,7 +388,7 @@ int ContentMsgDescriptor::findField(const char *fieldName) const
     omnetpp::cClassDescriptor *base = getBaseClassDescriptor();
     int baseIndex = base ? base->getFieldCount() : 0;
     if (strcmp(fieldName, "source_num") == 0) return baseIndex + 0;
-    if (strcmp(fieldName, "source_type") == 0) return baseIndex + 1;
+    if (strcmp(fieldName, "type") == 0) return baseIndex + 1;
     if (strcmp(fieldName, "destination") == 0) return baseIndex + 2;
     if (strcmp(fieldName, "hopCount") == 0) return baseIndex + 3;
     if (strcmp(fieldName, "content") == 0) return baseIndex + 4;
@@ -406,7 +406,7 @@ const char *ContentMsgDescriptor::getFieldTypeString(int field) const
     }
     static const char *fieldTypeStrings[] = {
         "int",    // FIELD_source_num
-        "char",    // FIELD_source_type
+        "char",    // FIELD_type
         "int",    // FIELD_destination
         "int",    // FIELD_hopCount
         "char",    // FIELD_content
@@ -496,7 +496,7 @@ std::string ContentMsgDescriptor::getFieldValueAsString(omnetpp::any_ptr object,
     ContentMsg *pp = omnetpp::fromAnyPtr<ContentMsg>(object); (void)pp;
     switch (field) {
         case FIELD_source_num: return long2string(pp->getSource_num());
-        case FIELD_source_type: return long2string(pp->getSource_type());
+        case FIELD_type: return long2string(pp->getType());
         case FIELD_destination: return long2string(pp->getDestination());
         case FIELD_hopCount: return long2string(pp->getHopCount());
         case FIELD_content: return long2string(pp->getContent());
@@ -518,7 +518,7 @@ void ContentMsgDescriptor::setFieldValueAsString(omnetpp::any_ptr object, int fi
     ContentMsg *pp = omnetpp::fromAnyPtr<ContentMsg>(object); (void)pp;
     switch (field) {
         case FIELD_source_num: pp->setSource_num(string2long(value)); break;
-        case FIELD_source_type: pp->setSource_type(string2long(value)); break;
+        case FIELD_type: pp->setType(string2long(value)); break;
         case FIELD_destination: pp->setDestination(string2long(value)); break;
         case FIELD_hopCount: pp->setHopCount(string2long(value)); break;
         case FIELD_content: pp->setContent(string2long(value)); break;
@@ -538,7 +538,7 @@ omnetpp::cValue ContentMsgDescriptor::getFieldValue(omnetpp::any_ptr object, int
     ContentMsg *pp = omnetpp::fromAnyPtr<ContentMsg>(object); (void)pp;
     switch (field) {
         case FIELD_source_num: return pp->getSource_num();
-        case FIELD_source_type: return pp->getSource_type();
+        case FIELD_type: return pp->getType();
         case FIELD_destination: return pp->getDestination();
         case FIELD_hopCount: return pp->getHopCount();
         case FIELD_content: return pp->getContent();
@@ -560,7 +560,7 @@ void ContentMsgDescriptor::setFieldValue(omnetpp::any_ptr object, int field, int
     ContentMsg *pp = omnetpp::fromAnyPtr<ContentMsg>(object); (void)pp;
     switch (field) {
         case FIELD_source_num: pp->setSource_num(omnetpp::checked_int_cast<int>(value.intValue())); break;
-        case FIELD_source_type: pp->setSource_type(omnetpp::checked_int_cast<char>(value.intValue())); break;
+        case FIELD_type: pp->setType(omnetpp::checked_int_cast<char>(value.intValue())); break;
         case FIELD_destination: pp->setDestination(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_hopCount: pp->setHopCount(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_content: pp->setContent(omnetpp::checked_int_cast<char>(value.intValue())); break;

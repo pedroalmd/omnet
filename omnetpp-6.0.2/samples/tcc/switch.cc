@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <omnetpp.h>
+#include <map>
+#include <string>
 
 using namespace omnetpp;
 
@@ -36,15 +38,24 @@ using namespace omnetpp;
 class Switch : public cSimpleModule
 {
   protected:
-    virtual ContentMsg *generateMessage(char content, int destination);
+    virtual int getServer(char type);
+    virtual ContentMsg *generateMessage(char type, int destination);
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
+
 };
 
 Define_Module(Switch);
 
 void Switch::initialize()
 {
+    std::map<int, char> table;
+    table[0] = 'a';
+    table[1] = 'b';
+
+    for (auto itr = table.begin(); itr != table.end(); ++itr) {
+       EV << itr->first << ": " << itr->second << endl;
+    }
 }
 
 void Switch::handleMessage(cMessage *msg)
@@ -55,43 +66,21 @@ void Switch::handleMessage(cMessage *msg)
     char response = 'c';
     char tcp = 't';
 
-    if (ttmsg->getContent() == tcp) {
-        EV << "Message " << ttmsg->getContent() << " arrived with type " << ttmsg->getTcp_type() << " from " << ttmsg->getSource_num() << "\n";
+    if (ttmsg->getType() == 'r') {
+        if (ttmsg->getDestination == 255) {
+            int server = getServer(ttmsg->getContent);
 
-        if (ttmsg->getTcp_type() == 1 || ttmsg->getTcp_type() == 3) {
-            EV << "Forwarding to server. \n";
-
-            send(msg, "server_gate$o", ttmsg->getDestination());
+            ttmsg->setType('c');
+            send(msg, "peer_gate$o", ttmsg->getSource());
         }
-
-        else if (ttmsg->getTcp_type() == 2) {
-            EV << "Forwarding to client. \n";
-
-            send(msg, "client_gate$o", ttmsg->getDestination());
-        }
-
     }
 
-    if (ttmsg->getContent() == request) {
-        EV << "Message " << ttmsg->getContent() << " arrived from client " << ttmsg->getSource_num() << "\n";
+    EV << "Message " << ttmsg->getType() << " arrived with type " << ttmsg->getTcp_type() << " from " << ttmsg->getSource_num() << "\n";
 
-        // Generate another one.
-        EV << "Forwarding to server. \n";
-
-        send(msg, "server_gate$o", ttmsg->getDestination());
-    }
-
-    if (ttmsg->getContent() == response) {
-        EV << "Message " << ttmsg->getContent() << " arrived from server " << ttmsg->getSource_num() << "\n";
-
-        // Generate another one.
-        EV << "Forwarding to client. \n";
-
-        send(msg, "client_gate$o", ttmsg->getDestination());
-    }
+    send(msg, "peer_gate$o", ttmsg->getDestination());
 }
 
-ContentMsg *Switch::generateMessage(char content, int destination)
+ContentMsg *Switch::generateMessage(char type, int destination)
 {
     // Produce Source_num and destination addresses.
     int src = getIndex();  // our module index
@@ -105,6 +94,18 @@ ContentMsg *Switch::generateMessage(char content, int destination)
     ContentMsg *msg = new ContentMsg(msgname);
     msg->setSource_num(src);
     msg->setDestination(dest);
-    msg->setContent(content);
+    msg->setContent(type);
     return msg;
 }
+
+int Switch::getServer(char content, std::map table) {
+    for (auto itr = table.begin(); itr != table.end(); ++itr) {
+       EV << itr->first << ": " << itr->second << endl;
+       if (itr->second == content){
+           return itr->first;
+       } else {
+           return 255;
+       }
+    }
+}
+

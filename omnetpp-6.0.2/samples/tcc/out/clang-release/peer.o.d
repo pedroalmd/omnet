@@ -1,4 +1,4 @@
-out/clang-release//controller.o: controller.cc \
+out/clang-release//peer.o: peer.cc \
   /home/pedro/Downloads/omnetpp-6.0.2-linux-x86_64/omnetpp-6.0.2/include/omnetpp.h \
   contentO.h content_m.h
 
