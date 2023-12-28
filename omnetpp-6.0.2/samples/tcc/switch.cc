@@ -38,7 +38,9 @@ using namespace omnetpp;
 class Switch : public cSimpleModule
 {
   protected:
-    virtual int getServer(char type);
+    std::map<int, char> table;
+
+    virtual int getServer(char content, std::map<int, char> table);
     virtual ContentMsg *generateMessage(char type, int destination);
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
@@ -49,7 +51,6 @@ Define_Module(Switch);
 
 void Switch::initialize()
 {
-    std::map<int, char> table;
     table[0] = 'a';
     table[1] = 'b';
 
@@ -67,17 +68,29 @@ void Switch::handleMessage(cMessage *msg)
     char tcp = 't';
 
     if (ttmsg->getType() == 'r') {
-        if (ttmsg->getDestination == 255) {
-            int server = getServer(ttmsg->getContent);
+        if (ttmsg->getDestination() == 255) {
+            int server = getServer(ttmsg->getContent(), table);
 
-            ttmsg->setType('c');
-            send(msg, "peer_gate$o", ttmsg->getSource());
+            ttmsg->setType('r');
+            ttmsg->setDestination(server);
+            send(ttmsg, "peer_gate$o", ttmsg->getDestination());
         }
     }
 
-    EV << "Message " << ttmsg->getType() << " arrived with type " << ttmsg->getTcp_type() << " from " << ttmsg->getSource_num() << "\n";
+    // NEXT
+    if (ttmsg->getType() == 'r') {
+        if (ttmsg->getDestination() == 255) {
+            int server = getServer(ttmsg->getContent(), table);
 
-    send(msg, "peer_gate$o", ttmsg->getDestination());
+            ttmsg->setType('r');
+            ttmsg->setDestination(server);
+            send(ttmsg, "peer_gate$o", ttmsg->getDestination());
+        }
+    }
+//
+//    EV << "Message " << ttmsg->getType() << " arrived with type " << ttmsg->getTcp_type() << " from " << ttmsg->getSource_num() << "\n";
+//
+//    send(msg, "peer_gate$o", ttmsg->getDestination());
 }
 
 ContentMsg *Switch::generateMessage(char type, int destination)
@@ -98,14 +111,15 @@ ContentMsg *Switch::generateMessage(char type, int destination)
     return msg;
 }
 
-int Switch::getServer(char content, std::map table) {
+int Switch::getServer(char content, std::map<int, char>  table) {
     for (auto itr = table.begin(); itr != table.end(); ++itr) {
-       EV << itr->first << ": " << itr->second << endl;
+       EV << itr->first << ": " << itr->second << endl << "\n";
+
        if (itr->second == content){
            return itr->first;
-       } else {
-           return 255;
        }
     }
+
+    return 255;
 }
 

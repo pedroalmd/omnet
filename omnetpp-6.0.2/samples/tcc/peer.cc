@@ -88,7 +88,7 @@ void Peer::handleMessage(cMessage *msg)
 
             EV << "Sending next request!\n";
 
-            ContentMsg *cmsg = generateMessage('r', video_wants, ttmsg->getSource_num()); // r = request (comes from Peer)
+            ContentMsg *cmsg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num()); // r = request (comes from Peer)
             send(cmsg, "gate$o", 0); // 0 is always the switch
         }
 
@@ -108,14 +108,14 @@ void Peer::handleMessage(cMessage *msg)
     else if (ttmsg->getType() == content) {
         EV << "Sending next request!\n";
 
-        ContentMsg *msg = generateMessage('r', video_wants, ttmsg->getSource_num()); // r = request (comes from Peer)
+        ContentMsg *msg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num()); // r = request (comes from Peer)
         send(msg, "gate$o", 0); // 0 is always the switch
     }
 
     else if (ttmsg->getType() == request) {
         EV << "Sending back content!\n";
 
-        ContentMsg *msg = generateMessage('c', video_has, ttmsg->getSource_num()); // r = request (comes from Peer)
+        ContentMsg *msg = generateMessage('c', video_has.getName(), ttmsg->getSource_num()); // r = request (comes from Peer)
         send(msg, "gate$o", 0); // 0 is always the switch
     }
 
