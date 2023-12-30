@@ -12,6 +12,7 @@
 #include <string.h>
 #include <omnetpp.h>
 #include "contentO.h"
+#include "global.h"
 
 using namespace omnetpp;
 
@@ -37,12 +38,20 @@ using namespace omnetpp;
 class Peer : public cSimpleModule
 {
   protected:
+
     contentO video_has;
     contentO video_wants;
 
-    int has_tcp = 0;
+    int index;
+
+    int is_Alive = 1;
 
     virtual ContentMsg *generateMessage(char type, char content, int destination = 255, int tcp_type = 0);
+    virtual void handleTcpMessage(ContentMsg *ttmsg);
+    virtual void handleRequestMessage(ContentMsg *ttmsg);
+    virtual void handleContentMessage(ContentMsg *ttmsg);
+    virtual void sendDeadResponseMessage(ContentMsg *ttmsg);
+
     virtual int getServer();
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
@@ -52,22 +61,13 @@ Define_Module(Peer);
 
 void Peer::initialize()
 {
-    int index = getIndex();
+    index = getIndex();
 
-    if (index == 0) {
-        video_has.setName('a');
-        video_wants.setName('b');
-        EV << "Generating sin! \n";
-        ContentMsg *msg = generateMessage('r', video_wants.getName()); // r = request (comes from Peer)
-        send(msg, "gate$o", 0); // 0 is always the switch
-    } else {
-        video_has.setName('b');
-        video_wants.setName('c');
-    }
-    // Module 0 sends the first message
-        // Boot the process scheduling the initial message as a self-message.
+    video_has.setName(contents_has[index]);
+    video_wants.setName(contents_wants[index]);
 
-//        scheduleAt(0.0, msg);
+    ContentMsg *msg = generateMessage('r', video_wants.getName(), 255, 0); // r = request (comes from Peer)
+    send(msg, "gate$o", 0); // 0 is always the switch
 }
 
 void Peer::handleMessage(cMessage *msg)
@@ -77,52 +77,47 @@ void Peer::handleMessage(cMessage *msg)
     char tcp = 't';
     char request = 'r';
     char content = 'c';
-
-    if (ttmsg->getType() == tcp) {
-
-        if (ttmsg->getTcp_type() == 2) {
-            EV << "Generating ack. \n";
-
-            ContentMsg *msg = generateMessage('t', 0, ttmsg->getSource_num(), 3);
-            send(msg, "gate$o", 0);
-
-            EV << "Sending next request!\n";
-
-            ContentMsg *cmsg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num()); // r = request (comes from Peer)
-            send(cmsg, "gate$o", 0); // 0 is always the switch
-        }
-
-        if (ttmsg->getTcp_type() == 1) {
-                EV << "Generating syn+ack. \n";
-
-                ContentMsg *msg = generateMessage('t', 0, ttmsg->getSource_num(), 2);
-                send(msg, "gate$o", 0);
-        }
-
-        else if (ttmsg->getTcp_type() == 3) {
-            bubble("TCP connection established");
-        }
-
-    }
-
-    else if (ttmsg->getType() == content) {
-        EV << "Sending next request!\n";
-
-        ContentMsg *msg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num()); // r = request (comes from Peer)
-        send(msg, "gate$o", 0); // 0 is always the switch
-    }
-
-    else if (ttmsg->getType() == request) {
-        EV << "Sending back content!\n";
-
-        ContentMsg *msg = generateMessage('c', video_has.getName(), ttmsg->getSource_num()); // r = request (comes from Peer)
-        send(msg, "gate$o", 0); // 0 is always the switch
-    }
+    char dead = 'd';
 
     if (ttmsg->getDestination() == getIndex()) {
         // Message arrived.
         EV << "Message " << ttmsg->getType() << " arrived from peer " << ttmsg->getSource_num() << "\n";
     }
+
+    if (peer_dying_time[index] != 0 && simTime() >= peer_dying_time[index]) {
+        is_Alive = 0;
+    }
+
+    if (is_Alive == 0) {
+        if (ttmsg->getType() != content && ttmsg->getType() != dead) {
+            if (ttmsg->getType() == tcp)
+                if (ttmsg->getTcp_type() == 1) {
+                       sendDeadResponseMessage(ttmsg);
+                }
+        }
+        return;
+    }
+
+    if (ttmsg->getType() == tcp) {
+        handleTcpMessage(ttmsg);
+    }
+
+    else if (ttmsg->getType() == content) {
+        handleContentMessage(ttmsg);
+    }
+
+    else if (ttmsg->getType() == request) {
+        handleRequestMessage(ttmsg);
+    }
+
+    else if (ttmsg->getType() == dead) {
+        EV << "Sending unknown destination request!\n";
+
+        ContentMsg *msg = generateMessage('r', video_wants.getName(), 255, 0);
+        send(msg, "gate$o", 0); // 0 is always the switch
+    }
+
+
 }
 
 ContentMsg *Peer::generateMessage(char type, char content, int destination, int tcp_type)
@@ -137,17 +132,86 @@ ContentMsg *Peer::generateMessage(char type, char content, int destination, int 
 
     // Create message object and set Source_num and destination field.
     ContentMsg *msg = new ContentMsg(msgname);
+
     msg->setSource_num(src);
     msg->setDestination(dest);
     msg->setType(type);
     msg->setContent(content);
-
-    if (type == 't') {
-        msg->setTcp_type(tcp_type);
-    }
+    msg->setTcp_type(tcp_type);
 
     return msg;
 }
+
+void Peer::handleTcpMessage(ContentMsg *ttmsg)
+{
+
+    if (ttmsg->getTcp_type() == 0) {
+        EV << "Generating sin! \n";
+        ContentMsg *msg = generateMessage('t', 0, ttmsg->getSource_num(), 1); // r = request (comes from Peer)
+        send(msg, "gate$o", 0); // 0 is always the switch
+    }
+
+    else if (ttmsg->getTcp_type() == 1) {
+            EV << "Generating sin+ack. \n";
+
+            ContentMsg *msg = generateMessage('t', 0, ttmsg->getSource_num(), 2);
+            send(msg, "gate$o", 0);
+    }
+
+    else if (ttmsg->getTcp_type() == 2) {
+        EV << "Generating ack. \n";
+
+        ContentMsg *msg = generateMessage('t', 0, ttmsg->getSource_num(), 3);
+        send(msg, "gate$o", 0);
+
+        EV << "Sending first request!\n";
+
+        ContentMsg *cmsg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num(), 4); // r = request (comes from Peer)
+        send(cmsg, "gate$o", 0); // 0 is always the switch
+    }
+
+    else if (ttmsg->getTcp_type() == 3) {
+        bubble("TCP connection established");
+    }
+}
+
+
+void Peer::handleRequestMessage(ContentMsg *ttmsg)
+{
+//    EV << "aaaaaaa " << ttmsg->getTcp_type() << "\n";
+
+    if (ttmsg->getTcp_type() == 4) {
+        EV << "Sending back content!\n";
+        ContentMsg *msg = generateMessage('c', video_has.getName(), ttmsg->getSource_num(), 3); // r = request (comes from Peer)
+        send(msg, "gate$o", 0); // 0 is always the switch
+    }
+
+    else if (ttmsg->getTcp_type() == 0) {
+        EV << "No TCP connection! \n";
+        ContentMsg *msg = generateMessage('t', video_has.getName(), ttmsg->getSource_num(), 0); // r = request (comes from Peer)
+        send(msg, "gate$o", 0); // 0 is always the switch
+    }
+}
+
+
+void Peer::handleContentMessage(ContentMsg *ttmsg)
+{
+    EV << "Sending next request!\n";
+
+    ContentMsg *msg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num(), 4); // r = request (comes from Peer)
+    send(msg, "gate$o", 0); // 0 is always the switch
+}
+
+
+void Peer::sendDeadResponseMessage(ContentMsg *ttmsg)
+{
+    EV << "[ME] Peer " << getIndex() << " left!\n";
+
+    ContentMsg *msg = generateMessage('d', '0', ttmsg->getSource_num(), 0); // r = request (comes from Peer)
+    send(msg, "gate$o", 0); // 0 is always the switch
+}
+
+
 
 int Peer::getServer()
 {

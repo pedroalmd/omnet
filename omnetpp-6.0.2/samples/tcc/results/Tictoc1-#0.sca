@@ -1,8 +1,8 @@
 version 3
-run Tictoc1-0-20231227-21:54:17-6639
+run Tictoc1-0-20231230-15:55:55-11856
 attr configname Tictoc1
-attr datetime 20231227-21:54:17
-attr datetimef 20231227-215417
+attr datetime 20231230-15:55:55
+attr datetimef 20231230-155555
 attr experiment Tictoc1
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Tictoc1
-attr processid 6639
+attr processid 11856
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -42,8 +42,34 @@ attr mutable ""
 par Tictoc1.peer[1].gate$o[0].channel delay 0.1s
 attr mutable ""
 attr unit s
+par Tictoc1.switch[0].peer_gate$o[2].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[2].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[2].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[2].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[2].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[2].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[3].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[3].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[3].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[3].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[3].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[3].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
 par Tictoc1.switch[0] typename "\"Switch\""
 par Tictoc1.peer[0] typename "\"Peer\""
 par Tictoc1.peer[1] typename "\"Peer\""
+par Tictoc1.peer[2] typename "\"Peer\""
+par Tictoc1.peer[3] typename "\"Peer\""
 par Tictoc1 typename "\"Tictoc1\""
 

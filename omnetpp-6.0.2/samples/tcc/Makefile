@@ -35,6 +35,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cc, .msg and .sm files
 OBJS = \
     $O/contentO.o \
+    $O/global.o \
     $O/peer.o \
     $O/switch.o \
     $O/dont_compile/client.o \

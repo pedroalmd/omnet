@@ -20,6 +20,7 @@ using namespace omnetpp;
 // It contains the definition of the ContentMsg0 class, derived from
 // cMessage.
 #include "content_m.h"
+#include "global.h"
 
 /**
  * In this step the destination address is no longer node 2 -- we draw a
@@ -39,6 +40,7 @@ class Switch : public cSimpleModule
 {
   protected:
     std::map<int, char> table;
+    int alive_peers[100];
 
     virtual int getServer(char content, std::map<int, char> table);
     virtual ContentMsg *generateMessage(char type, int destination);
@@ -49,14 +51,20 @@ class Switch : public cSimpleModule
 
 Define_Module(Switch);
 
+
 void Switch::initialize()
 {
-    table[0] = 'a';
-    table[1] = 'b';
 
-    for (auto itr = table.begin(); itr != table.end(); ++itr) {
-       EV << itr->first << ": " << itr->second << endl;
+    int network_size = sizeof(contents_has) / sizeof(int);
+
+    for (int i = 0; i < network_size; i++) {
+        alive_peers[i] = 1;
+        table[i] = contents_has[i];
     }
+
+//    for (auto itr = table.begin(); itr != table.end(); ++itr) {
+//       EV << itr->first << ": " << itr->second << endl;
+//    }
 }
 
 void Switch::handleMessage(cMessage *msg)
@@ -67,26 +75,31 @@ void Switch::handleMessage(cMessage *msg)
     char response = 'c';
     char tcp = 't';
 
-    if (ttmsg->getType() == 'r') {
+    if (ttmsg->getType() == 'r' || ttmsg->getType() == 'c') {
         if (ttmsg->getDestination() == 255) {
             int server = getServer(ttmsg->getContent(), table);
 
-            ttmsg->setType('r');
             ttmsg->setDestination(server);
+        }
+
+        if (ttmsg->getDestination() != 255) {
             send(ttmsg, "peer_gate$o", ttmsg->getDestination());
         }
+
     }
 
-    // NEXT
-    if (ttmsg->getType() == 'r') {
-        if (ttmsg->getDestination() == 255) {
-            int server = getServer(ttmsg->getContent(), table);
-
-            ttmsg->setType('r');
-            ttmsg->setDestination(server);
-            send(ttmsg, "peer_gate$o", ttmsg->getDestination());
-        }
+    if (ttmsg->getType() == 't') {
+        send(ttmsg, "peer_gate$o", ttmsg->getDestination());
     }
+
+    if (ttmsg->getType() == 'd') {
+        send(ttmsg, "peer_gate$o", ttmsg->getDestination());
+        alive_peers[ttmsg->getSource_num()] = 0;
+        EV << "Peer " << ttmsg->getSource_num() << " is dead" << "\n";
+    }
+
+
+
 //
 //    EV << "Message " << ttmsg->getType() << " arrived with type " << ttmsg->getTcp_type() << " from " << ttmsg->getSource_num() << "\n";
 //
@@ -108,14 +121,15 @@ ContentMsg *Switch::generateMessage(char type, int destination)
     msg->setSource_num(src);
     msg->setDestination(dest);
     msg->setContent(type);
+
     return msg;
 }
 
 int Switch::getServer(char content, std::map<int, char>  table) {
     for (auto itr = table.begin(); itr != table.end(); ++itr) {
-       EV << itr->first << ": " << itr->second << endl << "\n";
+//       EV << itr->first << ": " << itr->second << endl << "\n";
 
-       if (itr->second == content){
+       if (itr->second == content && alive_peers[itr->first] == 1) {
            return itr->first;
        }
     }
