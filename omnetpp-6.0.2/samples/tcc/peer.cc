@@ -43,7 +43,7 @@ class Peer : public cSimpleModule
     contentO video_wants;
 
     int index;
-
+    std::vector<int> serving_peers = {};
     int is_Alive = 1;
 
     virtual ContentMsg *generateMessage(char type, char content, int destination = 255, int tcp_type = 0);
@@ -51,6 +51,10 @@ class Peer : public cSimpleModule
     virtual void handleRequestMessage(ContentMsg *ttmsg);
     virtual void handleContentMessage(ContentMsg *ttmsg);
     virtual void sendDeadResponseMessage(ContentMsg *ttmsg);
+    virtual void appendToServingPeers(int element);
+    virtual int isInArray(int element, std::vector<int> v);
+    virtual void eraseFromServingPeers(int element);
+    virtual int getElementIndexInVector(int element, std::vector<int> v);
 
     virtual int getServer();
     virtual void initialize() override;
@@ -95,6 +99,7 @@ void Peer::handleMessage(cMessage *msg)
                        sendDeadResponseMessage(ttmsg);
                 }
         }
+
         return;
     }
 
@@ -172,6 +177,7 @@ void Peer::handleTcpMessage(ContentMsg *ttmsg)
 
     else if (ttmsg->getTcp_type() == 3) {
         bubble("TCP connection established");
+        appendToServingPeers(ttmsg->getSource_num());
     }
 }
 
@@ -211,6 +217,50 @@ void Peer::sendDeadResponseMessage(ContentMsg *ttmsg)
     send(msg, "gate$o", 0); // 0 is always the switch
 }
 
+
+void Peer::appendToServingPeers(int element)
+{
+    if (isInArray(element, serving_peers) == 0) {
+        serving_peers.push_back(element);
+    }
+}
+
+
+void Peer::eraseFromServingPeers(int element)
+{
+    if (isInArray(element, serving_peers) == 0) {
+        return;
+    }
+
+    int element_index = getElementIndexInVector(element, serving_peers);
+
+    serving_peers.erase(serving_peers.begin() + element_index);
+}
+
+int Peer::getElementIndexInVector(int element, std::vector<int> v)
+{
+    for(int i = 0; i < v.size(); i++) {
+       if (element == v[i]) {
+           return i;
+       }
+    }
+
+    return 255;
+}
+
+
+int Peer::isInArray(int element, std::vector<int> v)
+{
+    // 1 if True
+
+    for(int i = 0; i < v.size(); i++) {
+       if (element == v[i]) {
+           return 1;
+       }
+    }
+
+    return 0;
+}
 
 
 int Peer::getServer()

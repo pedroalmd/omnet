@@ -32,13 +32,14 @@ network Tictoc1
 //        server[2]: Server;
 //        client[2]: Client;
 //        controller[1]: Controller;
-		peer[4]: Peer;
+		peer[5]: Peer;
 
     connections:
 		switch[0].peer_gate++ <--> Channel <--> peer[0].gate++;
 		switch[0].peer_gate++ <--> Channel <--> peer[1].gate++;
 		switch[0].peer_gate++ <--> Channel <--> peer[2].gate++;
 		switch[0].peer_gate++ <--> Channel <--> peer[3].gate++;
+		switch[0].peer_gate++ <--> Channel <--> peer[4].gate++;
 
 //        switch[0].client_gate++ <--> Channel <--> client[0].gate++;
 //        switch[0].server_gate++ <--> Channel <--> server[0].gate++;

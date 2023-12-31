@@ -125,6 +125,15 @@ ContentMsg *Switch::generateMessage(char type, int destination)
     return msg;
 }
 
+
+void Switch::printVector(std::vector<int> v)
+{
+    for(int i=0; i<v.size(); i++){
+        EV << "Peer: " << v[i] << "\n";
+    }
+}
+
+
 int Switch::getServer(char content, std::map<int, char>  table) {
     for (auto itr = table.begin(); itr != table.end(); ++itr) {
 //       EV << itr->first << ": " << itr->second << endl << "\n";
