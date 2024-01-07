@@ -6,5 +6,4 @@ message ContentMsg
     int hopCount = 0;
     char content;
     int tcp_type;
-    
 }

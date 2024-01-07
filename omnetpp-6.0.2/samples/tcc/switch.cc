@@ -46,7 +46,7 @@ class Switch : public cSimpleModule
     virtual ContentMsg *generateMessage(char type, int destination);
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
-
+    virtual void forwardToController(ContentMsg *ttmsg);
 };
 
 Define_Module(Switch);
@@ -74,12 +74,16 @@ void Switch::handleMessage(cMessage *msg)
     char request = 'r';
     char response = 'c';
     char tcp = 't';
+    char dead_from_controller = 'e';
+    char dead = 'd';
 
-    if (ttmsg->getType() == 'r' || ttmsg->getType() == 'c') {
+
+    if (ttmsg->getType() == request || ttmsg->getType() == response) {
         if (ttmsg->getDestination() == 255) {
-            int server = getServer(ttmsg->getContent(), table);
-
-            ttmsg->setDestination(server);
+//            int server = getServer(ttmsg->getContent(), table);
+//
+//            ttmsg->setDestination(server);
+            forwardToController(ttmsg);
         }
 
         if (ttmsg->getDestination() != 255) {
@@ -88,14 +92,20 @@ void Switch::handleMessage(cMessage *msg)
 
     }
 
-    if (ttmsg->getType() == 't') {
+    if (ttmsg->getType() == tcp) {
         send(ttmsg, "peer_gate$o", ttmsg->getDestination());
     }
 
-    if (ttmsg->getType() == 'd') {
+    if (ttmsg->getType() == dead) {
+//        send(ttmsg, "peer_gate$o", ttmsg->getDestination());
+//        alive_peers[ttmsg->getSource_num()] = 0;
+//        EV << "Peer " << ttmsg->getSource_num() << " is dead" << "\n";
+        forwardToController(ttmsg);
+    }
+
+    if (ttmsg->getType() == dead_from_controller) {
+        ttmsg->setType(dead);
         send(ttmsg, "peer_gate$o", ttmsg->getDestination());
-        alive_peers[ttmsg->getSource_num()] = 0;
-        EV << "Peer " << ttmsg->getSource_num() << " is dead" << "\n";
     }
 
 
@@ -126,12 +136,12 @@ ContentMsg *Switch::generateMessage(char type, int destination)
 }
 
 
-void Switch::printVector(std::vector<int> v)
-{
-    for(int i=0; i<v.size(); i++){
-        EV << "Peer: " << v[i] << "\n";
-    }
-}
+//void Switch::printVector(std::vector<int> v)
+//{
+//    for(int i=0; i<v.size(); i++){
+//        EV << "Peer: " << v[i] << "\n";
+//    }
+//}
 
 
 int Switch::getServer(char content, std::map<int, char>  table) {
@@ -144,5 +154,11 @@ int Switch::getServer(char content, std::map<int, char>  table) {
     }
 
     return 255;
+}
+
+
+void Switch::forwardToController(ContentMsg *ttmsg)
+{
+    send(ttmsg, "controller_gate$o", 0);
 }
 

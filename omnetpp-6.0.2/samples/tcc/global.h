@@ -7,10 +7,11 @@
 
 extern int contents_has[5];
 extern int contents_wants[5];
+extern int amount_serving[5];
+
+extern double dead_timeout;
+
 
 extern double peer_dying_time[5];
-
-extern int peer_has[4];
-extern int peer_wants[4];
 
 #endif

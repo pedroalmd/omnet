@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <omnetpp.h>
+#include <cmath>
 #include "contentO.h"
 #include "global.h"
 
@@ -55,6 +56,8 @@ class Peer : public cSimpleModule
     virtual int isInArray(int element, std::vector<int> v);
     virtual void eraseFromServingPeers(int element);
     virtual int getElementIndexInVector(int element, std::vector<int> v);
+    virtual void printServingPeers();
+
 
     virtual int getServer();
     virtual void initialize() override;
@@ -83,6 +86,8 @@ void Peer::handleMessage(cMessage *msg)
     char content = 'c';
     char dead = 'd';
 
+    printServingPeers();
+
     if (ttmsg->getDestination() == getIndex()) {
         // Message arrived.
         EV << "Message " << ttmsg->getType() << " arrived from peer " << ttmsg->getSource_num() << "\n";
@@ -94,10 +99,13 @@ void Peer::handleMessage(cMessage *msg)
 
     if (is_Alive == 0) {
         if (ttmsg->getType() != content && ttmsg->getType() != dead) {
-            if (ttmsg->getType() == tcp)
-                if (ttmsg->getTcp_type() == 1) {
-                       sendDeadResponseMessage(ttmsg);
+            if (ttmsg->getType() == tcp) {
+                if (ttmsg->getTcp_type() != 1) {
+                    return;
                 }
+            }
+
+            sendDeadResponseMessage(ttmsg);
         }
 
         return;
@@ -184,12 +192,14 @@ void Peer::handleTcpMessage(ContentMsg *ttmsg)
 
 void Peer::handleRequestMessage(ContentMsg *ttmsg)
 {
-//    EV << "aaaaaaa " << ttmsg->getTcp_type() << "\n";
+
 
     if (ttmsg->getTcp_type() == 4) {
+        double delay_time = std::pow(2, (serving_peers.size() - 1)) / 10; // evertime a peer joins, it takes double the time to respond o the request
+
         EV << "Sending back content!\n";
         ContentMsg *msg = generateMessage('c', video_has.getName(), ttmsg->getSource_num(), 3); // r = request (comes from Peer)
-        send(msg, "gate$o", 0); // 0 is always the switch
+        sendDelayed(msg, delay_time, "gate$o", 0); // 0 is always the switch
     }
 
     else if (ttmsg->getTcp_type() == 0) {
@@ -214,7 +224,7 @@ void Peer::sendDeadResponseMessage(ContentMsg *ttmsg)
     EV << "[ME] Peer " << getIndex() << " left!\n";
 
     ContentMsg *msg = generateMessage('d', '0', ttmsg->getSource_num(), 0); // r = request (comes from Peer)
-    send(msg, "gate$o", 0); // 0 is always the switch
+    sendDelayed(msg, dead_timeout, "gate$o", 0); // 0 is always the switch
 }
 
 
@@ -248,6 +258,13 @@ int Peer::getElementIndexInVector(int element, std::vector<int> v)
     return 255;
 }
 
+
+void Peer::printServingPeers()
+{
+    for(int i = 0; i < serving_peers.size(); i++) {
+        EV << "Peer " << index << " serving Peer " << serving_peers[i] << "\n";
+    }
+}
 
 int Peer::isInArray(int element, std::vector<int> v)
 {

@@ -1,0 +1,201 @@
+version 3
+run Tictoc1-0-20240107-18:58:57-12464
+attr configname Tictoc1
+attr datetime 20240107-18:58:57
+attr datetimef 20240107-185857
+attr experiment Tictoc1
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Tictoc1
+attr processid 12464
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config network Tictoc1
+
+par Tictoc1.switch[0].peer_gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[0].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[0].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[0].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[1].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[1].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[1].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[1].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[1].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[1].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[2].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[2].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[2].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[2].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[2].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[2].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[3].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[3].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[3].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[3].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[3].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[3].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[4].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[4].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[4].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[4].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[4].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[4].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.controller[0].switch_gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.controller[0].switch_gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.controller[0].switch_gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].controller_gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].controller_gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].controller_gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0] typename "\"Switch\""
+par Tictoc1.controller[0] typename "\"Controller\""
+par Tictoc1.peer[0] typename "\"Peer\""
+par Tictoc1.peer[1] typename "\"Peer\""
+par Tictoc1.peer[2] typename "\"Peer\""
+par Tictoc1.peer[3] typename "\"Peer\""
+par Tictoc1.peer[4] typename "\"Peer\""
+par Tictoc1 typename "\"Tictoc1\""
+
+run Tictoc1-0-20240107-18:57:43-12383
+attr configname Tictoc1
+attr datetime 20240107-18:57:43
+attr datetimef 20240107-185743
+attr experiment Tictoc1
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Tictoc1
+attr processid 12383
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config network Tictoc1
+
+par Tictoc1.switch[0].peer_gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[0].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[0].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[0].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[1].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[1].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[1].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[1].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[1].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[1].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[2].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[2].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[2].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[2].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[2].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[2].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[3].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[3].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[3].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[3].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[3].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[3].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].peer_gate$o[4].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].peer_gate$o[4].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].peer_gate$o[4].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.peer[4].gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.peer[4].gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.peer[4].gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.controller[0].switch_gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.controller[0].switch_gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.controller[0].switch_gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0].controller_gate$o[0].channel typename "\"Tictoc1.Channel\""
+par Tictoc1.switch[0].controller_gate$o[0].channel disabled false
+attr mutable ""
+par Tictoc1.switch[0].controller_gate$o[0].channel delay 0.1s
+attr mutable ""
+attr unit s
+par Tictoc1.switch[0] typename "\"Switch\""
+par Tictoc1.controller[0] typename "\"Controller\""
+par Tictoc1.peer[0] typename "\"Peer\""
+par Tictoc1.peer[1] typename "\"Peer\""
+par Tictoc1.peer[2] typename "\"Peer\""
+par Tictoc1.peer[3] typename "\"Peer\""
+par Tictoc1.peer[4] typename "\"Peer\""
+par Tictoc1 typename "\"Tictoc1\""
+
