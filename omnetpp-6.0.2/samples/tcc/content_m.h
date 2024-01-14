@@ -27,6 +27,7 @@ class ContentMsg;
  *     int destination;
  *     int hopCount = 0;
  *     char content;
+ *     int chunk;
  *     int tcp_type;
  * }
  * </pre>
@@ -39,6 +40,7 @@ class ContentMsg : public ::omnetpp::cMessage
     int destination = 0;
     int hopCount = 0;
     char content = 0;
+    int chunk = 0;
     int tcp_type = 0;
 
   private:
@@ -70,6 +72,9 @@ class ContentMsg : public ::omnetpp::cMessage
 
     virtual char getContent() const;
     virtual void setContent(char content);
+
+    virtual int getChunk() const;
+    virtual void setChunk(int chunk);
 
     virtual int getTcp_type() const;
     virtual void setTcp_type(int tcp_type);

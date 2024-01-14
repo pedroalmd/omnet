@@ -7,6 +7,8 @@
 
 extern int contents_has[5];
 extern int contents_wants[5];
+//extern int content_chunks[5][10];
+
 extern int amount_serving[5];
 
 extern double dead_timeout;

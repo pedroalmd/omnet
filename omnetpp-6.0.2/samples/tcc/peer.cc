@@ -47,7 +47,7 @@ class Peer : public cSimpleModule
     std::vector<int> serving_peers = {};
     int is_Alive = 1;
 
-    virtual ContentMsg *generateMessage(char type, char content, int destination = 255, int tcp_type = 0);
+    virtual ContentMsg *generateMessage(char type, char content, int destination = 2222, int tcp_type = 0, int chunk = 0);
     virtual void handleTcpMessage(ContentMsg *ttmsg);
     virtual void handleRequestMessage(ContentMsg *ttmsg);
     virtual void handleContentMessage(ContentMsg *ttmsg);
@@ -57,7 +57,8 @@ class Peer : public cSimpleModule
     virtual void eraseFromServingPeers(int element);
     virtual int getElementIndexInVector(int element, std::vector<int> v);
     virtual void printServingPeers();
-
+    virtual int getNextChunk(int starting_index = 0);
+    virtual void printChunk();
 
     virtual int getServer();
     virtual void initialize() override;
@@ -73,7 +74,7 @@ void Peer::initialize()
     video_has.setName(contents_has[index]);
     video_wants.setName(contents_wants[index]);
 
-    ContentMsg *msg = generateMessage('r', video_wants.getName(), 255, 0); // r = request (comes from Peer)
+    ContentMsg *msg = generateMessage('r', video_wants.getName(), 2222, 0); // r = request (comes from Peer)
     send(msg, "gate$o", 0); // 0 is always the switch
 }
 
@@ -126,14 +127,14 @@ void Peer::handleMessage(cMessage *msg)
     else if (ttmsg->getType() == dead) {
         EV << "Sending unknown destination request!\n";
 
-        ContentMsg *msg = generateMessage('r', video_wants.getName(), 255, 0);
+        ContentMsg *msg = generateMessage('r', video_wants.getName(), 2222, 0);
         send(msg, "gate$o", 0); // 0 is always the switch
     }
 
 
 }
 
-ContentMsg *Peer::generateMessage(char type, char content, int destination, int tcp_type)
+ContentMsg *Peer::generateMessage(char type, char content, int destination, int tcp_type, int chunk)
 {
     // Produce Source_num and destination addresses.
     int src = getIndex();  // our module index
@@ -151,6 +152,7 @@ ContentMsg *Peer::generateMessage(char type, char content, int destination, int 
     msg->setType(type);
     msg->setContent(content);
     msg->setTcp_type(tcp_type);
+    msg->setChunk(chunk);
 
     return msg;
 }
@@ -179,7 +181,7 @@ void Peer::handleTcpMessage(ContentMsg *ttmsg)
 
         EV << "Sending first request!\n";
 
-        ContentMsg *cmsg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num(), 4); // r = request (comes from Peer)
+        ContentMsg *cmsg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num(), 4, 0); // r = request (comes from Peer)
         send(cmsg, "gate$o", 0); // 0 is always the switch
     }
 
@@ -192,13 +194,11 @@ void Peer::handleTcpMessage(ContentMsg *ttmsg)
 
 void Peer::handleRequestMessage(ContentMsg *ttmsg)
 {
-
-
     if (ttmsg->getTcp_type() == 4) {
         double delay_time = std::pow(2, (serving_peers.size() - 1)) / 10; // evertime a peer joins, it takes double the time to respond o the request
 
         EV << "Sending back content!\n";
-        ContentMsg *msg = generateMessage('c', video_has.getName(), ttmsg->getSource_num(), 3); // r = request (comes from Peer)
+        ContentMsg *msg = generateMessage('c', video_has.getName(), ttmsg->getSource_num(), 4, ttmsg->getChunk()); // r = request (comes from Peer)
         sendDelayed(msg, delay_time, "gate$o", 0); // 0 is always the switch
     }
 
@@ -212,9 +212,13 @@ void Peer::handleRequestMessage(ContentMsg *ttmsg)
 
 void Peer::handleContentMessage(ContentMsg *ttmsg)
 {
+    EV << "Received chunk " << ttmsg->getChunk() << "\n";
+    video_wants.setChunk(ttmsg->getChunk(), 1);
+    printChunk();
+
     EV << "Sending next request!\n";
 
-    ContentMsg *msg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num(), 4); // r = request (comes from Peer)
+    ContentMsg *msg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num(), 4, getNextChunk()); // r = request (comes from Peer)
     send(msg, "gate$o", 0); // 0 is always the switch
 }
 
@@ -255,7 +259,7 @@ int Peer::getElementIndexInVector(int element, std::vector<int> v)
        }
     }
 
-    return 255;
+    return 2222;
 }
 
 
@@ -277,6 +281,40 @@ int Peer::isInArray(int element, std::vector<int> v)
     }
 
     return 0;
+}
+
+
+int Peer::getNextChunk(int starting_index)
+{
+
+    int c = 2;
+
+    for (int index = starting_index;; index++) {
+        c = video_wants.getChunk(index);
+        if (c == 0) {
+            return index;
+        }
+    }
+
+    return 101;
+}
+
+
+void Peer::printChunk()
+{
+    int percentage = 0;
+
+    EV << "|";
+    for(int i = 0; i < 100; i++) {
+        if (video_wants.getChunk(i) == 1) {
+            EV << "x";
+            percentage++;
+        }
+        EV << " ";
+    }
+
+    EV << "|\n";
+    EV << "Peer " << index << ": " << percentage << "% \n";
 }
 
 

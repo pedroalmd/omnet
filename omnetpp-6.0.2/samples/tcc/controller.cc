@@ -80,7 +80,7 @@ void Controller::handleMessage(cMessage *msg)
         int server = getServer(ttmsg->getContent(), table);
         ttmsg->setDestination(server);
 
-        if (ttmsg->getDestination() != 255) {
+        if (ttmsg->getDestination() != 2222) {
             amount_serving_peers[ttmsg->getDestination()]++;
 //            EV << ttmsg->getDestination() << "AAAA" << amount_serving_peers[ttmsg->getDestination()]<< "\n";
             send(ttmsg, "switch_gate$o", 0);
@@ -121,14 +121,14 @@ ContentMsg *Controller::generateMessage(char content, int destination, int tcp_t
 
 int Controller::getServer(char content, std::map<int, char>  table)
 {
-    int server = 255;
+    int server = 2222;
 
     for (auto itr = table.begin(); itr != table.end(); ++itr) {
 //       EV << itr->first << ": " << itr->second << endl << "\n";
 
        if (itr->second == content && alive_peers[itr->first] == 1) {
 
-           if (server == 255) {
+           if (server == 2222) {
                server = itr->first;
            }
 

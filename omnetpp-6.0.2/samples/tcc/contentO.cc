@@ -31,3 +31,12 @@ void contentO::setName(char n) {
 char contentO::getName() {
     return name;
 }
+
+void contentO::setChunk(int index, int value) {
+    chunk[index] = value;
+}
+
+int contentO::getChunk(int index) {
+    return chunk[index];
+}
+

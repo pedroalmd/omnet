@@ -180,6 +180,7 @@ void ContentMsg::copy(const ContentMsg& other)
     this->destination = other.destination;
     this->hopCount = other.hopCount;
     this->content = other.content;
+    this->chunk = other.chunk;
     this->tcp_type = other.tcp_type;
 }
 
@@ -191,6 +192,7 @@ void ContentMsg::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->destination);
     doParsimPacking(b,this->hopCount);
     doParsimPacking(b,this->content);
+    doParsimPacking(b,this->chunk);
     doParsimPacking(b,this->tcp_type);
 }
 
@@ -202,6 +204,7 @@ void ContentMsg::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->destination);
     doParsimUnpacking(b,this->hopCount);
     doParsimUnpacking(b,this->content);
+    doParsimUnpacking(b,this->chunk);
     doParsimUnpacking(b,this->tcp_type);
 }
 
@@ -255,6 +258,16 @@ void ContentMsg::setContent(char content)
     this->content = content;
 }
 
+int ContentMsg::getChunk() const
+{
+    return this->chunk;
+}
+
+void ContentMsg::setChunk(int chunk)
+{
+    this->chunk = chunk;
+}
+
 int ContentMsg::getTcp_type() const
 {
     return this->tcp_type;
@@ -275,6 +288,7 @@ class ContentMsgDescriptor : public omnetpp::cClassDescriptor
         FIELD_destination,
         FIELD_hopCount,
         FIELD_content,
+        FIELD_chunk,
         FIELD_tcp_type,
     };
   public:
@@ -342,7 +356,7 @@ const char *ContentMsgDescriptor::getProperty(const char *propertyName) const
 int ContentMsgDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *base = getBaseClassDescriptor();
-    return base ? 6+base->getFieldCount() : 6;
+    return base ? 7+base->getFieldCount() : 7;
 }
 
 unsigned int ContentMsgDescriptor::getFieldTypeFlags(int field) const
@@ -359,9 +373,10 @@ unsigned int ContentMsgDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,    // FIELD_destination
         FD_ISEDITABLE,    // FIELD_hopCount
         FD_ISEDITABLE,    // FIELD_content
+        FD_ISEDITABLE,    // FIELD_chunk
         FD_ISEDITABLE,    // FIELD_tcp_type
     };
-    return (field >= 0 && field < 6) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 7) ? fieldTypeFlags[field] : 0;
 }
 
 const char *ContentMsgDescriptor::getFieldName(int field) const
@@ -378,9 +393,10 @@ const char *ContentMsgDescriptor::getFieldName(int field) const
         "destination",
         "hopCount",
         "content",
+        "chunk",
         "tcp_type",
     };
-    return (field >= 0 && field < 6) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 7) ? fieldNames[field] : nullptr;
 }
 
 int ContentMsgDescriptor::findField(const char *fieldName) const
@@ -392,7 +408,8 @@ int ContentMsgDescriptor::findField(const char *fieldName) const
     if (strcmp(fieldName, "destination") == 0) return baseIndex + 2;
     if (strcmp(fieldName, "hopCount") == 0) return baseIndex + 3;
     if (strcmp(fieldName, "content") == 0) return baseIndex + 4;
-    if (strcmp(fieldName, "tcp_type") == 0) return baseIndex + 5;
+    if (strcmp(fieldName, "chunk") == 0) return baseIndex + 5;
+    if (strcmp(fieldName, "tcp_type") == 0) return baseIndex + 6;
     return base ? base->findField(fieldName) : -1;
 }
 
@@ -410,9 +427,10 @@ const char *ContentMsgDescriptor::getFieldTypeString(int field) const
         "int",    // FIELD_destination
         "int",    // FIELD_hopCount
         "char",    // FIELD_content
+        "int",    // FIELD_chunk
         "int",    // FIELD_tcp_type
     };
-    return (field >= 0 && field < 6) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 7) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **ContentMsgDescriptor::getFieldPropertyNames(int field) const
@@ -500,6 +518,7 @@ std::string ContentMsgDescriptor::getFieldValueAsString(omnetpp::any_ptr object,
         case FIELD_destination: return long2string(pp->getDestination());
         case FIELD_hopCount: return long2string(pp->getHopCount());
         case FIELD_content: return long2string(pp->getContent());
+        case FIELD_chunk: return long2string(pp->getChunk());
         case FIELD_tcp_type: return long2string(pp->getTcp_type());
         default: return "";
     }
@@ -522,6 +541,7 @@ void ContentMsgDescriptor::setFieldValueAsString(omnetpp::any_ptr object, int fi
         case FIELD_destination: pp->setDestination(string2long(value)); break;
         case FIELD_hopCount: pp->setHopCount(string2long(value)); break;
         case FIELD_content: pp->setContent(string2long(value)); break;
+        case FIELD_chunk: pp->setChunk(string2long(value)); break;
         case FIELD_tcp_type: pp->setTcp_type(string2long(value)); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'ContentMsg'", field);
     }
@@ -542,6 +562,7 @@ omnetpp::cValue ContentMsgDescriptor::getFieldValue(omnetpp::any_ptr object, int
         case FIELD_destination: return pp->getDestination();
         case FIELD_hopCount: return pp->getHopCount();
         case FIELD_content: return pp->getContent();
+        case FIELD_chunk: return pp->getChunk();
         case FIELD_tcp_type: return pp->getTcp_type();
         default: throw omnetpp::cRuntimeError("Cannot return field %d of class 'ContentMsg' as cValue -- field index out of range?", field);
     }
@@ -564,6 +585,7 @@ void ContentMsgDescriptor::setFieldValue(omnetpp::any_ptr object, int field, int
         case FIELD_destination: pp->setDestination(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_hopCount: pp->setHopCount(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_content: pp->setContent(omnetpp::checked_int_cast<char>(value.intValue())); break;
+        case FIELD_chunk: pp->setChunk(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_tcp_type: pp->setTcp_type(omnetpp::checked_int_cast<int>(value.intValue())); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'ContentMsg'", field);
     }

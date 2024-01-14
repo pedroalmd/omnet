@@ -79,14 +79,14 @@ void Switch::handleMessage(cMessage *msg)
 
 
     if (ttmsg->getType() == request || ttmsg->getType() == response) {
-        if (ttmsg->getDestination() == 255) {
+        if (ttmsg->getDestination() == 2222) {
 //            int server = getServer(ttmsg->getContent(), table);
 //
 //            ttmsg->setDestination(server);
             forwardToController(ttmsg);
         }
 
-        if (ttmsg->getDestination() != 255) {
+        if (ttmsg->getDestination() != 2222) {
             send(ttmsg, "peer_gate$o", ttmsg->getDestination());
         }
 
@@ -153,7 +153,7 @@ int Switch::getServer(char content, std::map<int, char>  table) {
        }
     }
 
-    return 255;
+    return 2222;
 }
 
 
