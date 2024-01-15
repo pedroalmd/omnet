@@ -11,7 +11,7 @@ simple Peer
 simple Switch
 {
     parameters:
-        @display("i=block/routing"); // add a default icon
+        @display("i=abstract/switch"); // add a default icon
 
     gates:
         inout peer_gate[];
@@ -22,7 +22,7 @@ simple Switch
 simple Controller
 {
     parameters:
-        @display("i=block/routing"); // add a default icon
+        @display("i=abstract/dispatcher"); // add a default icon
 
     gates:
 //        inout client_gate[];  // declare two way connections
@@ -39,8 +39,6 @@ network Tictoc1
         }
     submodules:
         switch[1]: Switch;
-//        server[2]: Server;
-//        client[2]: Client;
         controller[1]: Controller;
 		peer[5]: Peer;
 

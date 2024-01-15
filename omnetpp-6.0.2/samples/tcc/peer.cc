@@ -38,6 +38,12 @@ using namespace omnetpp;
  */
 class Peer : public cSimpleModule
 {
+  private:
+    long a_chunks_received;
+
+    cHistogram hopCountStats;
+    cOutVector hopCountVector;
+
   protected:
 
     contentO video_has;
@@ -69,6 +75,14 @@ Define_Module(Peer);
 
 void Peer::initialize()
 {
+    a_chunks_received = 0;
+
+    hopCountStats.setName("hopCountStats");
+//    hopCountStats.setRangeAutoUpper(0, 10, 1.5);
+    hopCountVector.setName("HopCount");
+
+
+
     index = getIndex();
 
     video_has.setName(contents_has[index]);
@@ -96,6 +110,8 @@ void Peer::handleMessage(cMessage *msg)
 
     if (peer_dying_time[index] != 0 && simTime() >= peer_dying_time[index]) {
         is_Alive = 0;
+        cDisplayString& dispStr = getDisplayString();
+        dispStr.setTagArg("i", 1, "red");
     }
 
     if (is_Alive == 0) {
@@ -302,7 +318,7 @@ int Peer::getNextChunk(int starting_index)
 
 void Peer::printChunk()
 {
-    int percentage = 0;
+    long percentage = 0;
 
     EV << "|";
     for(int i = 0; i < 100; i++) {
@@ -315,6 +331,15 @@ void Peer::printChunk()
 
     EV << "|\n";
     EV << "Peer " << index << ": " << percentage << "% \n";
+
+    char buf[40];
+    sprintf(buf, "Download Per: %ld", percentage);
+    getDisplayString().setTagArg("t", 0, buf);
+
+    a_chunks_received++;
+
+    hopCountVector.record(percentage);
+    hopCountStats.collect(percentage);
 }
 
 

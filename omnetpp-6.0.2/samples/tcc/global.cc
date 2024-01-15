@@ -14,7 +14,7 @@ int contents_has[5] =   {'a', 'b', 'c', 'd', 'd'};
 //                             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 //                             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
-double peer_dying_time[5] = {0, 0, 0, 0, 0};
+double peer_dying_time[5] = {0, 0, 0, 5, 0};
 
 
 double dead_timeout = 0.5;
