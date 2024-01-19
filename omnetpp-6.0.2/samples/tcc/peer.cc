@@ -39,7 +39,13 @@ using namespace omnetpp;
 class Peer : public cSimpleModule
 {
   private:
+    omnetpp::simtime_t finish_dwnl_time;
+    omnetpp::simtime_t partial_chunk_arr_time = 0;
+    omnetpp::simtime_t last_chunk_arr_time = 0;
+
     long a_chunks_received;
+
+    long percentage = 0;
 
     cHistogram hopCountStats;
     cOutVector hopCountVector;
@@ -73,6 +79,7 @@ class Peer : public cSimpleModule
 
 Define_Module(Peer);
 
+
 void Peer::initialize()
 {
     a_chunks_received = 0;
@@ -80,8 +87,6 @@ void Peer::initialize()
     hopCountStats.setName("hopCountStats");
 //    hopCountStats.setRangeAutoUpper(0, 10, 1.5);
     hopCountVector.setName("HopCount");
-
-
 
     index = getIndex();
 
@@ -91,6 +96,7 @@ void Peer::initialize()
     ContentMsg *msg = generateMessage('r', video_wants.getName(), 2222, 0); // r = request (comes from Peer)
     send(msg, "gate$o", 0); // 0 is always the switch
 }
+
 
 void Peer::handleMessage(cMessage *msg)
 {
@@ -150,6 +156,7 @@ void Peer::handleMessage(cMessage *msg)
 
 }
 
+
 ContentMsg *Peer::generateMessage(char type, char content, int destination, int tcp_type, int chunk)
 {
     // Produce Source_num and destination addresses.
@@ -172,6 +179,7 @@ ContentMsg *Peer::generateMessage(char type, char content, int destination, int 
 
     return msg;
 }
+
 
 void Peer::handleTcpMessage(ContentMsg *ttmsg)
 {
@@ -230,7 +238,23 @@ void Peer::handleContentMessage(ContentMsg *ttmsg)
 {
     EV << "Received chunk " << ttmsg->getChunk() << "\n";
     video_wants.setChunk(ttmsg->getChunk(), 1);
+
+    partial_chunk_arr_time = simTime() - last_chunk_arr_time;
+    last_chunk_arr_time = simTime();
+
+    video_wants.setChunkTime(ttmsg->getChunk(), partial_chunk_arr_time);
+
+    for(int i = 0; i < 100; i++) {
+            EV << "A " << video_wants.getChunkTime(i) << " ";
+    }
+
     printChunk();
+
+    if (percentage >= 100) {
+        finish_dwnl_time = simTime();
+        EV << "Finished downloading in " << finish_dwnl_time << " seconds. \n";
+        return;
+    }
 
     EV << "Sending next request!\n";
 
@@ -267,6 +291,7 @@ void Peer::eraseFromServingPeers(int element)
     serving_peers.erase(serving_peers.begin() + element_index);
 }
 
+
 int Peer::getElementIndexInVector(int element, std::vector<int> v)
 {
     for(int i = 0; i < v.size(); i++) {
@@ -285,6 +310,7 @@ void Peer::printServingPeers()
         EV << "Peer " << index << " serving Peer " << serving_peers[i] << "\n";
     }
 }
+
 
 int Peer::isInArray(int element, std::vector<int> v)
 {
@@ -318,28 +344,30 @@ int Peer::getNextChunk(int starting_index)
 
 void Peer::printChunk()
 {
-    long percentage = 0;
+    long tmp_percentage = 0;
 
     EV << "|";
     for(int i = 0; i < 100; i++) {
         if (video_wants.getChunk(i) == 1) {
             EV << "x";
-            percentage++;
+            tmp_percentage++;
         }
         EV << " ";
     }
 
     EV << "|\n";
-    EV << "Peer " << index << ": " << percentage << "% \n";
+    EV << "Peer " << index << ": " << tmp_percentage << "% \n";
+
+    percentage = tmp_percentage;
 
     char buf[40];
-    sprintf(buf, "Download Per: %ld", percentage);
+    sprintf(buf, "Download Per: %ld", tmp_percentage);
     getDisplayString().setTagArg("t", 0, buf);
 
     a_chunks_received++;
 
-    hopCountVector.record(percentage);
-    hopCountStats.collect(percentage);
+    hopCountVector.record(tmp_percentage);
+    hopCountStats.collect(tmp_percentage);
 }
 
 

@@ -14,6 +14,8 @@
 // 
 
 #include "contentO.h"
+#include <omnetpp.h>
+
 
 contentO::contentO() {
     // TODO Auto-generated constructor stub
@@ -39,4 +41,13 @@ void contentO::setChunk(int index, int value) {
 int contentO::getChunk(int index) {
     return chunk[index];
 }
+
+void contentO::setChunkTime(int index, omnetpp::simtime_t value) {
+    chunk_arr_time[index] = value;
+}
+
+omnetpp::simtime_t contentO::getChunkTime(int index) {
+    return chunk_arr_time[index];
+}
+
 

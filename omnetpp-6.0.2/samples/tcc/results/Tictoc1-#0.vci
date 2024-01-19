@@ -1,9 +1,9 @@
-file 1446 1705334311                                            
+file 1294 1705632528                                            
 version 3
-run Tictoc1-0-20240115-12:57:45-10404
+run Tictoc1-0-20240118-23:47:46-7230
 attr configname Tictoc1
-attr datetime 20240115-12:57:45
-attr datetimef 20240115-125745
+attr datetime 20240118-23:47:46
+attr datetimef 20240118-234746
 attr experiment Tictoc1
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Tictoc1
-attr processid 10404
+attr processid 7230
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -22,13 +22,10 @@ config network Tictoc1
 vector 0 Tictoc1.peer[0] HopCount ETV
 vector 1 Tictoc1.peer[1] HopCount ETV
 vector 2 Tictoc1.peer[2] HopCount ETV
-0	545 147 50 251 1.5 10.1 13 1 12 86 714
-1	692 203 51 249 1.5 10 18 1 18 171 2109
-2	895 210 52 259 1.5 10.5 18 1 18 171 2109
-0	1105 56 264 302 10.7 12.5 4 13 16 58 846
-1	1161 66 260 303 10.5 12.5 5 19 23 105 2215
-2	1227 42 272 298 11.1 12.3 3 19 21 60 1202
-0	1269 56 315 354 13.1 14.9 4 17 20 74 1374
-1	1325 64 313 356 13 15 5 24 28 130 3390
-2	1389 56 311 349 12.9 14.7 4 22 25 94 2214
+0	543 120 50 226 1.5 8.9 11 1 10 63 449
+1	663 178 51 228 1.5 9 16 1 16 136 1496
+2	841 183 52 234 1.5 9.3 16 1 16 136 1496
+0	1024 83 238 302 9.5 12.5 6 11 16 81 1111
+1	1107 103 239 313 9.5 13 8 17 24 164 3404
+2	1210 83 247 311 9.9 12.9 6 17 22 117 2299
 
