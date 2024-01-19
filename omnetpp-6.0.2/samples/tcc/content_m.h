@@ -29,6 +29,10 @@ class ContentMsg;
  *     char content;
  *     int chunk;
  *     int tcp_type;
+ *     omnetpp::simtime_t c_average_chunk_arr;
+ *     omnetpp::simtime_t c_finish_dwnl_time;
+ *     omnetpp::simtime_t c_total_stall_time;
+ *     int c_stall_count_size;
  * }
  * </pre>
  */
@@ -42,6 +46,10 @@ class ContentMsg : public ::omnetpp::cMessage
     char content = 0;
     int chunk = 0;
     int tcp_type = 0;
+    omnetpp::simtime_t c_average_chunk_arr = SIMTIME_ZERO;
+    omnetpp::simtime_t c_finish_dwnl_time = SIMTIME_ZERO;
+    omnetpp::simtime_t c_total_stall_time = SIMTIME_ZERO;
+    int c_stall_count_size = 0;
 
   private:
     void copy(const ContentMsg& other);
@@ -78,6 +86,18 @@ class ContentMsg : public ::omnetpp::cMessage
 
     virtual int getTcp_type() const;
     virtual void setTcp_type(int tcp_type);
+
+    virtual omnetpp::simtime_t getC_average_chunk_arr() const;
+    virtual void setC_average_chunk_arr(omnetpp::simtime_t c_average_chunk_arr);
+
+    virtual omnetpp::simtime_t getC_finish_dwnl_time() const;
+    virtual void setC_finish_dwnl_time(omnetpp::simtime_t c_finish_dwnl_time);
+
+    virtual omnetpp::simtime_t getC_total_stall_time() const;
+    virtual void setC_total_stall_time(omnetpp::simtime_t c_total_stall_time);
+
+    virtual int getC_stall_count_size() const;
+    virtual void setC_stall_count_size(int c_stall_count_size);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const ContentMsg& obj) {obj.parsimPack(b);}

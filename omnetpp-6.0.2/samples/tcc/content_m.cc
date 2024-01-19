@@ -182,6 +182,10 @@ void ContentMsg::copy(const ContentMsg& other)
     this->content = other.content;
     this->chunk = other.chunk;
     this->tcp_type = other.tcp_type;
+    this->c_average_chunk_arr = other.c_average_chunk_arr;
+    this->c_finish_dwnl_time = other.c_finish_dwnl_time;
+    this->c_total_stall_time = other.c_total_stall_time;
+    this->c_stall_count_size = other.c_stall_count_size;
 }
 
 void ContentMsg::parsimPack(omnetpp::cCommBuffer *b) const
@@ -194,6 +198,10 @@ void ContentMsg::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->content);
     doParsimPacking(b,this->chunk);
     doParsimPacking(b,this->tcp_type);
+    doParsimPacking(b,this->c_average_chunk_arr);
+    doParsimPacking(b,this->c_finish_dwnl_time);
+    doParsimPacking(b,this->c_total_stall_time);
+    doParsimPacking(b,this->c_stall_count_size);
 }
 
 void ContentMsg::parsimUnpack(omnetpp::cCommBuffer *b)
@@ -206,6 +214,10 @@ void ContentMsg::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->content);
     doParsimUnpacking(b,this->chunk);
     doParsimUnpacking(b,this->tcp_type);
+    doParsimUnpacking(b,this->c_average_chunk_arr);
+    doParsimUnpacking(b,this->c_finish_dwnl_time);
+    doParsimUnpacking(b,this->c_total_stall_time);
+    doParsimUnpacking(b,this->c_stall_count_size);
 }
 
 int ContentMsg::getSource_num() const
@@ -278,6 +290,46 @@ void ContentMsg::setTcp_type(int tcp_type)
     this->tcp_type = tcp_type;
 }
 
+omnetpp::simtime_t ContentMsg::getC_average_chunk_arr() const
+{
+    return this->c_average_chunk_arr;
+}
+
+void ContentMsg::setC_average_chunk_arr(omnetpp::simtime_t c_average_chunk_arr)
+{
+    this->c_average_chunk_arr = c_average_chunk_arr;
+}
+
+omnetpp::simtime_t ContentMsg::getC_finish_dwnl_time() const
+{
+    return this->c_finish_dwnl_time;
+}
+
+void ContentMsg::setC_finish_dwnl_time(omnetpp::simtime_t c_finish_dwnl_time)
+{
+    this->c_finish_dwnl_time = c_finish_dwnl_time;
+}
+
+omnetpp::simtime_t ContentMsg::getC_total_stall_time() const
+{
+    return this->c_total_stall_time;
+}
+
+void ContentMsg::setC_total_stall_time(omnetpp::simtime_t c_total_stall_time)
+{
+    this->c_total_stall_time = c_total_stall_time;
+}
+
+int ContentMsg::getC_stall_count_size() const
+{
+    return this->c_stall_count_size;
+}
+
+void ContentMsg::setC_stall_count_size(int c_stall_count_size)
+{
+    this->c_stall_count_size = c_stall_count_size;
+}
+
 class ContentMsgDescriptor : public omnetpp::cClassDescriptor
 {
   private:
@@ -290,6 +342,10 @@ class ContentMsgDescriptor : public omnetpp::cClassDescriptor
         FIELD_content,
         FIELD_chunk,
         FIELD_tcp_type,
+        FIELD_c_average_chunk_arr,
+        FIELD_c_finish_dwnl_time,
+        FIELD_c_total_stall_time,
+        FIELD_c_stall_count_size,
     };
   public:
     ContentMsgDescriptor();
@@ -356,7 +412,7 @@ const char *ContentMsgDescriptor::getProperty(const char *propertyName) const
 int ContentMsgDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *base = getBaseClassDescriptor();
-    return base ? 7+base->getFieldCount() : 7;
+    return base ? 11+base->getFieldCount() : 11;
 }
 
 unsigned int ContentMsgDescriptor::getFieldTypeFlags(int field) const
@@ -375,8 +431,12 @@ unsigned int ContentMsgDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,    // FIELD_content
         FD_ISEDITABLE,    // FIELD_chunk
         FD_ISEDITABLE,    // FIELD_tcp_type
+        FD_ISEDITABLE,    // FIELD_c_average_chunk_arr
+        FD_ISEDITABLE,    // FIELD_c_finish_dwnl_time
+        FD_ISEDITABLE,    // FIELD_c_total_stall_time
+        FD_ISEDITABLE,    // FIELD_c_stall_count_size
     };
-    return (field >= 0 && field < 7) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 11) ? fieldTypeFlags[field] : 0;
 }
 
 const char *ContentMsgDescriptor::getFieldName(int field) const
@@ -395,8 +455,12 @@ const char *ContentMsgDescriptor::getFieldName(int field) const
         "content",
         "chunk",
         "tcp_type",
+        "c_average_chunk_arr",
+        "c_finish_dwnl_time",
+        "c_total_stall_time",
+        "c_stall_count_size",
     };
-    return (field >= 0 && field < 7) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 11) ? fieldNames[field] : nullptr;
 }
 
 int ContentMsgDescriptor::findField(const char *fieldName) const
@@ -410,6 +474,10 @@ int ContentMsgDescriptor::findField(const char *fieldName) const
     if (strcmp(fieldName, "content") == 0) return baseIndex + 4;
     if (strcmp(fieldName, "chunk") == 0) return baseIndex + 5;
     if (strcmp(fieldName, "tcp_type") == 0) return baseIndex + 6;
+    if (strcmp(fieldName, "c_average_chunk_arr") == 0) return baseIndex + 7;
+    if (strcmp(fieldName, "c_finish_dwnl_time") == 0) return baseIndex + 8;
+    if (strcmp(fieldName, "c_total_stall_time") == 0) return baseIndex + 9;
+    if (strcmp(fieldName, "c_stall_count_size") == 0) return baseIndex + 10;
     return base ? base->findField(fieldName) : -1;
 }
 
@@ -429,8 +497,12 @@ const char *ContentMsgDescriptor::getFieldTypeString(int field) const
         "char",    // FIELD_content
         "int",    // FIELD_chunk
         "int",    // FIELD_tcp_type
+        "omnetpp::simtime_t",    // FIELD_c_average_chunk_arr
+        "omnetpp::simtime_t",    // FIELD_c_finish_dwnl_time
+        "omnetpp::simtime_t",    // FIELD_c_total_stall_time
+        "int",    // FIELD_c_stall_count_size
     };
-    return (field >= 0 && field < 7) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 11) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **ContentMsgDescriptor::getFieldPropertyNames(int field) const
@@ -520,6 +592,10 @@ std::string ContentMsgDescriptor::getFieldValueAsString(omnetpp::any_ptr object,
         case FIELD_content: return long2string(pp->getContent());
         case FIELD_chunk: return long2string(pp->getChunk());
         case FIELD_tcp_type: return long2string(pp->getTcp_type());
+        case FIELD_c_average_chunk_arr: return simtime2string(pp->getC_average_chunk_arr());
+        case FIELD_c_finish_dwnl_time: return simtime2string(pp->getC_finish_dwnl_time());
+        case FIELD_c_total_stall_time: return simtime2string(pp->getC_total_stall_time());
+        case FIELD_c_stall_count_size: return long2string(pp->getC_stall_count_size());
         default: return "";
     }
 }
@@ -543,6 +619,10 @@ void ContentMsgDescriptor::setFieldValueAsString(omnetpp::any_ptr object, int fi
         case FIELD_content: pp->setContent(string2long(value)); break;
         case FIELD_chunk: pp->setChunk(string2long(value)); break;
         case FIELD_tcp_type: pp->setTcp_type(string2long(value)); break;
+        case FIELD_c_average_chunk_arr: pp->setC_average_chunk_arr(string2simtime(value)); break;
+        case FIELD_c_finish_dwnl_time: pp->setC_finish_dwnl_time(string2simtime(value)); break;
+        case FIELD_c_total_stall_time: pp->setC_total_stall_time(string2simtime(value)); break;
+        case FIELD_c_stall_count_size: pp->setC_stall_count_size(string2long(value)); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'ContentMsg'", field);
     }
 }
@@ -564,6 +644,10 @@ omnetpp::cValue ContentMsgDescriptor::getFieldValue(omnetpp::any_ptr object, int
         case FIELD_content: return pp->getContent();
         case FIELD_chunk: return pp->getChunk();
         case FIELD_tcp_type: return pp->getTcp_type();
+        case FIELD_c_average_chunk_arr: return pp->getC_average_chunk_arr().dbl();
+        case FIELD_c_finish_dwnl_time: return pp->getC_finish_dwnl_time().dbl();
+        case FIELD_c_total_stall_time: return pp->getC_total_stall_time().dbl();
+        case FIELD_c_stall_count_size: return pp->getC_stall_count_size();
         default: throw omnetpp::cRuntimeError("Cannot return field %d of class 'ContentMsg' as cValue -- field index out of range?", field);
     }
 }
@@ -587,6 +671,10 @@ void ContentMsgDescriptor::setFieldValue(omnetpp::any_ptr object, int field, int
         case FIELD_content: pp->setContent(omnetpp::checked_int_cast<char>(value.intValue())); break;
         case FIELD_chunk: pp->setChunk(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_tcp_type: pp->setTcp_type(omnetpp::checked_int_cast<int>(value.intValue())); break;
+        case FIELD_c_average_chunk_arr: pp->setC_average_chunk_arr(value.doubleValue()); break;
+        case FIELD_c_finish_dwnl_time: pp->setC_finish_dwnl_time(value.doubleValue()); break;
+        case FIELD_c_total_stall_time: pp->setC_total_stall_time(value.doubleValue()); break;
+        case FIELD_c_stall_count_size: pp->setC_stall_count_size(omnetpp::checked_int_cast<int>(value.intValue())); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'ContentMsg'", field);
     }
 }

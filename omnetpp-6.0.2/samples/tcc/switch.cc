@@ -76,6 +76,11 @@ void Switch::handleMessage(cMessage *msg)
     char tcp = 't';
     char dead_from_controller = 'e';
     char dead = 'd';
+    char stat = 'x';
+
+    if (ttmsg->getType() == stat) {
+        forwardToController(ttmsg);
+    }
 
 
     if (ttmsg->getType() == request || ttmsg->getType() == response) {
@@ -86,7 +91,12 @@ void Switch::handleMessage(cMessage *msg)
             forwardToController(ttmsg);
         }
 
-        if (ttmsg->getDestination() != 2222) {
+        else if (ttmsg->getDestination() == 2223) {
+            send(ttmsg, "peer_gate$o", ttmsg->getSource_num());
+            return;
+        }
+
+        else if (ttmsg->getDestination() != 2222) {
             send(ttmsg, "peer_gate$o", ttmsg->getDestination());
         }
 

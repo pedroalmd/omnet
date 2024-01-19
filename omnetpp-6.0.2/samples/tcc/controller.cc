@@ -23,6 +23,8 @@ using namespace omnetpp;
 #include "content_m.h"
 #include "global.h"
 
+#define PEER_AMOUNT 5
+
 
 /**
  * In this step the destination address is no longer node 2 -- we draw a
@@ -41,16 +43,23 @@ using namespace omnetpp;
 class Controller : public cSimpleModule
 {
   protected:
+
     int myNum = 0;
     contentO video;
     int alive_peers[100];
     int amount_serving_peers[100];
+
+    omnetpp::simtime_t c_average_chunk_arr[PEER_AMOUNT];
+    omnetpp::simtime_t c_finish_dwnl_time[PEER_AMOUNT];
+    omnetpp::simtime_t c_total_stall_time[PEER_AMOUNT];
+    int c_stall_count_size[PEER_AMOUNT];
 
     std::map<int, char> table;
 
 
     virtual ContentMsg *generateMessage(char content, int destination, int tcp_type = 0);
     virtual void initialize() override;
+    virtual void finish() override;
     virtual void handleMessage(cMessage *msg) override;
     virtual int getServer(char content, std::map<int, char> table);
 
@@ -75,6 +84,14 @@ void Controller::handleMessage(cMessage *msg)
 
     char request = 'r';
     char dead = 'd';
+    char stat = 'x';
+
+    if (ttmsg->getType() == stat) {
+        c_average_chunk_arr[ttmsg->getSource_num()] = ttmsg->getC_average_chunk_arr();
+        c_finish_dwnl_time[ttmsg->getSource_num()] = ttmsg->getC_finish_dwnl_time();
+        c_total_stall_time[ttmsg->getSource_num()] = ttmsg->getC_total_stall_time();
+        c_stall_count_size[ttmsg->getSource_num()] = ttmsg->getC_stall_count_size();
+    }
 
     if (ttmsg->getType() == request) {
         int server = getServer(ttmsg->getContent(), table);
@@ -121,14 +138,14 @@ ContentMsg *Controller::generateMessage(char content, int destination, int tcp_t
 
 int Controller::getServer(char content, std::map<int, char>  table)
 {
-    int server = 2222;
+    int server = 2223;
 
     for (auto itr = table.begin(); itr != table.end(); ++itr) {
 //       EV << itr->first << ": " << itr->second << endl << "\n";
 
        if (itr->second == content && alive_peers[itr->first] == 1) {
 
-           if (server == 2222) {
+           if (server == 2223) {
                server = itr->first;
            }
 
@@ -141,3 +158,18 @@ int Controller::getServer(char content, std::map<int, char>  table)
 
     return server;
 }
+
+
+void Controller::finish()
+{
+    for(int i = 0; i < PEER_AMOUNT; i++) {
+        EV << "Peer " << i << "\n";
+        EV << "c_average_chunk_arr " << c_average_chunk_arr[i] << "\n";
+        EV << "c_finish_dwnl_time " <<  c_finish_dwnl_time[i] << "\n";
+        EV << "c_finish_dwnl_time " << c_total_stall_time[i] << "\n";
+        EV << "c_stall_count_size " << c_stall_count_size[i] << "\n";
+    }
+}
+
+
+
