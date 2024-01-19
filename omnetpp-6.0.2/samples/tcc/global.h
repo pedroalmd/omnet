@@ -1,7 +1,7 @@
 #ifndef MY_GLOBALS_H
 #define MY_GLOBALS_H
 
-#define PEER_AMOUNT 50
+#define PEER_AMOUNT 500
 
 #define MIN_PERCENTAGE_STATISTICS 0
 
