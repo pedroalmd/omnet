@@ -146,6 +146,7 @@ void Peer::handleMessage(cMessage *msg)
         is_Alive = 0;
         cDisplayString& dispStr = getDisplayString();
         dispStr.setTagArg("i", 1, "red");
+        beforeFinishing();
     }
 
     if (is_Alive == 0) {
@@ -508,8 +509,11 @@ void Peer::beforeFinishing() {
     finish_dwnl_time = simTime();
     setAverageChunkTime();
 
-    ContentMsg *msg = generateStatMessage('x', average_chunk_arr, finish_dwnl_time, total_stall_time, stall_count.size());
-    send(msg, "gate$o", 0);
+
+    if (percentage >= MIN_PERCENTAGE_STATISTICS) {
+        ContentMsg *msg = generateStatMessage('x', average_chunk_arr, finish_dwnl_time, total_stall_time, stall_count.size());
+        send(msg, "gate$o", 0);
+    }
 }
 
 

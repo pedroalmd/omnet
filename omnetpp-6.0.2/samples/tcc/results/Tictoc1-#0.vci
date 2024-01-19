@@ -1,9 +1,9 @@
-file 3613 1705696594                                            
+file 69982 1705702315                                           
 version 3
-run Tictoc1-0-20240119-17:36:32-13811
+run Tictoc1-0-20240119-19:11:52-18404
 attr configname Tictoc1
-attr datetime 20240119-17:36:32
-attr datetimef 20240119-173632
+attr datetime 20240119-19:11:52
+attr datetimef 20240119-191152
 attr experiment Tictoc1
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Tictoc1
-attr processid 13811
+attr processid 18404
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -22,7 +22,101 @@ config network Tictoc1
 vector 0 Tictoc1.peer[0] HopCount ETV
 vector 1 Tictoc1.peer[1] HopCount ETV
 vector 2 Tictoc1.peer[2] HopCount ETV
-0	545 858 58 1130 1.5 40.1 63 1 63 2016 85344
-1	1403 1304 59 1270 1.5 51 100 1 100 5050 338350
-2	2707 905 60 1123 1.5 39.9 67 1 67 2278 102510
+vector 3 Tictoc1.peer[3] HopCount ETV
+vector 4 Tictoc1.peer[4] HopCount ETV
+vector 5 Tictoc1.peer[5] HopCount ETV
+vector 6 Tictoc1.peer[6] HopCount ETV
+vector 7 Tictoc1.peer[7] HopCount ETV
+vector 8 Tictoc1.peer[8] HopCount ETV
+vector 9 Tictoc1.peer[9] HopCount ETV
+vector 10 Tictoc1.peer[10] HopCount ETV
+vector 11 Tictoc1.peer[11] HopCount ETV
+vector 12 Tictoc1.peer[12] HopCount ETV
+vector 13 Tictoc1.peer[13] HopCount ETV
+vector 14 Tictoc1.peer[14] HopCount ETV
+vector 15 Tictoc1.peer[15] HopCount ETV
+vector 16 Tictoc1.peer[16] HopCount ETV
+vector 17 Tictoc1.peer[17] HopCount ETV
+vector 18 Tictoc1.peer[18] HopCount ETV
+vector 19 Tictoc1.peer[19] HopCount ETV
+vector 20 Tictoc1.peer[20] HopCount ETV
+vector 21 Tictoc1.peer[21] HopCount ETV
+vector 22 Tictoc1.peer[22] HopCount ETV
+vector 23 Tictoc1.peer[23] HopCount ETV
+vector 24 Tictoc1.peer[24] HopCount ETV
+vector 25 Tictoc1.peer[25] HopCount ETV
+vector 26 Tictoc1.peer[26] HopCount ETV
+vector 27 Tictoc1.peer[27] HopCount ETV
+vector 28 Tictoc1.peer[28] HopCount ETV
+vector 29 Tictoc1.peer[29] HopCount ETV
+vector 30 Tictoc1.peer[30] HopCount ETV
+vector 31 Tictoc1.peer[31] HopCount ETV
+vector 32 Tictoc1.peer[32] HopCount ETV
+vector 33 Tictoc1.peer[33] HopCount ETV
+vector 34 Tictoc1.peer[34] HopCount ETV
+vector 35 Tictoc1.peer[35] HopCount ETV
+vector 36 Tictoc1.peer[36] HopCount ETV
+vector 37 Tictoc1.peer[37] HopCount ETV
+vector 38 Tictoc1.peer[38] HopCount ETV
+vector 39 Tictoc1.peer[39] HopCount ETV
+vector 40 Tictoc1.peer[40] HopCount ETV
+vector 41 Tictoc1.peer[42] HopCount ETV
+vector 42 Tictoc1.peer[43] HopCount ETV
+vector 43 Tictoc1.peer[48] HopCount ETV
+vector 44 Tictoc1.peer[49] HopCount ETV
+vector 45 Tictoc1.peer[41] HopCount ETV
+vector 46 Tictoc1.peer[44] HopCount ETV
+vector 47 Tictoc1.peer[45] HopCount ETV
+vector 48 Tictoc1.peer[46] HopCount ETV
+vector 49 Tictoc1.peer[47] HopCount ETV
+0	2411 1432 751 21759 1.5 51 100 1 100 5050 338350
+1	3843 1542 752 23120 1.5 60.9 100 1 100 5050 338350
+2	5385 1432 753 21760 1.5 51 100 1 100 5050 338350
+3	6817 1432 754 21761 1.5 51 100 1 100 5050 338350
+4	8249 185 755 4148 1.5 8.5 15 1 15 120 1240
+5	8434 1542 756 23304 1.5 67.1 100 1 100 5050 338350
+6	9976 1432 757 21762 1.5 51 100 1 100 5050 338350
+7	11408 1269 758 21637 1.5 50.7 83 1 83 3486 194054
+8	12677 1237 759 21183 1.5 49.5 81 1 81 3321 180441
+9	13914 1540 760 23274 1.5 65.1 100 1 100 5050 338350
+10	15454 1621 761 22194 1.5 53.1 100 1 100 5050 338350
+11	17075 288 762 5562 1.5 11.5 21 1 21 231 3311
+12	17363 1606 763 22837 1.5 58.1 100 1 100 5050 338350
+13	18969 1614 764 22195 1.5 53.1 100 1 100 5050 338350
+14	20583 1533 765 21763 1.5 51 100 1 100 5050 338350
+15	22116 1533 766 21764 1.5 51 100 1 100 5050 338350
+16	23649 1533 767 21765 1.5 51 100 1 100 5050 338350
+17	25182 1533 768 21766 1.5 51 100 1 100 5050 338350
+18	26715 1533 769 21767 1.5 51 100 1 100 5050 338350
+19	28248 1533 770 21768 1.5 51 100 1 100 5050 338350
+20	29781 1533 771 21769 1.5 51 100 1 100 5050 338350
+21	31314 1615 772 23108 1.5 60.7 100 1 100 5050 338350
+22	32929 1618 773 23122 1.5 60.9 100 1 100 5050 338350
+23	34547 1623 774 22990 1.5 59.5 100 1 100 5050 338350
+24	36170 319 775 6035 1.5 12.5 23 1 23 276 4324
+25	36489 289 776 5575 1.5 11.5 21 1 21 231 3311
+26	36778 1325 777 19268 1.5 44.5 87 1 87 3828 223300
+27	38103 1533 778 21770 1.5 51 100 1 100 5050 338350
+28	39636 1533 779 21771 1.5 51 100 1 100 5050 338350
+29	41169 1602 780 22786 1.5 57.7 100 1 100 5050 338350
+30	42771 1533 781 21772 1.5 51 100 1 100 5050 338350
+31	44304 1533 782 21773 1.5 51 100 1 100 5050 338350
+32	45837 1533 783 21774 1.5 51 100 1 100 5050 338350
+33	47370 1611 784 23072 1.5 60.3 100 1 100 5050 338350
+34	48981 1555 785 23008 1.5 59.7 100 1 100 5050 338350
+35	50536 1533 786 21775 1.5 51 100 1 100 5050 338350
+36	52069 1636 787 23188 1.5 62.1 100 1 100 5050 338350
+37	53705 1533 788 21776 1.5 51 100 1 100 5050 338350
+38	55238 379 789 6948 1.5 14.5 27 1 27 378 6930
+39	55617 1533 790 21777 1.5 51 100 1 100 5050 338350
+40	57150 1535 791 22196 1.5 53.1 100 1 100 5050 338350
+41	58685 117 792 2732 1.5 5.5 9 1 9 45 285
+42	58802 1533 793 21778 1.5 51 100 1 100 5050 338350
+43	60335 685 794 11154 1.5 24.5 47 1 47 1128 35720
+44	61020 1533 795 21779 1.5 51 100 1 100 5050 338350
+45	62553 1006 796 17203 1.6 39.4 64 1 64 2080 89440
+46	63559 1605 797 23305 1.6 67.2 100 1 100 5050 338350
+47	65164 1603 798 23134 1.6 61 100 1 100 5050 338350
+48	66767 1603 799 23135 1.6 61 100 1 100 5050 338350
+49	68370 1611 800 23224 1.6 63.1 100 1 100 5050 338350
 

@@ -23,9 +23,6 @@ using namespace omnetpp;
 #include "content_m.h"
 #include "global.h"
 
-#define PEER_AMOUNT 5
-
-
 /**
  * In this step the destination address is no longer node 2 -- we draw a
  * random destination, and we'll add the destination address to the message.
@@ -46,13 +43,18 @@ class Controller : public cSimpleModule
 
     int myNum = 0;
     contentO video;
-    int alive_peers[100];
-    int amount_serving_peers[100];
+    int alive_peers[PEER_AMOUNT];
+    int amount_serving_peers[PEER_AMOUNT];
 
     omnetpp::simtime_t c_average_chunk_arr[PEER_AMOUNT];
     omnetpp::simtime_t c_finish_dwnl_time[PEER_AMOUNT];
     omnetpp::simtime_t c_total_stall_time[PEER_AMOUNT];
     int c_stall_count_size[PEER_AMOUNT];
+
+    omnetpp::simtime_t mean_average_chunk_arr = 0;
+    omnetpp::simtime_t mean_finish_dwnl_time = 0;
+    omnetpp::simtime_t mean_total_stall_time = 0;
+    int mean_stall_count_size = 0;
 
     std::map<int, char> table;
 
@@ -62,6 +64,7 @@ class Controller : public cSimpleModule
     virtual void finish() override;
     virtual void handleMessage(cMessage *msg) override;
     virtual int getServer(char content, std::map<int, char> table);
+    virtual void calculateMeans();
 
 };
 
@@ -160,15 +163,39 @@ int Controller::getServer(char content, std::map<int, char>  table)
 }
 
 
-void Controller::finish()
+void Controller::calculateMeans()
 {
     for(int i = 0; i < PEER_AMOUNT; i++) {
-        EV << "Peer " << i << "\n";
-        EV << "c_average_chunk_arr " << c_average_chunk_arr[i] << "\n";
-        EV << "c_finish_dwnl_time " <<  c_finish_dwnl_time[i] << "\n";
-        EV << "c_finish_dwnl_time " << c_total_stall_time[i] << "\n";
-        EV << "c_stall_count_size " << c_stall_count_size[i] << "\n";
+        mean_average_chunk_arr += c_average_chunk_arr[i];
+        mean_finish_dwnl_time += c_finish_dwnl_time[i];
+        mean_total_stall_time += c_total_stall_time[i];
+        mean_stall_count_size += c_stall_count_size[i];
     }
+
+    mean_average_chunk_arr = mean_average_chunk_arr / PEER_AMOUNT;
+    mean_finish_dwnl_time = mean_finish_dwnl_time / PEER_AMOUNT;
+    mean_total_stall_time = mean_total_stall_time / PEER_AMOUNT;
+    mean_stall_count_size = mean_stall_count_size / PEER_AMOUNT;
+
+}
+
+
+void Controller::finish()
+{
+//    for(int i = 0; i < PEER_AMOUNT; i++) {
+//        EV << "Peer " << i << "\n";
+//        EV << "c_average_chunk_arr " << c_average_chunk_arr[i] << "\n";
+//        EV << "c_finish_dwnl_time " <<  c_finish_dwnl_time[i] << "\n";
+//        EV << "c_total_stall_time " << c_total_stall_time[i] << "\n";
+//        EV << "c_stall_count_size " << c_stall_count_size[i] << "\n";
+//    }
+
+    calculateMeans();
+    EV << "mean_average_chunk_arr " << mean_average_chunk_arr << "\n";
+    EV << "mean_finish_dwnl_time " <<  mean_finish_dwnl_time << "\n";
+    EV << "mean_total_stall_time " << mean_total_stall_time << "\n";
+    EV << "mean_stall_count_size " << mean_stall_count_size << "\n";
+
 }
 
 
