@@ -506,8 +506,13 @@ int Peer::getServer()
 
 
 void Peer::beforeFinishing() {
-    finish_dwnl_time = simTime();
     setAverageChunkTime();
+
+    if (percentage != 100) {
+        finish_dwnl_time = average_chunk_arr * 100;
+    } else {
+        finish_dwnl_time = simTime();
+    }
 
 
     if (percentage >= MIN_PERCENTAGE_STATISTICS) {

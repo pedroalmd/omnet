@@ -1,7 +1,7 @@
 #ifndef MY_GLOBALS_H
 #define MY_GLOBALS_H
 
-#define PEER_AMOUNT 500
+#define PEER_AMOUNT 50
 
 #define MIN_PERCENTAGE_STATISTICS 0
 
@@ -17,10 +17,13 @@ extern int contents_wants[PEER_AMOUNT];
 extern int amount_serving[PEER_AMOUNT];
 extern double peer_dying_time[PEER_AMOUNT];
 
+extern int peers_serving[PEER_AMOUNT][PEER_AMOUNT - 1];
 
 extern double dead_timeout;
 
 extern double chunk_video_time;
+
+extern int peer_main_tcp[PEER_AMOUNT];
 
 
 #endif
