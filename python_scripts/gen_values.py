@@ -7,11 +7,12 @@
 
 import random, string
 
-peer_amount = 500
+peer_amount = 5
 
 five_letters = ['a', 'b', 'c', 'd', 'e']
 
 amount_serving = []
+peers_serving = []
 contents_wants = []
 contents_has = []
 dying_time = []
@@ -32,12 +33,14 @@ for x in range(peer_amount):
         # continue
 
     amount_serving.append(0)
+    peers_serving.append(-1)
 
     # contents_wants.append(random.choice(string.ascii_lowercase))
     # contents_has.append(random.choice(string.ascii_lowercase))
     # dying_time.append(random.randint(5, 60))
 
 print(f"int amount_serving[PEER_AMOUNT] =  {{{(', '.join(str(x) for x in amount_serving))}}};")
+print(f"int peers_serving[PEER_AMOUNT] = {{{(', '.join(str(x) for x in peers_serving))}}};")
 
 print(f"int contents_wants[PEER_AMOUNT] = {{{str(contents_wants)[1:-1]}}};")
 print(f"int contents_has[PEER_AMOUNT] = {{{str(contents_has)[1:-1]}}};")
