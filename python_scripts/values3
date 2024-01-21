@@ -1,0 +1,20 @@
+10
+
+INFO (Controller)Tictoc3.controller[0]: mean_average_chunk_arr 0.510112252964
+INFO (Controller)Tictoc3.controller[0]: mean_finish_dwnl_time 51.64122529644
+INFO (Controller)Tictoc3.controller[0]: mean_total_stall_time 1.32
+INFO (Controller)Tictoc3.controller[0]: mean_stall_count_size 14
+
+50
+INFO: mean_average_chunk_arr 0.435566548857
+INFO: mean_finish_dwnl_time 48.188654885738
+INFO: mean_total_stall_time 4.23
+INFO: mean_stall_count_size 8
+
+
+100
+
+
+
+
+200

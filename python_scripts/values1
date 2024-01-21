@@ -1,0 +1,94 @@
+10
+
+INFO (Controller)Tictoc1.controller[0]: mean_average_chunk_arr 0.605259595959
+INFO (Controller)Tictoc1.controller[0]: mean_finish_dwnl_time 60.52595959595
+INFO (Controller)Tictoc1.controller[0]: mean_total_stall_time 1.32
+INFO (Controller)Tictoc1.controller[0]: mean_stall_count_size 13
+
+50
+
+INFO (Controller)Tictoc1.controller[0]: mean_average_chunk_arr 0.571834464328
+INFO (Controller)Tictoc1.controller[0]: mean_finish_dwnl_time 57.1834464328
+INFO (Controller)Tictoc1.controller[0]: mean_total_stall_time 0.69
+INFO (Controller)Tictoc1.controller[0]: mean_stall_count_size 8
+
+100
+
+INFO: mean_average_chunk_arr 0.565088620269
+INFO: mean_finish_dwnl_time 56.689862026931
+INFO: mean_total_stall_time 0.518
+INFO: mean_stall_count_size 6
+
+200
+
+INFO (Controller)Tictoc1.controller[0]: mean_average_chunk_arr 0.559063356931
+INFO (Controller)Tictoc1.controller[0]: mean_finish_dwnl_time 55.90633569311
+INFO (Controller)Tictoc1.controller[0]: mean_total_stall_time 0.4055
+INFO (Controller)Tictoc1.controller[0]: mean_stall_count_size 6
+
+500
+
+INFO (Controller)Tictoc1.controller[0]: mean_average_chunk_arr 0.540924903501
+INFO (Controller)Tictoc1.controller[0]: mean_finish_dwnl_time 47.2882
+INFO (Controller)Tictoc1.controller[0]: mean_total_stall_time 0.4634
+INFO (Controller)Tictoc1.controller[0]: mean_stall_count_size 3
+
+
+----
+
+10
+
+INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.59115058275
+INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 61.07505827505
+INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 1.32
+INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 14
+
+
+50
+
+INFO: mean_average_chunk_arr 0.554692380281
+INFO: mean_finish_dwnl_time 55.685238028198
+INFO: mean_total_stall_time 0.184
+INFO: mean_stall_count_size 7
+
+100
+
+INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.539148274896
+INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 55.076198640664
+INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 0.02
+INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 3
+
+200
+
+INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.540480796628
+INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 54.333329662813
+INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 0.0365
+INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 4
+
+500
+
+
+
+----
+
+
+10
+
+INFO (Controller)Tictoc3.controller[0]: mean_average_chunk_arr 0.485612252964
+INFO (Controller)Tictoc3.controller[0]: mean_finish_dwnl_time 50.95122529644
+INFO (Controller)Tictoc3.controller[0]: mean_total_stall_time 1.61
+INFO (Controller)Tictoc3.controller[0]: mean_stall_count_size 13
+
+50
+INFO: mean_average_chunk_arr 0.445746292447
+INFO: mean_finish_dwnl_time 49.452629244714
+INFO: mean_total_stall_time 4.23
+INFO: mean_stall_count_size 8
+
+
+100
+
+
+
+
+200
