@@ -109,8 +109,8 @@ void Peer::initialize()
 
     index = getIndex();
 
-    video_has.setName(contents_has[index]);
-    video_wants.setName(contents_wants[index]);
+    video_has.setName(contents_has[getIndex()]);
+    video_wants.setName(contents_wants[getIndex()]);
 
     ContentMsg *msg = generateMessage('r', video_wants.getName(), 2222, 0); // r = request (comes from Peer)
     send(msg, "gate$o", 0); // 0 is always the switch
@@ -142,7 +142,7 @@ void Peer::handleMessage(cMessage *msg)
         EV << "Message " << ttmsg->getType() << " arrived from peer " << ttmsg->getSource_num() << "\n";
     }
 
-    if (peer_dying_time[index] != 0 && simTime() >= peer_dying_time[index]) {
+    if (peer_dying_time[getIndex()] != 0 && simTime() >= peer_dying_time[getIndex()]) {
         is_Alive = 0;
         cDisplayString& dispStr = getDisplayString();
         dispStr.setTagArg("i", 1, "red");
@@ -318,7 +318,7 @@ void Peer::handleContentMessage(ContentMsg *ttmsg)
     // First self Message
 
     if (ttmsg->getChunk() == 0) {
-        ContentMsg *self_msg = generateMessage('v', 0, index, getNextChunk(), next_chunk); // r = request (comes from Peer)
+        ContentMsg *self_msg = generateMessage('v', 0, getIndex(), getNextChunk(), next_chunk); // r = request (comes from Peer)
         scheduleAt(simTime() + chunk_video_time, self_msg);
     }
 
@@ -359,7 +359,7 @@ void Peer::handleVideoMessage(ContentMsg *ttmsg)
         return;
 
     }
-    ContentMsg *self_msg = generateMessage('v', 0, index, getNextChunk(), next_chunk); // r = request (comes from Peer)
+    ContentMsg *self_msg = generateMessage('v', 0, getIndex(), getNextChunk(), next_chunk); // r = request (comes from Peer)
 
     scheduleAt(simTime() + chunk_video_time, self_msg);
 }
@@ -368,7 +368,7 @@ void Peer::handleVideoMessage(ContentMsg *ttmsg)
 
 void Peer::sendDeadResponseMessage(ContentMsg *ttmsg)
 {
-    EV << "[ME] Peer " << getIndex() << " left!\n";
+//    EV << "[ME] Peer " << getIndex() << " left!\n";
 
     ContentMsg *msg = generateMessage('d', '0', ttmsg->getSource_num(), 0); // r = request (comes from Peer)
     sendDelayed(msg, dead_timeout, "gate$o", 0); // 0 is always the switch
@@ -418,7 +418,7 @@ int Peer::getElementIndexInVector(int element, std::vector<int> v)
 void Peer::printServingPeers()
 {
     for(int i = 0; i < serving_peers.size(); i++) {
-        EV << "Peer " << index << " serving Peer " << serving_peers[i] << "\n";
+        EV << "Peer " << getIndex() << " serving Peer " << serving_peers[i] << "\n";
     }
 }
 
@@ -442,10 +442,10 @@ int Peer::getNextChunk(int starting_index)
 
     int c = 2222;
 
-    for (int index = starting_index;; index++) {
-        c = video_wants.getChunk(index);
+    for (int i = starting_index;; i++) {
+        c = video_wants.getChunk(i);
         if (c == 0) {
-            return index;
+            return i;
         }
     }
 
@@ -467,7 +467,7 @@ void Peer::printChunk()
     }
 
     EV << "|\n";
-    EV << "Peer " << index << ": " << tmp_percentage << "% \n";
+    EV << "Peer " << getIndex() << ": " << tmp_percentage << "% \n";
 
     percentage = tmp_percentage;
 
@@ -508,23 +508,24 @@ int Peer::getServer()
 void Peer::beforeFinishing() {
     setAverageChunkTime();
 
-    if (percentage != 100) {
-        finish_dwnl_time = average_chunk_arr * 100;
-    } else {
+//    if (percentage != 100) {
+//        finish_dwnl_time = average_chunk_arr * 100;
+//    } else {
+//        finish_dwnl_time = simTime();
+//    }
+
+    if (percentage == MIN_PERCENTAGE_STATISTICS) {
         finish_dwnl_time = simTime();
-    }
-
-
-    if (percentage >= MIN_PERCENTAGE_STATISTICS) {
         ContentMsg *msg = generateStatMessage('x', average_chunk_arr, finish_dwnl_time, total_stall_time, stall_count.size());
         send(msg, "gate$o", 0);
     }
 }
 
 
+
 void Peer::finish()
 {
-    EV << "---------- " << index << " ----------\n";
+    EV << "---------- " << getIndex() << " ----------\n";
     EV << "Finished downloading in " << finish_dwnl_time << " seconds. \n";
     EV << "Total downloaded is: " << percentage << "% \n";
     EV << "Average chunk arrival time is: " << average_chunk_arr << " seconds. \n" ;

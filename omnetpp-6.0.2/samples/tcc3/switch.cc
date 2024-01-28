@@ -97,12 +97,14 @@ void Switch::handleMessage(cMessage *msg)
         }
 
         else if (ttmsg->getDestination() != 2222) {
+
             send(ttmsg, "peer_gate$o", ttmsg->getDestination());
         }
 
     }
 
     if (ttmsg->getType() == tcp) {
+
         send(ttmsg, "peer_gate$o", ttmsg->getDestination());
     }
 

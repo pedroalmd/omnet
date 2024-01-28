@@ -42,6 +42,8 @@ class Controller : public cSimpleModule
   protected:
 
     int myNum = 0;
+    int count = 0;
+
     contentO video;
     int alive_peers[PEER_AMOUNT];
     int amount_serving_peers[PEER_AMOUNT];
@@ -90,11 +92,13 @@ void Controller::handleMessage(cMessage *msg)
     char stat = 'x';
 
     if (ttmsg->getType() == stat) {
-        c_average_chunk_arr[ttmsg->getSource_num()] = ttmsg->getC_average_chunk_arr();
-        c_finish_dwnl_time[ttmsg->getSource_num()] = ttmsg->getC_finish_dwnl_time();
-        c_total_stall_time[ttmsg->getSource_num()] = ttmsg->getC_total_stall_time();
-        c_stall_count_size[ttmsg->getSource_num()] = ttmsg->getC_stall_count_size();
+        c_average_chunk_arr[count] = ttmsg->getC_average_chunk_arr();
+        c_finish_dwnl_time[count] = ttmsg->getC_finish_dwnl_time();
+        c_total_stall_time[count] = ttmsg->getC_total_stall_time();
+        c_stall_count_size[count] = ttmsg->getC_stall_count_size();
+        count++;
     }
+
 
     if (ttmsg->getType() == request) {
         int server = getServer(ttmsg->getContent(), table);
@@ -165,20 +169,19 @@ int Controller::getServer(char content, std::map<int, char>  table)
 
 void Controller::calculateMeans()
 {
-    for(int i = 0; i < PEER_AMOUNT; i++) {
+    for(int i = 0; i < count; i++) {
         mean_average_chunk_arr += c_average_chunk_arr[i];
         mean_finish_dwnl_time += c_finish_dwnl_time[i];
         mean_total_stall_time += c_total_stall_time[i];
         mean_stall_count_size += c_stall_count_size[i];
     }
 
-    mean_average_chunk_arr = mean_average_chunk_arr / PEER_AMOUNT;
-    mean_finish_dwnl_time = mean_finish_dwnl_time / PEER_AMOUNT;
-    mean_total_stall_time = mean_total_stall_time / PEER_AMOUNT;
-    mean_stall_count_size = mean_stall_count_size / PEER_AMOUNT;
+    mean_average_chunk_arr = mean_average_chunk_arr / count;
+    mean_finish_dwnl_time = mean_finish_dwnl_time / count;
+    mean_total_stall_time = mean_total_stall_time / count;
+    mean_stall_count_size = mean_stall_count_size / count;
 
 }
-
 
 void Controller::finish()
 {

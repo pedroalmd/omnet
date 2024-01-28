@@ -50,8 +50,10 @@ class Peer : public cSimpleModule
     omnetpp::simtime_t total_stall_time = 0;
     omnetpp::simtime_t first_stall_time = 0;
     int chunk_index_stall = 2222;
+    int last_sent = 0;
 
     int next_chunk = 0; // Video starts when second chunk arrives;
+    int last_chunk = 0;
 
     int stop_flag = 0;
 
@@ -109,9 +111,9 @@ void Peer::initialize()
 {
     index = getIndex();
 
-    if (peer_dying_time[index] != 0) {
-        ContentMsg *d_msg = generateMessage('f', '0', index, 0); // r = request (comes from Peer)
-        scheduleAt(peer_dying_time[index], d_msg);
+    if (peer_dying_time[getIndex()] != 0) {
+        ContentMsg *d_msg = generateMessage('f', '0', getIndex(), 0); // r = request (comes from Peer)
+        scheduleAt(peer_dying_time[getIndex()], d_msg);
     }
 
     a_chunks_received = 0;
@@ -121,8 +123,8 @@ void Peer::initialize()
     hopCountVector.setName("HopCount");
 
 
-    video_has.setName(contents_has[index]);
-    video_wants.setName(contents_wants[index]);
+    video_has.setName(contents_has[getIndex()]);
+    video_wants.setName(contents_wants[getIndex()]);
 
     ContentMsg *msg = generateMessage('r', video_wants.getName(), 2222, 0); // r = request (comes from Peer)
     send(msg, "gate$o", 0); // 0 is always the switch
@@ -160,13 +162,13 @@ void Peer::handleMessage(cMessage *msg)
 //        EV << "Message " << ttmsg->getType() << " arrived from peer " << ttmsg->getSource_num() << "\n";
 //    }
 
-//    if (peer_dying_time[index] != 0 && simTime() >= peer_dying_time[index]) {
-//        is_Alive = 0;
-//        cDisplayString& dispStr = getDisplayString();
-//        dispStr.setTagArg("i", 1, "red");
-//        beforeFinishing();
-//    }
-//
+    if (peer_dying_time[getIndex()] != 0 && simTime() >= peer_dying_time[getIndex()]) {
+        is_Alive = 0;
+        cDisplayString& dispStr = getDisplayString();
+        dispStr.setTagArg("i", 1, "red");
+        beforeFinishing();
+    }
+
 
 
     if (ttmsg->getType() == tcp) {
@@ -280,7 +282,7 @@ ContentMsg *Peer::generateDeadSelfMessage(char type)
     msg->setType(type);
 
     for(int i = 0; i < serving_peers.size(); i++) {
-        peers_serving[index][i] = serving_peers[i];
+        peers_serving[src][i] = serving_peers[i];
     }
     return msg;
 }
@@ -335,7 +337,7 @@ void Peer::handleTcpMessage(ContentMsg *ttmsg)
 //
 //            EV << "Sending first request!\n";
 
-            int tmp_next_chunk = getNextChunk(getNextChunk() + 5);
+            int tmp_next_chunk = getNextChunk(getNextChunk() + 1);
 
             if (tmp_next_chunk > 100) {
                 return;
@@ -349,7 +351,7 @@ void Peer::handleTcpMessage(ContentMsg *ttmsg)
 
         main_tcp_with =  ttmsg->getSource_num();
 //        EV << "Main TCP with: " << main_tcp_with << "\n";
-        peer_main_tcp[index] = main_tcp_with;
+        peer_main_tcp[getIndex()] = main_tcp_with;
 
         sendUnknownRequest();
 
@@ -387,7 +389,7 @@ void Peer::handleRequestMessage(ContentMsg *ttmsg)
 
 void Peer::handleContentMessage(ContentMsg *ttmsg)
 {
-//    EV << "Received chunk " << ttmsg->getChunk() << "\n";
+    EV << "Received chunk " << ttmsg->getChunk() << " from Peer " << ttmsg->getSource_num() << "\n";
     video_wants.setChunk(ttmsg->getChunk(), 1);
 
     partial_chunk_arr_time = simTime() - last_chunk_arr_time;
@@ -413,20 +415,26 @@ void Peer::handleContentMessage(ContentMsg *ttmsg)
     // First self Message
 
     if (ttmsg->getChunk() == 0) {
-        ContentMsg *self_msg = generateMessage('v', 0, index, getNextChunk(), next_chunk); // r = request (comes from Peer)
+        ContentMsg *self_msg = generateMessage('v', 0, getIndex(), getNextChunk(), next_chunk); // r = request (comes from Peer)
         scheduleAt(simTime() + chunk_video_time, self_msg);
     }
 
-//    EV << "Sending next request!\n";
 
     if (ttmsg->getSource_num() == spare_tcp_with) {
-        int tmp_next_chunk = getNextChunk(getNextChunk() + 5);
+        int tmp_next_chunk = getNextChunk() + 1;
+
+        if (tmp_next_chunk == last_chunk) {
+            tmp_next_chunk++;
+        }
 
         if (tmp_next_chunk > 100) {
             return;
         }
 
+        last_chunk = tmp_next_chunk;
+
         ContentMsg *cmsg = generateMessage('r', video_wants.getName(), spare_tcp_with, 4, tmp_next_chunk); // r = request (comes from Peer)
+        EV << "1Sending next request!" << tmp_next_chunk << " to Peer " << ttmsg->getDestination() << "\n";
         send(cmsg, "gate$o", 0); // 0 is always the switch
 
         return;
@@ -434,7 +442,20 @@ void Peer::handleContentMessage(ContentMsg *ttmsg)
 
     // Get next chunk
 
-    ContentMsg *msg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num(), 4, getNextChunk()); // r = request (comes from Peer)
+    int tmp_next_chunk = getNextChunk();
+
+    if (tmp_next_chunk == last_chunk) {
+        tmp_next_chunk++;
+    }
+
+    if (tmp_next_chunk > 100) {
+        return;
+    }
+
+    last_chunk = tmp_next_chunk;
+
+    ContentMsg *msg = generateMessage('r', video_wants.getName(), ttmsg->getSource_num(), 4, tmp_next_chunk); // r = request (comes from Peer)
+    EV << "2Sending next request!" << getNextChunk() << " to Peer " << ttmsg->getDestination() << "\n";
     send(msg, "gate$o", 0); // 0 is always the switch
 }
 
@@ -449,7 +470,7 @@ void Peer::handleVideoMessage(ContentMsg *ttmsg)
 
 
     if (video_wants.getChunk(search_chunk) == 0) {
-//        EV << "Checking Chunk: " << next_chunk << " stalled \n";
+        EV << "Checking Chunk: " << next_chunk << " stalled \n";
 
         if (chunk_index_stall != next_chunk) {
             first_stall_time = simTime();
@@ -467,7 +488,7 @@ void Peer::handleVideoMessage(ContentMsg *ttmsg)
         return;
 
     }
-    ContentMsg *self_msg = generateMessage('v', 0, index, getNextChunk(), next_chunk); // r = request (comes from Peer)
+    ContentMsg *self_msg = generateMessage('v', 0, getIndex(), getNextChunk(), next_chunk); // r = request (comes from Peer)
 
     scheduleAt(simTime() + chunk_video_time, self_msg);
 }
@@ -478,7 +499,7 @@ void Peer::sendDeadResponseMessage()
 {
 //    EV << "[ME] Peer " << getIndex() << " left!\n";
 
-    printServingPeers();
+//    printServingPeers();
 
     ContentMsg *msg = generateDeadSelfMessage('d'); // r = request (comes from Peer)
     send(msg, "gate$o", 0); // 0 is always the switch
@@ -528,7 +549,7 @@ int Peer::getElementIndexInVector(int element, std::vector<int> v)
 void Peer::printServingPeers()
 {
     for(int i = 0; i < serving_peers.size(); i++) {
-        EV << "Peer " << index << " serving Peer " << serving_peers[i] << "\n";
+        EV << "Peer " << getIndex() << " serving Peer " << serving_peers[i] << "\n";
     }
 }
 
@@ -552,10 +573,10 @@ int Peer::getNextChunk(int starting_index)
 
     int c = 2222;
 
-    for (int index = starting_index;; index++) {
-        c = video_wants.getChunk(index);
+    for (int i = starting_index;; i++) {
+        c = video_wants.getChunk(i);
         if (c == 0) {
-            return index;
+            return i;
         }
     }
 
@@ -577,7 +598,7 @@ void Peer::printChunk()
     }
 
     EV << "|\n";
-    EV << "Peer " << index << ": " << tmp_percentage << "% \n";
+    EV << "Peer " << getIndex() << ": " << tmp_percentage << "% \n";
 
     percentage = tmp_percentage;
 
@@ -618,13 +639,14 @@ int Peer::getServer()
 void Peer::beforeFinishing() {
     setAverageChunkTime();
 
-    if (percentage != 100) {
-        finish_dwnl_time = average_chunk_arr * 100;
-    } else {
-        finish_dwnl_time = simTime();
-    }
+//    if (percentage != 100) {
+//        finish_dwnl_time = average_chunk_arr * 100;
+//    } else {
+//        finish_dwnl_time = simTime();
+//    }
 
-    if (percentage >= MIN_PERCENTAGE_STATISTICS) {
+    if (percentage == MIN_PERCENTAGE_STATISTICS) {
+        finish_dwnl_time = simTime();
         ContentMsg *msg = generateStatMessage('x', average_chunk_arr, finish_dwnl_time, total_stall_time, stall_count.size());
         send(msg, "gate$o", 0);
     }
@@ -632,7 +654,7 @@ void Peer::beforeFinishing() {
 
 
 void Peer::sendUnknownRequest() {
-    EV << "Sending unknown destination request!\n";
+//    EV << "Sending unknown destination request!\n";
 
     ContentMsg *msg = generateMessage('r', video_wants.getName(), 2222, 0);
     send(msg, "gate$o", 0); // 0 is always the switch
@@ -644,7 +666,7 @@ int Peer::getMainServing()
     int main_serving_amount = 0;
 
     for(int i = 0; i < PEER_AMOUNT; i++) {
-        if (peer_main_tcp[i] == index) {
+        if (peer_main_tcp[i] == getIndex()) {
             main_serving_amount++;
         }
     }
@@ -655,7 +677,7 @@ int Peer::getMainServing()
 
 void Peer::finish()
 {
-    EV << "---------- " << index << " ----------\n";
+    EV << "---------- " << getIndex() << " ----------\n";
     EV << "Finished downloading in " << finish_dwnl_time << " seconds. \n";
     EV << "Total downloaded is: " << percentage << "% \n";
     EV << "Average chunk arrival time is: " << average_chunk_arr << " seconds. \n" ;

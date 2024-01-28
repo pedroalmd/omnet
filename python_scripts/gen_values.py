@@ -7,9 +7,9 @@
 
 import random, string
 
-peer_amount = 200
+peer_amount = 500
 
-five_letters = ['a', 'b', 'c', 'd', 'e']
+five_letters = ['a', 'b', 'c', 'd', 'e', 'a']
 
 amount_serving = []
 peer_main_tcp = []
@@ -17,31 +17,29 @@ contents_wants = []
 contents_has = []
 dying_time = []
 peers_serving = []
-
+y = -1
+c = peer_amount / 5
 
 for x in range(peer_amount):
     # if peer_amount <= 10:
 
-    print(f"        switch[0].peer_gate++ <--> Channel <--> peer[{x}].gate++;")
+    # print(f"        switch[0].peer_gate++ <--> Channel <--> peer[{x}].gate++;")
 
-    contents_wants.append(random.choice(five_letters))
-    tmp = five_letters.copy()
-    contents_has.append(random.choice(tmp))
+    if (x % c) == 0:
+        y += 1
+    
 
-    if random.randint(0,9) >= 7:
-        dying_time.append(random.randint(5, 60))
+    contents_wants.append(five_letters[y])
+    contents_has.append(five_letters[y+1])
 
-    else:
-        dying_time.append(0)
-        # continue
 
     amount_serving.append(0)
     peer_main_tcp.append(-1)
 
     tmp = '{' 
-    for x in range(peer_amount-1):
+    for x in range(int(c) - 1):
         tmp += '-1'
-        if x == (peer_amount-2):
+        if x == (int(c) - 2):
             continue
         tmp += ', '
     tmp += '}'
@@ -52,8 +50,57 @@ for x in range(peer_amount):
     # contents_has.append(random.choice(string.ascii_lowercase))
     # dying_time.append(random.randint(5, 60))
 
+if peer_amount == 10:
+    c = 2 ## 50%
+    for x in range(peer_amount):
+        if x == 0:
+            dying_time.append(30)
+
+        elif x % c == 0:
+            dying_time.append(30)
+
+        else:
+            dying_time.append(0)
+
+if peer_amount == 50:
+    count = 4
+    
+    for x in range(peer_amount):
+        if x == 0:
+            dying_time.append(30)
+
+        elif x % count != 0:
+            dying_time.append(30)
+
+        else:
+            dying_time.append(0)
+
+if peer_amount == 100:
+    c = 1.5
+    for x in range(peer_amount):
+        if x == 0:
+            dying_time.append(10)
+
+        elif x % c != 0:
+            dying_time.append(10)
+
+        else:
+            dying_time.append(0)
+
+if peer_amount == 500:
+    c = 4
+    for x in range(peer_amount):
+        if x == 0:
+            dying_time.append(random.randint(10,40))
+
+        elif x % c != 0:
+            dying_time.append(random.randint(10,40))
+
+        else:
+            dying_time.append(0)
+
 print(f"int amount_serving[PEER_AMOUNT] =  {{{(', '.join(str(x) for x in amount_serving))}}};")
-print(f"int peers_serving[PEER_AMOUNT][PEER_AMOUNT - 1] = {{{(', '.join(str(x) for x in peers_serving))}}};")
+print(f"int peers_serving[PEER_AMOUNT][(PEER_AMOUNT / 5) - 1] = {{{(', '.join(str(x) for x in peers_serving))}}};")
 print("\n")
 print(f"int contents_wants[PEER_AMOUNT] = {{{str(contents_wants)[1:-1]}}};")
 print(f"int contents_has[PEER_AMOUNT] = {{{str(contents_has)[1:-1]}}};")

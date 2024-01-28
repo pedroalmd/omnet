@@ -1,20 +1,29 @@
-10
-
-INFO (Controller)Tictoc3.controller[0]: mean_average_chunk_arr 0.510112252964
-INFO (Controller)Tictoc3.controller[0]: mean_finish_dwnl_time 51.64122529644
-INFO (Controller)Tictoc3.controller[0]: mean_total_stall_time 1.32
-INFO (Controller)Tictoc3.controller[0]: mean_stall_count_size 14
-
-50
-INFO: mean_average_chunk_arr 0.435566548857
-INFO: mean_finish_dwnl_time 48.188654885738
-INFO: mean_total_stall_time 4.23
-INFO: mean_stall_count_size 8
-
-
 100
 
+INFO: mean_average_chunk_arr 0.325318148148
+INFO: mean_finish_dwnl_time 38.632814814804
+INFO: mean_total_stall_time 3.129
+INFO: mean_stall_count_size 16
 
 
+500 (50%)
 
-200
+INFO: mean_average_chunk_arr 0.378903703703
+INFO: mean_finish_dwnl_time 38.354370370357
+INFO: mean_total_stall_time 1.534
+INFO: mean_stall_count_size 14
+
+500 (75%)
+
+all 10
+INFO: mean_average_chunk_arr 0.370665703703
+INFO: mean_finish_dwnl_time 37.29717037035
+INFO: mean_total_stall_time 1.168
+INFO: mean_stall_count_size 8
+
+random after stat change
+
+INFO: mean_average_chunk_arr 0.397985401459
+INFO: mean_finish_dwnl_time 41.825182481751
+INFO: mean_total_stall_time 6.869343065693
+INFO: mean_stall_count_size 18

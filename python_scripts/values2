@@ -1,29 +1,33 @@
-10
-
-INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.60725058275
-INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 60.72505827505
-INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 1.32
-INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 13
-
-
-50
-
-INFO: mean_average_chunk_arr 0.554692380281
-INFO: mean_finish_dwnl_time 55.685238028198
-INFO: mean_total_stall_time 0.184
-INFO: mean_stall_count_size 7
-
 100
 
-INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.539148274896
-INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 55.076198640664
-INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 0.02
-INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 3
+INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.529799999999
+INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 52.979999999974
+INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 2.452
+INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 47
 
-200
+500 (50%)
 
-INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.540480796628
-INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 54.333329662813
-INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 0.0365
-INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 4
+INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.528695058823
+INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 52.869505882327
+INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 2.5068
+INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 47
 
+500 (75%)
+
+all 10
+INFO (Controller)Tictoc2.controller[0]: mean_average_chunk_arr 0.547065294117
+INFO (Controller)Tictoc2.controller[0]: mean_finish_dwnl_time 54.706529411707
+INFO (Controller)Tictoc2.controller[0]: mean_total_stall_time 1.2026
+INFO (Controller)Tictoc2.controller[0]: mean_stall_count_size 24
+
+random
+INFO: mean_average_chunk_arr 0.52780729443
+INFO: mean_finish_dwnl_time 52.780729443051
+INFO: mean_total_stall_time 2.3248
+INFO: mean_stall_count_size 39
+
+random after stat change
+INFO: mean_average_chunk_arr 0.51364516129
+INFO: mean_finish_dwnl_time 51.364516129032
+INFO: mean_total_stall_time 3.654838709677
+INFO: mean_stall_count_size 66

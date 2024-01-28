@@ -1,9 +1,9 @@
-file 11778 1705869642                                           
+file 533494 1706406523                                          
 version 3
-run Tictoc2-0-20240121-17:40:38-14614
+run Tictoc2-0-20240127-22:48:38-16886
 attr configname Tictoc2
-attr datetime 20240121-17:40:38
-attr datetimef 20240121-174038
+attr datetime 20240127-22:48:38
+attr datetimef 20240127-224838
 attr experiment Tictoc2
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Tictoc2
-attr processid 14614
+attr processid 16886
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -21,22 +21,1002 @@ config network Tictoc2
 
 vector 0 Tictoc2.peer[0] HopCount ETV
 vector 1 Tictoc2.peer[1] HopCount ETV
-vector 2 Tictoc2.peer[3] HopCount ETV
-vector 3 Tictoc2.peer[6] HopCount ETV
-vector 4 Tictoc2.peer[7] HopCount ETV
-vector 5 Tictoc2.peer[8] HopCount ETV
-vector 6 Tictoc2.peer[9] HopCount ETV
-vector 7 Tictoc2.peer[2] HopCount ETV
-vector 8 Tictoc2.peer[4] HopCount ETV
-vector 9 Tictoc2.peer[5] HopCount ETV
-0	811 1358 188 3954 1.5 51 100 1 100 5050 338350
-1	2169 517 189 2016 1.5 21 40 1 40 820 22140
-2	2686 1358 190 3955 1.5 51 100 1 100 5050 338350
-3	4044 1358 191 3956 1.5 51 100 1 100 5050 338350
-4	5402 1358 192 3957 1.5 51 100 1 100 5050 338350
-5	6760 1358 193 3958 1.5 51 100 1 100 5050 338350
-6	8118 508 194 1992 1.5 20.75 39 1 39 780 20540
-7	8626 291 237 1789 1.8 18.6 22 1 22 253 3795
-8	8917 1430 238 4392 1.8 81 100 1 100 5050 338350
-9	10347 1430 239 4393 1.8 81 100 1 100 5050 338350
+vector 2 Tictoc2.peer[2] HopCount ETV
+vector 3 Tictoc2.peer[3] HopCount ETV
+vector 4 Tictoc2.peer[4] HopCount ETV
+vector 5 Tictoc2.peer[5] HopCount ETV
+vector 6 Tictoc2.peer[6] HopCount ETV
+vector 7 Tictoc2.peer[7] HopCount ETV
+vector 8 Tictoc2.peer[8] HopCount ETV
+vector 9 Tictoc2.peer[9] HopCount ETV
+vector 10 Tictoc2.peer[10] HopCount ETV
+vector 11 Tictoc2.peer[11] HopCount ETV
+vector 12 Tictoc2.peer[12] HopCount ETV
+vector 13 Tictoc2.peer[13] HopCount ETV
+vector 14 Tictoc2.peer[14] HopCount ETV
+vector 15 Tictoc2.peer[15] HopCount ETV
+vector 16 Tictoc2.peer[16] HopCount ETV
+vector 17 Tictoc2.peer[17] HopCount ETV
+vector 18 Tictoc2.peer[18] HopCount ETV
+vector 19 Tictoc2.peer[19] HopCount ETV
+vector 20 Tictoc2.peer[20] HopCount ETV
+vector 21 Tictoc2.peer[21] HopCount ETV
+vector 22 Tictoc2.peer[22] HopCount ETV
+vector 23 Tictoc2.peer[23] HopCount ETV
+vector 24 Tictoc2.peer[24] HopCount ETV
+vector 25 Tictoc2.peer[25] HopCount ETV
+vector 26 Tictoc2.peer[26] HopCount ETV
+vector 27 Tictoc2.peer[27] HopCount ETV
+vector 28 Tictoc2.peer[28] HopCount ETV
+vector 29 Tictoc2.peer[29] HopCount ETV
+vector 30 Tictoc2.peer[30] HopCount ETV
+vector 31 Tictoc2.peer[31] HopCount ETV
+vector 32 Tictoc2.peer[32] HopCount ETV
+vector 33 Tictoc2.peer[33] HopCount ETV
+vector 34 Tictoc2.peer[34] HopCount ETV
+vector 35 Tictoc2.peer[35] HopCount ETV
+vector 36 Tictoc2.peer[36] HopCount ETV
+vector 37 Tictoc2.peer[37] HopCount ETV
+vector 38 Tictoc2.peer[38] HopCount ETV
+vector 39 Tictoc2.peer[39] HopCount ETV
+vector 40 Tictoc2.peer[40] HopCount ETV
+vector 41 Tictoc2.peer[41] HopCount ETV
+vector 42 Tictoc2.peer[42] HopCount ETV
+vector 43 Tictoc2.peer[43] HopCount ETV
+vector 44 Tictoc2.peer[44] HopCount ETV
+vector 45 Tictoc2.peer[45] HopCount ETV
+vector 46 Tictoc2.peer[46] HopCount ETV
+vector 47 Tictoc2.peer[47] HopCount ETV
+vector 48 Tictoc2.peer[48] HopCount ETV
+vector 49 Tictoc2.peer[49] HopCount ETV
+vector 50 Tictoc2.peer[50] HopCount ETV
+vector 51 Tictoc2.peer[51] HopCount ETV
+vector 52 Tictoc2.peer[52] HopCount ETV
+vector 53 Tictoc2.peer[53] HopCount ETV
+vector 54 Tictoc2.peer[54] HopCount ETV
+vector 55 Tictoc2.peer[55] HopCount ETV
+vector 56 Tictoc2.peer[56] HopCount ETV
+vector 57 Tictoc2.peer[57] HopCount ETV
+vector 58 Tictoc2.peer[58] HopCount ETV
+vector 59 Tictoc2.peer[59] HopCount ETV
+vector 60 Tictoc2.peer[60] HopCount ETV
+vector 61 Tictoc2.peer[61] HopCount ETV
+vector 62 Tictoc2.peer[62] HopCount ETV
+vector 63 Tictoc2.peer[63] HopCount ETV
+vector 64 Tictoc2.peer[64] HopCount ETV
+vector 65 Tictoc2.peer[65] HopCount ETV
+vector 66 Tictoc2.peer[66] HopCount ETV
+vector 67 Tictoc2.peer[67] HopCount ETV
+vector 68 Tictoc2.peer[68] HopCount ETV
+vector 69 Tictoc2.peer[69] HopCount ETV
+vector 70 Tictoc2.peer[70] HopCount ETV
+vector 71 Tictoc2.peer[71] HopCount ETV
+vector 72 Tictoc2.peer[72] HopCount ETV
+vector 73 Tictoc2.peer[73] HopCount ETV
+vector 74 Tictoc2.peer[74] HopCount ETV
+vector 75 Tictoc2.peer[75] HopCount ETV
+vector 76 Tictoc2.peer[76] HopCount ETV
+vector 77 Tictoc2.peer[77] HopCount ETV
+vector 78 Tictoc2.peer[78] HopCount ETV
+vector 79 Tictoc2.peer[79] HopCount ETV
+vector 80 Tictoc2.peer[80] HopCount ETV
+vector 81 Tictoc2.peer[81] HopCount ETV
+vector 82 Tictoc2.peer[82] HopCount ETV
+vector 83 Tictoc2.peer[83] HopCount ETV
+vector 84 Tictoc2.peer[84] HopCount ETV
+vector 85 Tictoc2.peer[85] HopCount ETV
+vector 86 Tictoc2.peer[86] HopCount ETV
+vector 87 Tictoc2.peer[87] HopCount ETV
+vector 88 Tictoc2.peer[88] HopCount ETV
+vector 89 Tictoc2.peer[89] HopCount ETV
+vector 90 Tictoc2.peer[90] HopCount ETV
+vector 91 Tictoc2.peer[91] HopCount ETV
+vector 92 Tictoc2.peer[92] HopCount ETV
+vector 93 Tictoc2.peer[93] HopCount ETV
+vector 94 Tictoc2.peer[94] HopCount ETV
+vector 95 Tictoc2.peer[95] HopCount ETV
+vector 96 Tictoc2.peer[96] HopCount ETV
+vector 97 Tictoc2.peer[97] HopCount ETV
+vector 98 Tictoc2.peer[98] HopCount ETV
+vector 99 Tictoc2.peer[99] HopCount ETV
+vector 100 Tictoc2.peer[100] HopCount ETV
+vector 101 Tictoc2.peer[101] HopCount ETV
+vector 102 Tictoc2.peer[102] HopCount ETV
+vector 103 Tictoc2.peer[103] HopCount ETV
+vector 104 Tictoc2.peer[104] HopCount ETV
+vector 105 Tictoc2.peer[105] HopCount ETV
+vector 106 Tictoc2.peer[106] HopCount ETV
+vector 107 Tictoc2.peer[107] HopCount ETV
+vector 108 Tictoc2.peer[108] HopCount ETV
+vector 109 Tictoc2.peer[109] HopCount ETV
+vector 110 Tictoc2.peer[110] HopCount ETV
+vector 111 Tictoc2.peer[111] HopCount ETV
+vector 112 Tictoc2.peer[112] HopCount ETV
+vector 113 Tictoc2.peer[113] HopCount ETV
+vector 114 Tictoc2.peer[114] HopCount ETV
+vector 115 Tictoc2.peer[115] HopCount ETV
+vector 116 Tictoc2.peer[116] HopCount ETV
+vector 117 Tictoc2.peer[117] HopCount ETV
+vector 118 Tictoc2.peer[118] HopCount ETV
+vector 119 Tictoc2.peer[119] HopCount ETV
+vector 120 Tictoc2.peer[120] HopCount ETV
+vector 121 Tictoc2.peer[121] HopCount ETV
+vector 122 Tictoc2.peer[122] HopCount ETV
+vector 123 Tictoc2.peer[123] HopCount ETV
+vector 124 Tictoc2.peer[124] HopCount ETV
+vector 125 Tictoc2.peer[125] HopCount ETV
+vector 126 Tictoc2.peer[126] HopCount ETV
+vector 127 Tictoc2.peer[127] HopCount ETV
+vector 128 Tictoc2.peer[128] HopCount ETV
+vector 129 Tictoc2.peer[129] HopCount ETV
+vector 130 Tictoc2.peer[130] HopCount ETV
+vector 131 Tictoc2.peer[131] HopCount ETV
+vector 132 Tictoc2.peer[132] HopCount ETV
+vector 133 Tictoc2.peer[133] HopCount ETV
+vector 134 Tictoc2.peer[134] HopCount ETV
+vector 135 Tictoc2.peer[135] HopCount ETV
+vector 136 Tictoc2.peer[136] HopCount ETV
+vector 137 Tictoc2.peer[137] HopCount ETV
+vector 138 Tictoc2.peer[138] HopCount ETV
+vector 139 Tictoc2.peer[139] HopCount ETV
+vector 140 Tictoc2.peer[140] HopCount ETV
+vector 141 Tictoc2.peer[141] HopCount ETV
+vector 142 Tictoc2.peer[142] HopCount ETV
+vector 143 Tictoc2.peer[143] HopCount ETV
+vector 144 Tictoc2.peer[144] HopCount ETV
+vector 145 Tictoc2.peer[145] HopCount ETV
+vector 146 Tictoc2.peer[146] HopCount ETV
+vector 147 Tictoc2.peer[147] HopCount ETV
+vector 148 Tictoc2.peer[148] HopCount ETV
+vector 149 Tictoc2.peer[149] HopCount ETV
+vector 150 Tictoc2.peer[150] HopCount ETV
+vector 151 Tictoc2.peer[151] HopCount ETV
+vector 152 Tictoc2.peer[152] HopCount ETV
+vector 153 Tictoc2.peer[153] HopCount ETV
+vector 154 Tictoc2.peer[154] HopCount ETV
+vector 155 Tictoc2.peer[155] HopCount ETV
+vector 156 Tictoc2.peer[156] HopCount ETV
+vector 157 Tictoc2.peer[157] HopCount ETV
+vector 158 Tictoc2.peer[158] HopCount ETV
+vector 159 Tictoc2.peer[159] HopCount ETV
+vector 160 Tictoc2.peer[160] HopCount ETV
+vector 161 Tictoc2.peer[161] HopCount ETV
+vector 162 Tictoc2.peer[162] HopCount ETV
+vector 163 Tictoc2.peer[163] HopCount ETV
+vector 164 Tictoc2.peer[164] HopCount ETV
+vector 165 Tictoc2.peer[165] HopCount ETV
+vector 166 Tictoc2.peer[166] HopCount ETV
+vector 167 Tictoc2.peer[167] HopCount ETV
+vector 168 Tictoc2.peer[168] HopCount ETV
+vector 169 Tictoc2.peer[169] HopCount ETV
+vector 170 Tictoc2.peer[170] HopCount ETV
+vector 171 Tictoc2.peer[171] HopCount ETV
+vector 172 Tictoc2.peer[172] HopCount ETV
+vector 173 Tictoc2.peer[173] HopCount ETV
+vector 174 Tictoc2.peer[174] HopCount ETV
+vector 175 Tictoc2.peer[175] HopCount ETV
+vector 176 Tictoc2.peer[176] HopCount ETV
+vector 177 Tictoc2.peer[177] HopCount ETV
+vector 178 Tictoc2.peer[178] HopCount ETV
+vector 179 Tictoc2.peer[179] HopCount ETV
+vector 180 Tictoc2.peer[180] HopCount ETV
+vector 181 Tictoc2.peer[181] HopCount ETV
+vector 182 Tictoc2.peer[182] HopCount ETV
+vector 183 Tictoc2.peer[183] HopCount ETV
+vector 184 Tictoc2.peer[184] HopCount ETV
+vector 185 Tictoc2.peer[185] HopCount ETV
+vector 186 Tictoc2.peer[186] HopCount ETV
+vector 187 Tictoc2.peer[187] HopCount ETV
+vector 188 Tictoc2.peer[188] HopCount ETV
+vector 189 Tictoc2.peer[189] HopCount ETV
+vector 190 Tictoc2.peer[190] HopCount ETV
+vector 191 Tictoc2.peer[191] HopCount ETV
+vector 192 Tictoc2.peer[192] HopCount ETV
+vector 193 Tictoc2.peer[193] HopCount ETV
+vector 194 Tictoc2.peer[194] HopCount ETV
+vector 195 Tictoc2.peer[195] HopCount ETV
+vector 196 Tictoc2.peer[196] HopCount ETV
+vector 197 Tictoc2.peer[197] HopCount ETV
+vector 198 Tictoc2.peer[198] HopCount ETV
+vector 199 Tictoc2.peer[199] HopCount ETV
+vector 200 Tictoc2.peer[200] HopCount ETV
+vector 201 Tictoc2.peer[201] HopCount ETV
+vector 202 Tictoc2.peer[202] HopCount ETV
+vector 203 Tictoc2.peer[203] HopCount ETV
+vector 204 Tictoc2.peer[204] HopCount ETV
+vector 205 Tictoc2.peer[205] HopCount ETV
+vector 206 Tictoc2.peer[206] HopCount ETV
+vector 207 Tictoc2.peer[207] HopCount ETV
+vector 208 Tictoc2.peer[208] HopCount ETV
+vector 209 Tictoc2.peer[209] HopCount ETV
+vector 210 Tictoc2.peer[210] HopCount ETV
+vector 211 Tictoc2.peer[211] HopCount ETV
+vector 212 Tictoc2.peer[212] HopCount ETV
+vector 213 Tictoc2.peer[213] HopCount ETV
+vector 214 Tictoc2.peer[214] HopCount ETV
+vector 215 Tictoc2.peer[215] HopCount ETV
+vector 216 Tictoc2.peer[216] HopCount ETV
+vector 217 Tictoc2.peer[217] HopCount ETV
+vector 218 Tictoc2.peer[218] HopCount ETV
+vector 219 Tictoc2.peer[219] HopCount ETV
+vector 220 Tictoc2.peer[220] HopCount ETV
+vector 221 Tictoc2.peer[221] HopCount ETV
+vector 222 Tictoc2.peer[222] HopCount ETV
+vector 223 Tictoc2.peer[223] HopCount ETV
+vector 224 Tictoc2.peer[224] HopCount ETV
+vector 225 Tictoc2.peer[225] HopCount ETV
+vector 226 Tictoc2.peer[226] HopCount ETV
+vector 227 Tictoc2.peer[227] HopCount ETV
+vector 228 Tictoc2.peer[228] HopCount ETV
+vector 229 Tictoc2.peer[229] HopCount ETV
+vector 230 Tictoc2.peer[230] HopCount ETV
+vector 231 Tictoc2.peer[231] HopCount ETV
+vector 232 Tictoc2.peer[232] HopCount ETV
+vector 233 Tictoc2.peer[233] HopCount ETV
+vector 234 Tictoc2.peer[234] HopCount ETV
+vector 235 Tictoc2.peer[235] HopCount ETV
+vector 236 Tictoc2.peer[236] HopCount ETV
+vector 237 Tictoc2.peer[237] HopCount ETV
+vector 238 Tictoc2.peer[238] HopCount ETV
+vector 239 Tictoc2.peer[239] HopCount ETV
+vector 240 Tictoc2.peer[240] HopCount ETV
+vector 241 Tictoc2.peer[241] HopCount ETV
+vector 242 Tictoc2.peer[242] HopCount ETV
+vector 243 Tictoc2.peer[243] HopCount ETV
+vector 244 Tictoc2.peer[244] HopCount ETV
+vector 245 Tictoc2.peer[245] HopCount ETV
+vector 246 Tictoc2.peer[246] HopCount ETV
+vector 247 Tictoc2.peer[247] HopCount ETV
+vector 248 Tictoc2.peer[248] HopCount ETV
+vector 249 Tictoc2.peer[249] HopCount ETV
+vector 250 Tictoc2.peer[250] HopCount ETV
+vector 251 Tictoc2.peer[251] HopCount ETV
+vector 252 Tictoc2.peer[252] HopCount ETV
+vector 253 Tictoc2.peer[253] HopCount ETV
+vector 254 Tictoc2.peer[254] HopCount ETV
+vector 255 Tictoc2.peer[255] HopCount ETV
+vector 256 Tictoc2.peer[256] HopCount ETV
+vector 257 Tictoc2.peer[257] HopCount ETV
+vector 258 Tictoc2.peer[258] HopCount ETV
+vector 259 Tictoc2.peer[259] HopCount ETV
+vector 260 Tictoc2.peer[260] HopCount ETV
+vector 261 Tictoc2.peer[261] HopCount ETV
+vector 262 Tictoc2.peer[262] HopCount ETV
+vector 263 Tictoc2.peer[263] HopCount ETV
+vector 264 Tictoc2.peer[264] HopCount ETV
+vector 265 Tictoc2.peer[265] HopCount ETV
+vector 266 Tictoc2.peer[266] HopCount ETV
+vector 267 Tictoc2.peer[267] HopCount ETV
+vector 268 Tictoc2.peer[268] HopCount ETV
+vector 269 Tictoc2.peer[269] HopCount ETV
+vector 270 Tictoc2.peer[270] HopCount ETV
+vector 271 Tictoc2.peer[271] HopCount ETV
+vector 272 Tictoc2.peer[272] HopCount ETV
+vector 273 Tictoc2.peer[273] HopCount ETV
+vector 274 Tictoc2.peer[274] HopCount ETV
+vector 275 Tictoc2.peer[275] HopCount ETV
+vector 276 Tictoc2.peer[276] HopCount ETV
+vector 277 Tictoc2.peer[277] HopCount ETV
+vector 278 Tictoc2.peer[278] HopCount ETV
+vector 279 Tictoc2.peer[279] HopCount ETV
+vector 280 Tictoc2.peer[280] HopCount ETV
+vector 281 Tictoc2.peer[281] HopCount ETV
+vector 282 Tictoc2.peer[282] HopCount ETV
+vector 283 Tictoc2.peer[283] HopCount ETV
+vector 284 Tictoc2.peer[284] HopCount ETV
+vector 285 Tictoc2.peer[285] HopCount ETV
+vector 286 Tictoc2.peer[286] HopCount ETV
+vector 287 Tictoc2.peer[287] HopCount ETV
+vector 288 Tictoc2.peer[288] HopCount ETV
+vector 289 Tictoc2.peer[289] HopCount ETV
+vector 290 Tictoc2.peer[290] HopCount ETV
+vector 291 Tictoc2.peer[291] HopCount ETV
+vector 292 Tictoc2.peer[292] HopCount ETV
+vector 293 Tictoc2.peer[293] HopCount ETV
+vector 294 Tictoc2.peer[294] HopCount ETV
+vector 295 Tictoc2.peer[295] HopCount ETV
+vector 296 Tictoc2.peer[296] HopCount ETV
+vector 297 Tictoc2.peer[297] HopCount ETV
+vector 298 Tictoc2.peer[298] HopCount ETV
+vector 299 Tictoc2.peer[299] HopCount ETV
+vector 300 Tictoc2.peer[300] HopCount ETV
+vector 301 Tictoc2.peer[301] HopCount ETV
+vector 302 Tictoc2.peer[302] HopCount ETV
+vector 303 Tictoc2.peer[303] HopCount ETV
+vector 304 Tictoc2.peer[304] HopCount ETV
+vector 305 Tictoc2.peer[305] HopCount ETV
+vector 306 Tictoc2.peer[306] HopCount ETV
+vector 307 Tictoc2.peer[307] HopCount ETV
+vector 308 Tictoc2.peer[308] HopCount ETV
+vector 309 Tictoc2.peer[309] HopCount ETV
+vector 310 Tictoc2.peer[310] HopCount ETV
+vector 311 Tictoc2.peer[311] HopCount ETV
+vector 312 Tictoc2.peer[312] HopCount ETV
+vector 313 Tictoc2.peer[313] HopCount ETV
+vector 314 Tictoc2.peer[314] HopCount ETV
+vector 315 Tictoc2.peer[315] HopCount ETV
+vector 316 Tictoc2.peer[316] HopCount ETV
+vector 317 Tictoc2.peer[317] HopCount ETV
+vector 318 Tictoc2.peer[318] HopCount ETV
+vector 319 Tictoc2.peer[319] HopCount ETV
+vector 320 Tictoc2.peer[320] HopCount ETV
+vector 321 Tictoc2.peer[321] HopCount ETV
+vector 322 Tictoc2.peer[322] HopCount ETV
+vector 323 Tictoc2.peer[323] HopCount ETV
+vector 324 Tictoc2.peer[324] HopCount ETV
+vector 325 Tictoc2.peer[325] HopCount ETV
+vector 326 Tictoc2.peer[326] HopCount ETV
+vector 327 Tictoc2.peer[327] HopCount ETV
+vector 328 Tictoc2.peer[328] HopCount ETV
+vector 329 Tictoc2.peer[329] HopCount ETV
+vector 330 Tictoc2.peer[330] HopCount ETV
+vector 331 Tictoc2.peer[331] HopCount ETV
+vector 332 Tictoc2.peer[332] HopCount ETV
+vector 333 Tictoc2.peer[333] HopCount ETV
+vector 334 Tictoc2.peer[334] HopCount ETV
+vector 335 Tictoc2.peer[335] HopCount ETV
+vector 336 Tictoc2.peer[336] HopCount ETV
+vector 337 Tictoc2.peer[337] HopCount ETV
+vector 338 Tictoc2.peer[338] HopCount ETV
+vector 339 Tictoc2.peer[339] HopCount ETV
+vector 340 Tictoc2.peer[340] HopCount ETV
+vector 341 Tictoc2.peer[341] HopCount ETV
+vector 342 Tictoc2.peer[342] HopCount ETV
+vector 343 Tictoc2.peer[343] HopCount ETV
+vector 344 Tictoc2.peer[344] HopCount ETV
+vector 345 Tictoc2.peer[345] HopCount ETV
+vector 346 Tictoc2.peer[346] HopCount ETV
+vector 347 Tictoc2.peer[347] HopCount ETV
+vector 348 Tictoc2.peer[348] HopCount ETV
+vector 349 Tictoc2.peer[349] HopCount ETV
+vector 350 Tictoc2.peer[350] HopCount ETV
+vector 351 Tictoc2.peer[351] HopCount ETV
+vector 352 Tictoc2.peer[352] HopCount ETV
+vector 353 Tictoc2.peer[353] HopCount ETV
+vector 354 Tictoc2.peer[354] HopCount ETV
+vector 355 Tictoc2.peer[355] HopCount ETV
+vector 356 Tictoc2.peer[356] HopCount ETV
+vector 357 Tictoc2.peer[357] HopCount ETV
+vector 358 Tictoc2.peer[358] HopCount ETV
+vector 359 Tictoc2.peer[359] HopCount ETV
+vector 360 Tictoc2.peer[360] HopCount ETV
+vector 361 Tictoc2.peer[361] HopCount ETV
+vector 362 Tictoc2.peer[362] HopCount ETV
+vector 363 Tictoc2.peer[363] HopCount ETV
+vector 364 Tictoc2.peer[364] HopCount ETV
+vector 365 Tictoc2.peer[365] HopCount ETV
+vector 366 Tictoc2.peer[366] HopCount ETV
+vector 367 Tictoc2.peer[367] HopCount ETV
+vector 368 Tictoc2.peer[368] HopCount ETV
+vector 369 Tictoc2.peer[369] HopCount ETV
+vector 370 Tictoc2.peer[370] HopCount ETV
+vector 371 Tictoc2.peer[371] HopCount ETV
+vector 372 Tictoc2.peer[372] HopCount ETV
+vector 373 Tictoc2.peer[373] HopCount ETV
+vector 374 Tictoc2.peer[374] HopCount ETV
+vector 375 Tictoc2.peer[375] HopCount ETV
+vector 376 Tictoc2.peer[376] HopCount ETV
+vector 377 Tictoc2.peer[377] HopCount ETV
+vector 378 Tictoc2.peer[378] HopCount ETV
+vector 379 Tictoc2.peer[379] HopCount ETV
+vector 380 Tictoc2.peer[380] HopCount ETV
+vector 381 Tictoc2.peer[381] HopCount ETV
+vector 382 Tictoc2.peer[382] HopCount ETV
+vector 383 Tictoc2.peer[383] HopCount ETV
+vector 384 Tictoc2.peer[384] HopCount ETV
+vector 385 Tictoc2.peer[385] HopCount ETV
+vector 386 Tictoc2.peer[386] HopCount ETV
+vector 387 Tictoc2.peer[387] HopCount ETV
+vector 388 Tictoc2.peer[388] HopCount ETV
+vector 389 Tictoc2.peer[389] HopCount ETV
+vector 390 Tictoc2.peer[390] HopCount ETV
+vector 391 Tictoc2.peer[391] HopCount ETV
+vector 392 Tictoc2.peer[392] HopCount ETV
+vector 393 Tictoc2.peer[393] HopCount ETV
+vector 394 Tictoc2.peer[394] HopCount ETV
+vector 395 Tictoc2.peer[395] HopCount ETV
+vector 396 Tictoc2.peer[396] HopCount ETV
+vector 397 Tictoc2.peer[397] HopCount ETV
+vector 398 Tictoc2.peer[398] HopCount ETV
+vector 399 Tictoc2.peer[399] HopCount ETV
+vector 400 Tictoc2.peer[400] HopCount ETV
+vector 401 Tictoc2.peer[401] HopCount ETV
+vector 402 Tictoc2.peer[402] HopCount ETV
+vector 403 Tictoc2.peer[403] HopCount ETV
+vector 404 Tictoc2.peer[404] HopCount ETV
+vector 405 Tictoc2.peer[405] HopCount ETV
+vector 406 Tictoc2.peer[406] HopCount ETV
+vector 407 Tictoc2.peer[407] HopCount ETV
+vector 408 Tictoc2.peer[408] HopCount ETV
+vector 409 Tictoc2.peer[409] HopCount ETV
+vector 410 Tictoc2.peer[410] HopCount ETV
+vector 411 Tictoc2.peer[411] HopCount ETV
+vector 412 Tictoc2.peer[412] HopCount ETV
+vector 413 Tictoc2.peer[413] HopCount ETV
+vector 414 Tictoc2.peer[414] HopCount ETV
+vector 415 Tictoc2.peer[415] HopCount ETV
+vector 416 Tictoc2.peer[416] HopCount ETV
+vector 417 Tictoc2.peer[417] HopCount ETV
+vector 418 Tictoc2.peer[418] HopCount ETV
+vector 419 Tictoc2.peer[419] HopCount ETV
+vector 420 Tictoc2.peer[420] HopCount ETV
+vector 421 Tictoc2.peer[421] HopCount ETV
+vector 422 Tictoc2.peer[422] HopCount ETV
+vector 423 Tictoc2.peer[423] HopCount ETV
+vector 424 Tictoc2.peer[424] HopCount ETV
+vector 425 Tictoc2.peer[425] HopCount ETV
+vector 426 Tictoc2.peer[426] HopCount ETV
+vector 427 Tictoc2.peer[427] HopCount ETV
+vector 428 Tictoc2.peer[428] HopCount ETV
+vector 429 Tictoc2.peer[429] HopCount ETV
+vector 430 Tictoc2.peer[430] HopCount ETV
+vector 431 Tictoc2.peer[431] HopCount ETV
+vector 432 Tictoc2.peer[432] HopCount ETV
+vector 433 Tictoc2.peer[433] HopCount ETV
+vector 434 Tictoc2.peer[434] HopCount ETV
+vector 435 Tictoc2.peer[435] HopCount ETV
+vector 436 Tictoc2.peer[436] HopCount ETV
+vector 437 Tictoc2.peer[437] HopCount ETV
+vector 438 Tictoc2.peer[438] HopCount ETV
+vector 439 Tictoc2.peer[439] HopCount ETV
+vector 440 Tictoc2.peer[440] HopCount ETV
+vector 441 Tictoc2.peer[441] HopCount ETV
+vector 442 Tictoc2.peer[442] HopCount ETV
+vector 443 Tictoc2.peer[443] HopCount ETV
+vector 444 Tictoc2.peer[444] HopCount ETV
+vector 445 Tictoc2.peer[445] HopCount ETV
+vector 446 Tictoc2.peer[446] HopCount ETV
+vector 447 Tictoc2.peer[447] HopCount ETV
+vector 448 Tictoc2.peer[448] HopCount ETV
+vector 449 Tictoc2.peer[449] HopCount ETV
+vector 450 Tictoc2.peer[450] HopCount ETV
+vector 451 Tictoc2.peer[451] HopCount ETV
+vector 452 Tictoc2.peer[452] HopCount ETV
+vector 453 Tictoc2.peer[453] HopCount ETV
+vector 454 Tictoc2.peer[454] HopCount ETV
+vector 455 Tictoc2.peer[455] HopCount ETV
+vector 456 Tictoc2.peer[456] HopCount ETV
+vector 457 Tictoc2.peer[457] HopCount ETV
+vector 458 Tictoc2.peer[458] HopCount ETV
+vector 459 Tictoc2.peer[459] HopCount ETV
+vector 460 Tictoc2.peer[460] HopCount ETV
+vector 461 Tictoc2.peer[461] HopCount ETV
+vector 462 Tictoc2.peer[462] HopCount ETV
+vector 463 Tictoc2.peer[463] HopCount ETV
+vector 464 Tictoc2.peer[464] HopCount ETV
+vector 465 Tictoc2.peer[465] HopCount ETV
+vector 466 Tictoc2.peer[466] HopCount ETV
+vector 467 Tictoc2.peer[467] HopCount ETV
+vector 468 Tictoc2.peer[468] HopCount ETV
+vector 469 Tictoc2.peer[469] HopCount ETV
+vector 470 Tictoc2.peer[470] HopCount ETV
+vector 471 Tictoc2.peer[471] HopCount ETV
+vector 472 Tictoc2.peer[472] HopCount ETV
+vector 473 Tictoc2.peer[473] HopCount ETV
+vector 474 Tictoc2.peer[474] HopCount ETV
+vector 475 Tictoc2.peer[475] HopCount ETV
+vector 476 Tictoc2.peer[476] HopCount ETV
+vector 477 Tictoc2.peer[477] HopCount ETV
+vector 478 Tictoc2.peer[478] HopCount ETV
+vector 479 Tictoc2.peer[479] HopCount ETV
+vector 480 Tictoc2.peer[480] HopCount ETV
+vector 481 Tictoc2.peer[481] HopCount ETV
+vector 482 Tictoc2.peer[482] HopCount ETV
+vector 483 Tictoc2.peer[483] HopCount ETV
+vector 484 Tictoc2.peer[484] HopCount ETV
+vector 485 Tictoc2.peer[485] HopCount ETV
+vector 486 Tictoc2.peer[486] HopCount ETV
+vector 487 Tictoc2.peer[487] HopCount ETV
+vector 488 Tictoc2.peer[488] HopCount ETV
+vector 489 Tictoc2.peer[489] HopCount ETV
+vector 490 Tictoc2.peer[490] HopCount ETV
+vector 491 Tictoc2.peer[491] HopCount ETV
+vector 492 Tictoc2.peer[492] HopCount ETV
+vector 493 Tictoc2.peer[493] HopCount ETV
+vector 494 Tictoc2.peer[494] HopCount ETV
+vector 495 Tictoc2.peer[495] HopCount ETV
+vector 496 Tictoc2.peer[496] HopCount ETV
+vector 497 Tictoc2.peer[497] HopCount ETV
+vector 498 Tictoc2.peer[498] HopCount ETV
+vector 499 Tictoc2.peer[499] HopCount ETV
+0	21211 738 9501 207970 1.5 25.5 49 1 49 1225 40425
+1	21949 354 9502 120709 1.5 13.5 25 1 25 325 5525
+2	22303 674 9503 198486 1.5 23.9 45 1 45 1035 31395
+3	22977 322 9504 111902 1.5 12.5 23 1 23 276 4324
+4	23299 1554 9505 293563 1.5 51 100 1 100 5050 338350
+5	24853 782 9506 216091 1.5 26.9 51 1 51 1326 45526
+6	25635 770 9507 213718 1.5 26.5 51 1 51 1326 45526
+7	26405 386 9508 129306 1.5 14.5 27 1 27 378 6930
+8	26791 1554 9509 293564 1.5 51 100 1 100 5050 338350
+9	28345 514 9510 161337 1.5 18.5 35 1 35 630 14910
+10	28859 1263 9511 268733 1.5 39.9 77 1 77 3003 155155
+11	30122 1127 9512 254693 1.5 35.5 69 1 69 2415 111895
+12	31249 1654 9513 293565 1.5 51 100 1 100 5050 338350
+13	32903 549 9514 161341 1.5 18.5 35 1 35 630 14910
+14	33452 583 9515 168806 1.5 19.5 37 1 37 703 17575
+15	34035 311 9516 102985 1.5 11.5 21 1 21 231 3311
+16	34346 1654 9517 293566 1.5 51 100 1 100 5050 338350
+17	36000 1149 9518 256228 1.5 35.9 69 1 69 2415 111895
+18	37149 638 9519 179015 1.5 20.9 39 1 39 780 20540
+19	37787 278 9520 93984 1.5 10.5 19 1 19 190 2470
+20	38065 1654 9521 293567 1.5 51 100 1 100 5050 338350
+21	39719 583 9522 172004 1.5 19.9 37 1 37 703 17575
+22	40302 345 9523 111918 1.5 12.5 23 1 23 276 4324
+23	40647 1229 9524 263009 1.5 37.9 73 1 73 2701 132349
+24	41876 1654 9525 293568 1.5 51 100 1 100 5050 338350
+25	43530 447 9526 137663 1.5 15.5 29 1 29 435 8555
+26	43977 719 9527 195787 1.5 23.5 45 1 45 1035 31395
+27	44696 583 9528 168813 1.5 19.5 37 1 37 703 17575
+28	45279 1654 9529 293569 1.5 51 100 1 100 5050 338350
+29	46933 246 9530 85000 1.5 9.5 17 1 17 153 1785
+30	47179 787 9531 207981 1.5 25.5 49 1 49 1225 40425
+31	47966 413 9532 129325 1.5 14.5 27 1 27 378 6930
+32	48379 1654 9533 293570 1.5 51 100 1 100 5050 338350
+33	50033 1093 9534 250942 1.5 34.5 67 1 67 2278 102510
+34	51126 413 9535 129328 1.5 14.5 27 1 27 378 6930
+35	51539 583 9536 168818 1.5 19.5 37 1 37 703 17575
+36	52122 1654 9537 293571 1.5 51 100 1 100 5050 338350
+37	53776 345 9538 111932 1.5 12.5 23 1 23 276 4324
+38	54121 1019 9539 244700 1.5 32.9 61 1 61 1891 77531
+39	55140 1027 9540 244707 1.5 32.9 63 1 63 2016 85344
+40	56167 1654 9541 293572 1.5 51 100 1 100 5050 338350
+41	57821 923 9542 229350 1.5 29.5 57 1 57 1653 63365
+42	58744 1189 9543 259739 1.5 36.9 70 1 70 2485 116795
+43	59933 1257 9544 266019 1.5 38.9 75 1 75 2850 143450
+44	61190 1654 9545 293573 1.5 51 100 1 100 5050 338350
+45	62844 851 9546 221453 1.5 27.9 52 1 52 1378 48230
+46	63695 757 9547 204542 1.5 24.9 46 1 46 1081 33511
+47	64452 787 9548 207989 1.5 25.5 49 1 49 1225 40425
+48	65239 1654 9549 293574 1.5 51 100 1 100 5050 338350
+49	66893 345 9550 111944 1.5 12.5 23 1 23 276 4324
+50	67238 345 9551 111945 1.5 12.5 23 1 23 276 4324
+51	67583 1095 9552 248685 1.5 33.9 65 1 65 2145 93665
+52	68678 1654 9553 293575 1.5 51 100 1 100 5050 338350
+53	70332 889 9554 224352 1.5 28.5 55 1 55 1540 56980
+54	71221 695 9555 192229 1.5 22.9 43 1 43 946 27434
+55	71916 379 9556 120752 1.5 13.5 25 1 25 325 5525
+56	72295 1654 9557 293576 1.5 51 100 1 100 5050 338350
+57	73949 413 9558 129345 1.5 14.5 27 1 27 378 6930
+58	74362 1063 9559 248728 1.5 33.9 65 1 65 2145 93665
+59	75425 809 9560 210445 1.5 25.9 49 1 49 1225 40425
+60	76234 1654 9561 293577 1.5 51 100 1 100 5050 338350
+61	77888 413 9562 129348 1.5 14.5 27 1 27 378 6930
+62	78301 1045 9563 248721 1.5 33.9 63 1 63 2016 85344
+63	79346 1313 9564 268728 1.5 39.9 77 1 77 3003 155155
+64	80659 1654 9565 293578 1.5 51 100 1 100 5050 338350
+65	82313 345 9566 111960 1.5 12.5 23 1 23 276 4324
+66	82658 1061 9567 252580 1.5 34.9 64 1 64 2080 89440
+67	83719 1237 9568 263007 1.5 37.9 73 1 73 2701 132349
+68	84956 1654 9569 293579 1.5 51 100 1 100 5050 338350
+69	86610 1025 9570 242922 1.5 32.5 63 1 63 2016 85344
+70	87635 1035 9571 244684 1.5 32.9 63 1 63 2016 85344
+71	88670 655 9572 185821 1.5 21.9 41 1 41 861 23821
+72	89325 1654 9573 293580 1.5 51 100 1 100 5050 338350
+73	90979 1268 9574 266021 1.5 38.9 74 1 74 2775 137825
+74	92247 719 9575 195811 1.5 23.5 45 1 45 1035 31395
+75	92966 549 9576 161379 1.5 18.5 35 1 35 630 14910
+76	93515 1654 9577 293581 1.5 51 100 1 100 5050 338350
+77	95169 617 9578 176068 1.5 20.5 39 1 39 780 20540
+78	95786 635 9579 179019 1.5 20.9 39 1 39 780 20540
+79	96421 719 9580 195813 1.5 23.5 45 1 45 1035 31395
+80	97140 1654 9581 293582 1.5 51 100 1 100 5050 338350
+81	98794 549 9582 161384 1.5 18.5 35 1 35 630 14910
+82	99343 345 9583 111975 1.5 12.5 23 1 23 276 4324
+83	99688 837 9584 216081 1.5 26.9 51 1 51 1326 45526
+84	100525 1654 9585 293583 1.5 51 100 1 100 5050 338350
+85	102179 1117 9586 252544 1.5 34.9 66 1 66 2211 98021
+86	103296 481 9587 145809 1.5 16.5 31 1 31 496 10416
+87	103777 733 9588 198428 1.5 23.9 45 1 45 1035 31395
+88	104510 1654 9589 293584 1.5 51 100 1 100 5050 338350
+89	106164 515 9590 153706 1.5 17.5 33 1 33 561 12529
+90	106679 481 9591 145812 1.5 16.5 31 1 31 496 10416
+91	107160 795 9592 210488 1.5 25.9 49 1 49 1225 40425
+92	107955 1654 9593 293585 1.5 51 100 1 100 5050 338350
+93	109609 1163 9594 268732 1.5 39.9 70 1 70 2485 116795
+94	110772 549 9595 161390 1.5 18.5 35 1 35 630 14910
+95	111321 923 9596 229366 1.5 29.5 57 1 57 1653 63365
+96	112244 1654 9597 293586 1.5 51 100 1 100 5050 338350
+97	113898 757 9598 204558 1.5 24.9 47 1 47 1128 35720
+98	114655 379 9599 120790 1.5 13.5 25 1 25 325 5525
+99	115034 379 9600 120791 1.5 13.5 25 1 25 325 5525
+100	115413 1784 9601 294672 1.5 57.4 100 1 100 5050 338350
+101	117197 839 9602 210497 1.5 25.9 48 1 48 1176 38024
+102	118036 404 9603 120794 1.5 13.5 25 1 25 325 5525
+103	118440 556 9604 157022 1.5 17.9 33 1 33 561 12529
+104	118996 1754 9605 293587 1.5 51 100 1 100 5050 338350
+105	120750 1149 9606 259390 1.5 36.8 66 1 66 2211 98021
+106	121899 548 9607 153717 1.5 17.5 33 1 33 561 12529
+107	122447 742 9608 192211 1.5 22.9 43 1 43 946 27434
+108	123189 1754 9609 293588 1.5 51 100 1 100 5050 338350
+109	124943 768 9610 203912 1.5 24.8 45 1 45 1035 31395
+110	125711 725 9611 195773 1.5 23.5 42 1 42 903 25585
+111	126436 991 9612 240396 1.5 31.9 56 1 56 1596 60116
+112	127427 1754 9613 293589 1.5 51 100 1 100 5050 338350
+113	129181 880 9614 225989 1.5 28.8 51 1 51 1326 45526
+114	130061 620 9615 168858 1.5 19.5 37 1 37 703 17575
+115	130681 332 9616 103080 1.5 11.5 21 1 21 231 3311
+116	131013 1784 9617 294366 1.5 53.9 100 1 100 5050 338350
+117	132797 980 9618 229372 1.5 29.5 57 1 57 1653 63365
+118	133777 920 9619 221444 1.5 27.9 53 1 53 1431 51039
+119	134697 978 9620 226466 1.5 28.9 55 1 55 1540 56980
+120	135675 1754 9621 293590 1.5 51 100 1 100 5050 338350
+121	137429 332 9622 103085 1.5 11.5 21 1 21 231 3311
+122	137761 297 9623 94085 1.5 10.5 19 1 19 190 2470
+123	138058 368 9624 112012 1.5 12.5 23 1 23 276 4324
+124	138426 1754 9625 293591 1.5 51 100 1 100 5050 338350
+125	140180 1348 9626 268729 1.5 39.9 75 1 75 2850 143450
+126	141528 986 9627 242555 1.5 32.4 57 1 57 1653 63365
+127	142514 656 9628 179085 1.5 20.9 39 1 39 780 20540
+128	143170 1802 9629 294546 1.5 55.7 100 1 100 5050 338350
+129	144972 449 9630 132994 1.5 14.9 27 1 27 378 6930
+130	145421 728 9631 189536 1.5 22.5 43 1 43 946 27434
+131	146149 590 9632 164619 1.5 18.9 35 1 35 630 14910
+132	146739 1754 9633 293592 1.5 51 100 1 100 5050 338350
+133	148493 944 9634 224375 1.5 28.5 55 1 55 1540 56980
+134	149437 628 9635 171953 1.5 19.9 37 1 37 703 17575
+135	150065 770 9636 198459 1.5 23.9 45 1 45 1035 31395
+136	150835 1754 9637 293593 1.5 51 100 1 100 5050 338350
+137	152589 1183 9638 252575 1.5 34.9 66 1 66 2211 98021
+138	153772 872 9639 213764 1.5 26.5 51 1 51 1326 45526
+139	154644 584 9640 161416 1.5 18.5 35 1 35 630 14910
+140	155228 1754 9641 293594 1.5 51 100 1 100 5050 338350
+141	156982 404 9642 120825 1.5 13.5 25 1 25 325 5525
+142	157386 656 9643 176097 1.5 20.5 39 1 39 780 20540
+143	158042 1020 9644 235966 1.5 30.9 59 1 59 1770 70210
+144	159062 1754 9645 293595 1.5 51 100 1 100 5050 338350
+145	160816 1286 9646 263015 1.5 37.9 73 1 73 2701 132349
+146	162102 548 9647 153743 1.5 17.5 33 1 33 561 12529
+147	162650 584 9648 161422 1.5 18.5 35 1 35 630 14910
+148	163234 1820 9649 294677 1.5 57.5 100 1 100 5050 338350
+149	165054 571 9650 171989 1.5 19.9 34 1 33 594 13618
+150	165625 1146 9651 267420 1.5 39.4 65 1 65 2145 93665
+151	166771 869 9652 219188 1.5 27.5 50 1 50 1275 42925
+152	167640 1754 9653 293596 1.5 51 100 1 100 5050 338350
+153	169394 1018 9654 236021 1.5 30.9 59 1 59 1770 70210
+154	170412 620 9655 168880 1.5 19.5 37 1 37 703 17575
+155	171032 706 9656 185768 1.5 21.9 41 1 41 861 23821
+156	171738 1754 9657 293597 1.5 51 100 1 100 5050 338350
+157	173492 780 9658 198418 1.5 23.9 45 1 45 1035 31395
+158	174272 548 9659 153751 1.5 17.5 33 1 33 561 12529
+159	174820 332 9660 103121 1.5 11.5 21 1 21 231 3311
+160	175152 1754 9661 293598 1.5 51 100 1 100 5050 338350
+161	176906 1203 9662 265109 1.5 38.6 68 1 68 2346 107134
+162	178109 1150 9663 256251 1.5 35.9 65 1 65 2145 93665
+163	179259 332 9664 103125 1.5 11.5 21 1 21 231 3311
+164	179591 1754 9665 293599 1.5 51 100 1 100 5050 338350
+165	181345 1088 9666 240400 1.5 31.9 61 1 61 1891 77531
+166	182433 1289 9667 265725 1.5 38.8 74 1 74 2775 137825
+167	183722 368 9668 112053 1.5 12.5 23 1 23 276 4324
+168	184090 1754 9669 293600 1.5 51 100 1 100 5050 338350
+169	185844 1016 9670 234094 1.5 30.5 59 1 59 1770 70210
+170	186860 1124 9671 253615 1.5 35.2 65 1 65 2145 93665
+171	187984 842 9672 210489 1.5 25.9 49 1 49 1225 40425
+172	188826 1754 9673 293601 1.5 51 100 1 100 5050 338350
+173	190580 1304 9674 264835 1.5 38.5 75 1 75 2850 143450
+174	191884 1028 9675 235996 1.5 30.9 59 1 59 1770 70210
+175	192912 263 9676 85146 1.5 9.5 17 1 17 153 1785
+176	193175 1754 9677 293602 1.5 51 100 1 100 5050 338350
+177	194929 1157 9678 259745 1.5 36.9 66 1 64 2205 97253
+178	196086 584 9679 161442 1.5 18.5 35 1 35 630 14910
+179	196670 620 9680 168895 1.5 19.5 37 1 37 703 17575
+180	197290 1754 9681 293603 1.5 51 100 1 100 5050 338350
+181	199044 332 9682 103142 1.5 11.5 21 1 21 231 3311
+182	199376 594 9683 164602 1.5 18.9 35 1 35 630 14910
+183	199970 925 9684 224890 1.5 28.6 54 1 54 1485 53955
+184	200895 1812 9685 294783 1.5 64.1 100 1 100 5050 338350
+185	202707 332 9686 103146 1.5 11.5 21 1 21 231 3311
+186	203039 928 9687 221424 1.5 27.9 53 1 53 1431 51039
+187	203967 1104 9688 244676 1.5 32.9 63 1 63 2016 85344
+188	205071 1754 9689 293604 1.5 51 100 1 100 5050 338350
+189	206825 844 9690 218764 1.5 27.4 49 1 49 1225 40425
+190	207669 1465 9691 263018 1.5 37.9 82 1 68 3174 156412
+191	209134 368 9692 112074 1.5 12.5 23 1 23 276 4324
+192	209502 1754 9693 293605 1.5 51 100 1 100 5050 338350
+193	211256 1268 9694 261717 1.5 37.5 73 1 73 2701 132349
+194	212524 440 9695 129450 1.5 14.5 27 1 27 378 6930
+195	212964 1282 9696 263020 1.5 37.9 73 1 73 2701 132349
+196	214246 1754 9697 293606 1.5 51 100 1 100 5050 338350
+197	216000 440 9698 129453 1.5 14.5 27 1 27 378 6930
+198	216440 877 9699 216118 1.5 26.9 50 1 50 1275 42925
+199	217317 820 9700 204501 1.5 24.9 47 1 47 1128 35720
+200	218137 1754 9701 293607 1.5 51 100 1 100 5050 338350
+201	219891 584 9702 161454 1.5 18.5 35 1 35 630 14910
+202	220475 520 9703 149246 1.5 16.9 31 1 31 496 10416
+203	220995 824 9704 210459 1.5 25.9 47 1 47 1128 35720
+204	221819 1754 9705 293608 1.5 51 100 1 100 5050 338350
+205	223573 944 9706 224400 1.5 28.5 55 1 55 1540 56980
+206	224517 774 9707 198436 1.5 23.9 45 1 45 1035 31395
+207	225291 332 9708 103168 1.5 11.5 21 1 21 231 3311
+208	225623 1754 9709 293609 1.5 51 100 1 100 5050 338350
+209	227377 476 9710 137789 1.5 15.5 29 1 29 435 8555
+210	227853 874 9711 220921 1.5 27.8 51 1 51 1326 45526
+211	228727 1240 9712 259740 1.5 36.9 71 1 71 2556 121836
+212	229967 1754 9713 293610 1.5 51 100 1 100 5050 338350
+213	231721 1020 9714 236023 1.5 30.9 59 1 59 1770 70210
+214	232741 548 9715 153787 1.5 17.5 33 1 33 561 12529
+215	233289 786 9716 198403 1.5 23.9 45 1 45 1035 31395
+216	234075 1754 9717 293611 1.5 51 100 1 100 5050 338350
+217	235829 800 9718 201994 1.5 24.5 47 1 47 1128 35720
+218	236629 1039 9719 240451 1.5 31.9 60 1 60 1830 73810
+219	237668 656 9720 176137 1.5 20.5 39 1 39 780 20540
+220	238324 1754 9721 293612 1.5 51 100 1 100 5050 338350
+221	240078 837 9722 192267 1.5 22.9 48 1 40 1117 33195
+222	240915 993 9723 221417 1.5 27.9 56 1 51 1561 56581
+223	241908 898 9724 216059 1.5 26.9 51 1 51 1326 45526
+224	242806 1754 9725 293613 1.5 51 100 1 100 5050 338350
+225	244560 1232 9726 258330 1.5 36.5 71 1 71 2556 121836
+226	245792 1238 9727 259743 1.5 36.9 71 1 71 2556 121836
+227	247030 656 9728 176142 1.5 20.5 39 1 39 780 20540
+228	247686 1754 9729 293614 1.5 51 100 1 100 5050 338350
+229	249440 552 9730 157047 1.5 17.9 33 1 33 561 12529
+230	249992 1180 9731 259737 1.5 36.9 67 1 67 2278 102510
+231	251172 810 9732 204525 1.5 24.9 47 1 47 1128 35720
+232	251982 1754 9733 293615 1.5 51 100 1 100 5050 338350
+233	253736 1265 9734 263025 1.5 37.9 72 1 72 2628 127020
+234	255001 846 9735 210475 1.5 25.9 49 1 49 1225 40425
+235	255847 512 9736 145911 1.5 16.5 31 1 31 496 10416
+236	256359 1754 9737 293616 1.5 51 100 1 100 5050 338350
+237	258113 512 9738 145913 1.5 16.5 31 1 31 496 10416
+238	258625 924 9739 226517 1.5 28.9 53 1 53 1431 51039
+239	259549 772 9740 198447 1.5 23.9 45 1 45 1035 31395
+240	260321 1754 9741 293617 1.5 51 100 1 100 5050 338350
+241	262075 332 9742 103201 1.5 11.5 21 1 21 231 3311
+242	262407 584 9743 161481 1.5 18.5 35 1 35 630 14910
+243	262991 1206 9744 256241 1.5 35.9 69 1 69 2415 111895
+244	264197 1754 9745 293618 1.5 51 100 1 100 5050 338350
+245	265951 1196 9746 254752 1.5 35.5 69 1 69 2415 111895
+246	267147 660 9747 179060 1.5 20.9 39 1 39 780 20540
+247	267807 1152 9748 248693 1.5 33.9 65 1 65 2145 93665
+248	268959 1754 9749 293619 1.5 51 100 1 100 5050 338350
+249	270713 548 9750 153814 1.5 17.5 33 1 33 561 12529
+250	271261 1052 9751 238631 1.5 31.5 61 1 61 1891 77531
+251	272313 512 9752 145926 1.5 16.5 31 1 31 496 10416
+252	272825 1754 9753 293620 1.5 51 100 1 100 5050 338350
+253	274579 656 9754 176155 1.5 20.5 39 1 39 780 20540
+254	275235 998 9755 231379 1.5 29.9 57 1 57 1653 63365
+255	276233 1032 9756 235994 1.5 30.9 59 1 59 1770 70210
+256	277265 1754 9757 293621 1.5 51 100 1 100 5050 338350
+257	279019 988 9758 240436 1.5 31.9 57 1 57 1653 63365
+258	280007 945 9759 226503 1.5 28.9 54 1 54 1485 53955
+259	280952 482 9760 141216 1.5 15.9 29 1 29 435 8555
+260	281434 1754 9761 293622 1.5 51 100 1 100 5050 338350
+261	283188 836 9762 208071 1.5 25.5 49 1 49 1225 40425
+262	284024 944 9763 224423 1.5 28.5 55 1 55 1540 56980
+263	284968 596 9764 164596 1.5 18.9 35 1 35 630 14910
+264	285564 1754 9765 293623 1.5 51 100 1 100 5050 338350
+265	287318 1240 9766 259741 1.5 36.9 71 1 71 2556 121836
+266	288558 1160 9767 251002 1.5 34.5 67 1 67 2278 102510
+267	289718 480 9768 141227 1.5 15.9 29 1 29 435 8555
+268	290198 1754 9769 293624 1.5 51 100 1 100 5050 338350
+269	291952 512 9770 145941 1.5 16.5 31 1 31 496 10416
+270	292464 332 9771 103230 1.5 11.5 21 1 21 231 3311
+271	292796 656 9772 176166 1.5 20.5 39 1 39 780 20540
+272	293452 1754 9773 293625 1.5 51 100 1 100 5050 338350
+273	295206 476 9774 137843 1.5 15.5 29 1 29 435 8555
+274	295682 297 9775 94235 1.5 10.5 19 1 19 190 2470
+275	295979 639 9776 171927 1.5 19.9 37 1 37 703 17575
+276	296618 1754 9777 293626 1.5 51 100 1 100 5050 338350
+277	298372 908 9778 219289 1.5 27.5 53 1 53 1431 51039
+278	299280 1266 9779 259720 1.5 36.9 71 1 71 2556 121836
+279	300546 789 9780 201499 1.5 24.4 46 1 46 1081 33511
+280	301335 1808 9781 294598 1.5 56.3 100 1 100 5050 338350
+281	303143 558 9782 157018 1.5 17.9 33 1 33 561 12529
+282	303701 440 9783 129521 1.5 14.5 27 1 27 378 6930
+283	304141 512 9784 145949 1.5 16.5 31 1 31 496 10416
+284	304653 1754 9785 293627 1.5 51 100 1 100 5050 338350
+285	306407 1126 9786 248709 1.5 33.9 63 1 63 2016 85344
+286	307533 1045 9787 240434 1.5 31.9 60 1 60 1830 73810
+287	308578 800 9788 202025 1.5 24.5 47 1 47 1128 35720
+288	309378 1754 9789 293628 1.5 51 100 1 100 5050 338350
+289	311132 728 9790 189611 1.5 22.5 43 1 43 946 27434
+290	311860 1160 9791 251008 1.5 34.5 67 1 67 2278 102510
+291	313020 594 9792 164604 1.5 18.9 35 1 35 630 14910
+292	313614 1754 9793 293629 1.5 51 100 1 100 5050 338350
+293	315368 263 9794 85264 1.5 9.5 17 1 17 153 1785
+294	315631 514 9795 149258 1.5 16.9 31 1 31 496 10416
+295	316145 944 9796 224434 1.5 28.5 55 1 55 1540 56980
+296	317089 1754 9797 293630 1.5 51 100 1 100 5050 338350
+297	318843 913 9798 221475 1.5 27.9 52 1 52 1378 48230
+298	319756 368 9799 112168 1.5 12.5 23 1 23 276 4324
+299	320124 332 9800 103256 1.5 11.5 21 1 21 231 3311
+300	320456 1754 9801 293631 1.5 51 100 1 100 5050 338350
+301	322210 848 9802 210468 1.5 25.9 49 1 49 1225 40425
+302	323058 1099 9803 244668 1.5 32.9 62 1 62 1953 81375
+303	324157 584 9804 161519 1.5 18.5 35 1 35 630 14910
+304	324741 1754 9805 293632 1.5 51 100 1 100 5050 338350
+305	326495 908 9806 219298 1.5 27.5 53 1 53 1431 51039
+306	327403 692 9807 183057 1.5 21.5 41 1 41 861 23821
+307	328095 368 9808 115817 1.5 12.9 23 1 23 276 4324
+308	328463 1754 9809 293633 1.5 51 100 1 100 5050 338350
+309	330217 816 9810 204507 1.5 24.9 47 1 47 1128 35720
+310	331033 1360 9811 268730 1.5 39.9 77 1 77 3003 155155
+311	332393 476 9812 137869 1.5 15.5 29 1 29 435 8555
+312	332869 1754 9813 293634 1.5 51 100 1 100 5050 338350
+313	334623 620 9814 168970 1.5 19.5 37 1 37 703 17575
+314	335243 1040 9815 235980 1.5 30.9 59 1 59 1770 70210
+315	336283 764 9816 195913 1.5 23.5 45 1 45 1035 31395
+316	337047 1754 9817 293635 1.5 51 100 1 100 5050 338350
+317	338801 910 9818 223944 1.5 28.4 53 1 53 1431 51039
+318	339711 624 9819 171926 1.5 19.9 37 1 37 703 17575
+319	340335 1224 9820 256223 1.5 35.9 69 1 69 2415 111895
+320	341559 1754 9821 293636 1.5 51 100 1 100 5050 338350
+321	343313 840 9822 210496 1.5 25.9 49 1 49 1225 40425
+322	344153 1191 9823 256249 1.5 35.9 68 1 68 2346 107134
+323	345344 440 9824 129556 1.5 14.5 27 1 27 378 6930
+324	345784 1754 9825 293637 1.5 51 100 1 100 5050 338350
+325	347538 1196 9826 254772 1.5 35.5 69 1 69 2415 111895
+326	348734 476 9827 137883 1.5 15.5 29 1 29 435 8555
+327	349210 1338 9828 266018 1.5 38.9 75 1 75 2850 143450
+328	350548 1754 9829 293638 1.5 51 100 1 100 5050 338350
+329	352302 1192 9830 252539 1.5 34.9 67 1 67 2278 102510
+330	353494 836 9831 208099 1.5 25.5 49 1 49 1225 40425
+331	354330 1064 9832 240428 1.5 31.9 61 1 61 1891 77531
+332	355394 1754 9833 293639 1.5 51 100 1 100 5050 338350
+333	357148 944 9834 224447 1.5 28.5 55 1 55 1540 56980
+334	358092 1290 9835 263014 1.5 37.9 73 1 73 2701 132349
+335	359382 1232 9836 256217 1.5 35.9 69 1 69 2415 111895
+336	360614 1754 9837 293640 1.5 51 100 1 100 5050 338350
+337	362368 966 9838 226479 1.5 28.9 55 1 55 1540 56980
+338	363334 836 9839 208104 1.5 25.5 49 1 49 1225 40425
+339	364170 297 9840 94298 1.5 10.5 19 1 19 190 2470
+340	364467 1754 9841 293641 1.5 51 100 1 100 5050 338350
+341	366221 862 9842 216110 1.5 26.9 49 1 49 1225 40425
+342	367083 924 9843 221436 1.5 27.9 53 1 53 1431 51039
+343	368007 1308 9844 266026 1.5 38.9 75 1 75 2850 143450
+344	369315 1754 9845 293642 1.5 51 100 1 100 5050 338350
+345	371069 800 9846 202054 1.5 24.5 47 1 47 1128 35720
+346	371869 1243 9847 259749 1.5 36.9 70 1 70 2485 116795
+347	373112 548 9848 153883 1.5 17.5 33 1 33 561 12529
+348	373660 1754 9849 293643 1.5 51 100 1 100 5050 338350
+349	375414 774 9850 198440 1.5 23.9 45 1 45 1035 31395
+350	376188 512 9851 146002 1.5 16.5 31 1 31 496 10416
+351	376700 1232 9852 256218 1.5 35.9 69 1 69 2415 111895
+352	377932 1754 9853 293644 1.5 51 100 1 100 5050 338350
+353	379686 548 9854 153887 1.5 17.5 33 1 33 561 12529
+354	380234 1263 9855 263029 1.5 37.9 72 1 72 2628 127020
+355	381497 1166 9856 252568 1.5 34.9 67 1 67 2278 102510
+356	382663 1754 9857 293645 1.5 51 100 1 100 5050 338350
+357	384417 764 9858 195937 1.5 23.5 45 1 45 1035 31395
+358	385181 1303 9859 266024 1.5 38.9 74 1 74 2775 137825
+359	386484 1044 9860 235974 1.5 30.9 59 1 59 1770 70210
+360	387528 1754 9861 293646 1.5 51 100 1 100 5050 338350
+361	389282 1290 9862 266027 1.5 38.9 73 1 73 2701 132349
+362	390572 836 9863 208116 1.5 25.5 49 1 49 1225 40425
+363	391408 810 9864 204531 1.5 24.9 47 1 47 1128 35720
+364	392218 1754 9865 293647 1.5 51 100 1 100 5050 338350
+365	393972 980 9866 229450 1.5 29.5 57 1 57 1653 63365
+366	394952 584 9867 161564 1.5 18.5 35 1 35 630 14910
+367	395536 476 9868 137922 1.5 15.5 29 1 29 435 8555
+368	396012 1754 9869 293648 1.5 51 100 1 100 5050 338350
+369	397766 622 9870 175502 1.5 20.4 37 1 37 703 17575
+370	398388 332 9871 103326 1.5 11.5 21 1 21 231 3311
+371	398720 1300 9872 263011 1.5 37.9 73 1 73 2701 132349
+372	400020 1754 9873 293649 1.5 51 100 1 100 5050 338350
+373	401774 1044 9874 240438 1.5 31.9 59 1 59 1770 70210
+374	402818 577 9875 171216 1.5 19.8 34 1 34 595 13685
+375	403395 584 9876 161568 1.5 18.5 35 1 35 630 14910
+376	403979 1754 9877 293650 1.5 51 100 1 100 5050 338350
+377	405733 332 9878 103332 1.5 11.5 21 1 21 231 3311
+378	406065 332 9879 103333 1.5 11.5 21 1 21 231 3311
+379	406397 1102 9880 244682 1.5 32.9 63 1 63 2016 85344
+380	407499 1754 9881 293651 1.5 51 100 1 100 5050 338350
+381	409253 1021 9882 235998 1.5 30.9 58 1 58 1711 66729
+382	410274 476 9883 141252 1.5 15.9 29 1 29 435 8555
+383	410750 404 9884 121029 1.5 13.5 25 1 25 325 5525
+384	411154 1754 9885 293652 1.5 51 100 1 100 5050 338350
+385	412908 1198 9886 256252 1.5 35.9 69 1 69 2415 111895
+386	414106 1200 9887 260688 1.5 37.2 69 1 69 2415 111895
+387	415306 1026 9888 236006 1.5 30.9 59 1 59 1770 70210
+388	416332 1754 9889 293653 1.5 51 100 1 100 5050 338350
+389	418086 297 9890 94348 1.5 10.5 19 1 19 190 2470
+390	418383 548 9891 153913 1.5 17.5 33 1 33 561 12529
+391	418931 1304 9892 263008 1.5 37.9 73 1 73 2701 132349
+392	420235 1754 9893 293654 1.5 51 100 1 100 5050 338350
+393	421989 696 9894 185791 1.5 21.9 40 1 40 820 22140
+394	422685 719 9895 192248 1.5 22.9 42 1 42 903 25585
+395	423404 1132 9896 248717 1.5 33.9 65 1 65 2145 93665
+396	424536 1754 9897 293655 1.5 51 100 1 100 5050 338350
+397	426290 1305 9898 266023 1.5 38.9 74 1 74 2775 137825
+398	427595 1183 9899 252555 1.5 34.9 66 1 66 2211 98021
+399	428778 406 9900 124526 1.5 13.9 25 1 25 325 5525
+400	429184 1754 9901 293656 1.5 51 100 1 100 5050 338350
+401	430938 512 9902 146040 1.5 16.5 31 1 31 496 10416
+402	431450 728 9903 189669 1.5 22.5 43 1 43 946 27434
+403	432178 848 9904 210472 1.5 25.9 49 1 49 1225 40425
+404	433026 1754 9905 293657 1.5 51 100 1 100 5050 338350
+405	434780 620 9906 169024 1.5 19.5 37 1 37 703 17575
+406	435400 1202 9907 259730 1.5 36.9 67 1 67 2278 102510
+407	436602 1278 9908 259715 1.5 36.9 71 1 71 2556 121836
+408	437880 1754 9909 293658 1.5 51 100 1 100 5050 338350
+409	439634 692 9910 183111 1.5 21.5 41 1 41 861 23821
+410	440326 1304 9911 264893 1.5 38.5 75 1 75 2850 143450
+411	441630 1310 9912 263006 1.5 37.9 73 1 73 2701 132349
+412	442940 1754 9913 293659 1.5 51 100 1 100 5050 338350
+413	444694 808 9914 204538 1.5 24.9 47 1 47 1128 35720
+414	445502 872 9915 213872 1.5 26.5 51 1 51 1326 45526
+415	446374 914 9916 221460 1.5 27.9 53 1 53 1431 51039
+416	447288 1754 9917 293660 1.5 51 100 1 100 5050 338350
+417	449042 764 9918 195966 1.5 23.5 45 1 45 1035 31395
+418	449806 263 9919 85389 1.5 9.5 17 1 17 153 1785
+419	450069 440 9920 129638 1.5 14.5 27 1 27 378 6930
+420	450509 1754 9921 293661 1.5 51 100 1 100 5050 338350
+421	452263 584 9922 161597 1.5 18.5 35 1 35 630 14910
+422	452847 404 9923 121062 1.5 13.5 25 1 25 325 5525
+423	453251 628 9924 171957 1.5 19.9 37 1 37 703 17575
+424	453879 1754 9925 293662 1.5 51 100 1 100 5050 338350
+425	455633 1124 9926 247136 1.5 33.5 65 1 65 2145 93665
+426	456757 1291 9927 263027 1.5 37.9 72 1 72 2628 127020
+427	458048 836 9928 208141 1.5 25.5 49 1 49 1225 40425
+428	458884 1754 9929 293663 1.5 51 100 1 100 5050 338350
+429	460638 1348 9930 268731 1.5 39.9 77 1 77 3003 155155
+430	461986 986 9931 231400 1.5 29.9 57 1 57 1653 63365
+431	462972 1255 9932 264546 1.5 38.4 72 1 72 2628 127020
+432	464227 1818 9933 294666 1.5 57.3 100 1 100 5050 338350
+433	466045 1170 9934 252562 1.5 34.9 67 1 67 2278 102510
+434	467215 440 9935 129652 1.5 14.5 27 1 27 378 6930
+435	467655 1124 9936 247139 1.5 33.5 65 1 65 2145 93665
+436	468779 1754 9937 293664 1.5 51 100 1 100 5050 338350
+437	470533 908 9938 219350 1.5 27.5 53 1 53 1431 51039
+438	471441 512 9939 146068 1.5 16.5 31 1 31 496 10416
+439	471953 1054 9940 235967 1.5 30.9 59 1 59 1770 70210
+440	473007 1754 9941 293665 1.5 51 100 1 100 5050 338350
+441	474761 982 9942 235550 1.5 30.8 57 1 57 1653 63365
+442	475743 368 9943 112299 1.5 12.5 23 1 23 276 4324
+443	476111 764 9944 195981 1.5 23.5 45 1 45 1035 31395
+444	476875 1754 9945 293666 1.5 51 100 1 100 5050 338350
+445	478629 620 9946 169051 1.5 19.5 37 1 37 703 17575
+446	479249 368 9947 112303 1.5 12.5 23 1 23 276 4324
+447	479617 1268 9948 259719 1.5 36.9 71 1 71 2556 121836
+448	480885 1754 9949 293667 1.5 51 100 1 100 5050 338350
+449	482639 1294 9950 263012 1.5 37.9 73 1 73 2701 132349
+450	483933 1099 9951 244678 1.5 32.9 62 1 62 1953 81375
+451	485032 440 9952 129666 1.5 14.5 27 1 27 378 6930
+452	485472 1754 9953 293668 1.5 51 100 1 100 5050 338350
+453	487226 1040 9954 235983 1.5 30.9 59 1 59 1770 70210
+454	488266 512 9955 146080 1.5 16.5 31 1 31 496 10416
+455	488778 512 9956 146081 1.5 16.5 31 1 31 496 10416
+456	489290 1754 9957 293669 1.5 51 100 1 100 5050 338350
+457	491044 1142 9958 248703 1.5 33.9 65 1 65 2145 93665
+458	492186 1016 9959 234186 1.5 30.5 59 1 59 1770 70210
+459	493202 404 9960 121096 1.5 13.5 25 1 25 325 5525
+460	493606 1754 9961 293670 1.5 51 100 1 100 5050 338350
+461	495360 836 9962 208158 1.5 25.5 49 1 49 1225 40425
+462	496196 692 9963 183142 1.5 21.5 41 1 41 861 23821
+463	496888 404 9964 121100 1.5 13.5 25 1 25 325 5525
+464	497292 1754 9965 293671 1.5 51 100 1 100 5050 338350
+465	499046 980 9966 229483 1.5 29.5 57 1 57 1653 63365
+466	500026 1093 9967 246693 1.5 33.4 62 1 62 1953 81375
+467	501119 476 9968 137999 1.5 15.5 29 1 29 435 8555
+468	501595 1754 9969 293672 1.5 51 100 1 100 5050 338350
+469	503349 1091 9970 244690 1.5 32.9 62 1 62 1953 81375
+470	504440 881 9971 216100 1.5 26.9 50 1 50 1275 42925
+471	505321 584 9972 161629 1.5 18.5 35 1 35 630 14910
+472	505905 1754 9973 293673 1.5 51 100 1 100 5050 338350
+473	507659 263 9974 85444 1.5 9.5 17 1 17 153 1785
+474	507922 922 9975 221441 1.5 27.9 53 1 53 1431 51039
+475	508844 962 9976 226490 1.5 28.9 55 1 55 1540 56980
+476	509806 1754 9977 293674 1.5 51 100 1 100 5050 338350
+477	511560 970 9978 240421 1.5 31.9 55 1 55 1540 56980
+478	512530 297 9979 94434 1.5 10.5 19 1 19 190 2470
+479	512827 800 9980 202113 1.5 24.5 47 1 47 1128 35720
+480	513627 1754 9981 293675 1.5 51 100 1 100 5050 338350
+481	515381 1204 9982 256244 1.5 35.9 69 1 69 2415 111895
+482	516585 588 9983 164632 1.5 18.9 35 1 35 630 14910
+483	517173 554 9984 157038 1.5 17.9 33 1 33 561 12529
+484	517727 1754 9985 293676 1.5 51 100 1 100 5050 338350
+485	519481 368 9986 112338 1.5 12.5 23 1 23 276 4324
+486	519849 620 9987 169072 1.5 19.5 37 1 37 703 17575
+487	520469 476 9988 138013 1.5 15.5 29 1 29 435 8555
+488	520945 1754 9989 293677 1.5 51 100 1 100 5050 338350
+489	522699 883 9990 216080 1.5 26.9 50 1 50 1275 42925
+490	523582 1216 9991 268466 1.5 39.8 69 1 69 2415 111895
+491	524798 656 9992 176284 1.5 20.5 39 1 39 780 20540
+492	525454 1754 9993 293678 1.5 51 100 1 100 5050 338350
+493	527208 692 9994 183154 1.5 21.5 41 1 41 861 23821
+494	527900 692 9995 183155 1.5 21.5 41 1 41 861 23821
+495	528592 1052 9996 238703 1.5 31.5 61 1 61 1891 77531
+496	529644 1754 9997 293679 1.5 51 100 1 100 5050 338350
+497	531398 692 9998 183158 1.5 21.5 41 1 41 861 23821
+498	532090 620 9999 169081 1.5 19.5 37 1 37 703 17575
+499	532710 783 10000 198415 1.5 23.9 45 1 45 1035 31395
 
