@@ -88,7 +88,7 @@ if peer_amount == 100:
             dying_time.append(0)
 
 if peer_amount == 500:
-    c = 4
+    c = 2
     for x in range(peer_amount):
         if x == 0:
             dying_time.append(random.randint(10,40))
@@ -99,11 +99,11 @@ if peer_amount == 500:
         else:
             dying_time.append(0)
 
-print(f"int amount_serving[PEER_AMOUNT] =  {{{(', '.join(str(x) for x in amount_serving))}}};")
-print(f"int peers_serving[PEER_AMOUNT][(PEER_AMOUNT / 5) - 1] = {{{(', '.join(str(x) for x in peers_serving))}}};")
-print("\n")
-print(f"int contents_wants[PEER_AMOUNT] = {{{str(contents_wants)[1:-1]}}};")
-print(f"int contents_has[PEER_AMOUNT] = {{{str(contents_has)[1:-1]}}};")
+# print(f"int amount_serving[PEER_AMOUNT] =  {{{(', '.join(str(x) for x in amount_serving))}}};")
+# print(f"int peers_serving[PEER_AMOUNT][(PEER_AMOUNT / 5) - 1] = {{{(', '.join(str(x) for x in peers_serving))}}};")
+# print("\n")
+# print(f"int contents_wants[PEER_AMOUNT] = {{{str(contents_wants)[1:-1]}}};")
+# print(f"int contents_has[PEER_AMOUNT] = {{{str(contents_has)[1:-1]}}};")
 print("\n")
 print(f"double peer_dying_time[PEER_AMOUNT] = {{{(', '.join(str(x) for x in dying_time))}}};")
-print(f"int peer_main_tcp[PEER_AMOUNT] = {{{(', '.join(str(x) for x in peer_main_tcp))}}};")
+# print(f"int peer_main_tcp[PEER_AMOUNT] = {{{(', '.join(str(x) for x in peer_main_tcp))}}};")

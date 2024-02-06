@@ -196,9 +196,9 @@ void Controller::finish()
     calculateMeans();
     EV << "mean_average_chunk_arr " << mean_average_chunk_arr << "\n";
     EV << "mean_finish_dwnl_time " <<  mean_finish_dwnl_time << "\n";
-    EV << "mean_total_stall_time " << mean_total_stall_time << "\n";
+//    EV << "mean_total_stall_time " << mean_total_stall_time << "\n";
     EV << "mean_stall_count_size " << mean_stall_count_size << "\n";
-
+    EV << "mean_total_stall_amount_per_second " << mean_stall_count_size / mean_finish_dwnl_time << "\n";
 }
 
 
