@@ -7,7 +7,7 @@
 
 import random, string
 
-peer_amount = 500
+peer_amount = 400
 
 five_letters = ['a', 'b', 'c', 'd', 'e', 'a']
 
@@ -87,14 +87,26 @@ if peer_amount == 100:
         else:
             dying_time.append(0)
 
+if peer_amount == 400:
+    c = 3
+    for x in range(peer_amount):
+        if x == 0:
+            dying_time.append(0)
+
+        elif x % c != 0:
+            dying_time.append(random.randint(10,20))
+
+        else:
+            dying_time.append(0)
+
 if peer_amount == 500:
     c = 2
     for x in range(peer_amount):
         if x == 0:
-            dying_time.append(random.randint(10,40))
+            dying_time.append(0)
 
         elif x % c != 0:
-            dying_time.append(random.randint(10,40))
+            dying_time.append(random.randint(10,30))
 
         else:
             dying_time.append(0)
@@ -104,6 +116,6 @@ if peer_amount == 500:
 # print("\n")
 # print(f"int contents_wants[PEER_AMOUNT] = {{{str(contents_wants)[1:-1]}}};")
 # print(f"int contents_has[PEER_AMOUNT] = {{{str(contents_has)[1:-1]}}};")
-print("\n")
+# print("\n")
 print(f"double peer_dying_time[PEER_AMOUNT] = {{{(', '.join(str(x) for x in dying_time))}}};")
 # print(f"int peer_main_tcp[PEER_AMOUNT] = {{{(', '.join(str(x) for x in peer_main_tcp))}}};")

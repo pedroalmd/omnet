@@ -1,12 +1,13 @@
 500
 churn: 50%
-peer dying time: random between 10 and 40
+peer dying time: random between 10 and 30
 chunk_video_time = 0.4
 
-INFO: mean_average_chunk_arr 0.510253012048
-INFO: mean_finish_dwnl_time 51.025301204819
-INFO: mean_stall_count_size 24
-INFO: mean_total_stall_amount_per_second 0.470355
+INFO: mean_average_chunk_arr 0.528086956521
+INFO: mean_finish_dwnl_time 54.541304347826
+INFO: mean_stall_count_size 31
+INFO: mean_total_stall_amount_per_second 0.568377
+
 
 -----
 
