@@ -17,6 +17,8 @@ extern int contents_wants[PEER_AMOUNT];
 extern int amount_serving[PEER_AMOUNT];
 extern double peer_dying_time[PEER_AMOUNT];
 
+extern int is_dead[PEER_AMOUNT];
+
 extern int peers_serving[PEER_AMOUNT][(PEER_AMOUNT/5) - 1];
 
 extern double dead_timeout;

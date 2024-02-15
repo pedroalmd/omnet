@@ -3,20 +3,29 @@ churn: 50%
 peer dying time: random between 10 and 30
 chunk_video_time = 0.4
 
-INFO: mean_average_chunk_arr 0.528086956521
-INFO: mean_finish_dwnl_time 54.541304347826
-INFO: mean_stall_count_size 31
-INFO: mean_total_stall_amount_per_second 0.568377
-
+INFO: mean_average_chunk_arr 0.51
+INFO: mean_finish_dwnl_time 51
+INFO: mean_stall_count_size 24
+INFO: mean_total_stall_amount_per_second 0.470588
 
 -----
 
-500
-churn: 75%
-peer dying time: random between 10 and 40
+churn: 67%
+peer dying time: random between 10 and 30
 chunk_video_time = 0.4
 
-INFO: mean_average_chunk_arr 0.51364516129
-INFO: mean_finish_dwnl_time 51.364516129032
-INFO: mean_stall_count_size 24
-INFO: mean_total_stall_amount_per_second 0.467249
+mean_average_chunk_arr 0.523341040462
+mean_finish_dwnl_time 53.07225433526
+mean_stall_count_size 28
+mean_total_stall_amount_per_second 0.527583
+
+-----
+
+90%
+peer dying time: random between 10 and 30
+chunk_video_time = 0.4
+
+INFO: mean_average_chunk_arr 0.53466
+INFO: mean_finish_dwnl_time 53.466
+INFO: mean_stall_count_size 29
+INFO: mean_total_stall_amount_per_second 0.542401

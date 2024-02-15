@@ -181,6 +181,7 @@ void Peer::handleMessage(cMessage *msg)
 
     else if (ttmsg->getType() == self_dead) {
         is_Alive = 0;
+        is_dead[getIndex()] = 1;
         cDisplayString& dispStr = getDisplayString();
         dispStr.setTagArg("i", 1, "red");
         beforeFinishing();
@@ -371,7 +372,15 @@ void Peer::handleTcpMessage(ContentMsg *ttmsg)
 void Peer::handleRequestMessage(ContentMsg *ttmsg)
 {
     if (ttmsg->getTcp_type() == 4) {
-        double delay_time = std::pow(2, (serving_peers.size() - 1)) / 10; // evertime a peer joins, it takes double the time to respond o the request
+        int c = 0;
+        for(int x = 0; x < serving_peers.size(); x++) {
+            if (is_dead[serving_peers[x]] == 0) {
+                c++;
+            }
+        }
+        EV << "aaa" << c <<  "Sending back content!\n";
+
+        double delay_time = std::pow(2, (c - 1)) / 10; // evertime a peer joins, it takes double the time to respond o the request
 //        double delay_time = std::pow(2, (getMainServing() - 1)) / 10; // evertime a peer joins, it takes double the time to respond o the request
 
 //        EV << "Sending back content!\n";

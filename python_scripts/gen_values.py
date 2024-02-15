@@ -7,7 +7,7 @@
 
 import random, string
 
-peer_amount = 400
+peer_amount = 500
 
 five_letters = ['a', 'b', 'c', 'd', 'e', 'a']
 
@@ -100,7 +100,7 @@ if peer_amount == 400:
             dying_time.append(0)
 
 if peer_amount == 500:
-    c = 2
+    c = 10
     for x in range(peer_amount):
         if x == 0:
             dying_time.append(0)

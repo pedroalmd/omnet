@@ -1,8 +1,8 @@
 version 3
-run Tictoc1-0-20240206-12:18:10-5816
+run Tictoc1-0-20240214-21:55:13-10252
 attr configname Tictoc1
-attr datetime 20240206-12:18:10
-attr datetimef 20240206-121810
+attr datetime 20240214-21:55:13
+attr datetimef 20240214-215513
 attr experiment Tictoc1
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Tictoc1
-attr processid 5816
+attr processid 10252
 attr repetition 0
 attr replication #0
 attr resultdir results

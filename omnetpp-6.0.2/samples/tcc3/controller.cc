@@ -66,6 +66,7 @@ class Controller : public cSimpleModule
     virtual void finish() override;
     virtual void handleMessage(cMessage *msg) override;
     virtual int getServer(char content, std::map<int, char> table, int source);
+    virtual void updateAmountServing(int dead_peer);
     virtual void calculateMeans();
 
 };
@@ -106,6 +107,7 @@ void Controller::handleMessage(cMessage *msg)
 
         if (ttmsg->getDestination() != 2222) {
             amount_serving_peers[ttmsg->getDestination()]++;
+            amount_serving[ttmsg->getDestination()]++;
 //            EV << ttmsg->getDestination() << "AAAA" << amount_serving_peers[ttmsg->getDestination()]<< "\n";
             send(ttmsg, "switch_gate$o", 0);
 
@@ -115,6 +117,7 @@ void Controller::handleMessage(cMessage *msg)
         alive_peers[ttmsg->getSource_num()] = 0;
         EV << "Peer " << ttmsg->getSource_num() << " is dead" << "\n";
 //        ttmsg->setType('e');
+        updateAmountServing(ttmsg->getSource_num());
 
         for(int i = 0; i < ((PEER_AMOUNT / 5) - 1); i++) {
             EV << "Peer " << ttmsg->getSource_num() << " was serving Peer " << peers_serving[ttmsg->getSource_num()][i] << "\n";
@@ -204,6 +207,22 @@ void Controller::calculateMeans()
 
 }
 
+
+void Controller::updateAmountServing(int dead_peer)
+{
+    EV << "Peer " << dead_peer << "is deada \n";
+
+    for(int i = 0; i < ex_peer_amount; i++) {
+        for(int j = 0; j < (ex_peer_amount / 5); j++) {
+            if (peers_serving[i][j] == dead_peer) {
+                peers_serving[i][j] = -1;
+
+                amount_serving[i] = amount_serving[i] - 1;
+                EV << "Peer " << i << "is bla" << amount_serving[i] << "\n";
+            }
+        }
+    }
+}
 
 void Controller::finish()
 {
