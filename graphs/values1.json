@@ -1,0 +1,43 @@
+{
+    "40": {
+        "mean_average_chunk_arr": 0.532605,
+        "mean_finish_dwnl_time": 53.2605,
+        "mean_stall_count_size": 29,
+        "mean_total_stall_amount_per_second": 0.544494
+    },
+
+    "50": {
+        "mean_average_chunk_arr": 0.527168,
+        "mean_finish_dwnl_time": 52.7168,
+        "mean_stall_count_size": 28,
+        "mean_total_stall_amount_per_second": 0.53114
+    },
+
+    "60": {
+        "mean_average_chunk_arr": 0.535134328358,
+        "mean_finish_dwnl_time": 53.51343283582,
+        "mean_stall_count_size": 30,
+        "mean_total_stall_amount_per_second": 0.560607
+    },
+
+    "70": {
+        "mean_average_chunk_arr": 0.645994011976,
+        "mean_finish_dwnl_time": 64.599401197604,
+        "mean_stall_count_size": 51,
+        "mean_total_stall_amount_per_second": 0.789481
+    },
+
+    "80": {
+        "mean_average_chunk_arr": 0.55695,
+        "mean_finish_dwnl_time": 55.695,
+        "mean_stall_count_size": 36,
+        "mean_total_stall_amount_per_second": 0.646378
+    },
+
+    "90": {
+        "mean_average_chunk_arr": 0.57626,
+        "mean_finish_dwnl_time": 57.626,
+        "mean_stall_count_size": 41,
+        "mean_total_stall_amount_per_second": 0.711484
+    }
+}
