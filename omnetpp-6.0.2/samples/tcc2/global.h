@@ -3,6 +3,8 @@
 
 #define PEER_AMOUNT 500
 
+#define CHURN 90
+
 #define MIN_PERCENTAGE_STATISTICS 100
 
 // This is a declaration of your variable, which tells the linker this value

@@ -1,31 +1,52 @@
 500
-churn: 50%
 peer dying time: random between 10 and 30
 chunk_video_time = 0.4
 
-INFO: mean_average_chunk_arr 0.51
-INFO: mean_finish_dwnl_time 51
-INFO: mean_stall_count_size 24
-INFO: mean_total_stall_amount_per_second 0.470588
 
------
+20
+mean_average_chunk_arr 0.510426433915
+mean_finish_dwnl_time 51.042643391521
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.470195
 
-churn: 67%
-peer dying time: random between 10 and 30
-chunk_video_time = 0.4
+30
+mean_average_chunk_arr 0.512203592814
+mean_finish_dwnl_time 51.220359281437
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.468564
 
+40
+mean_average_chunk_arr 0.51174
+mean_finish_dwnl_time 51.174
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.468988
+
+50
+mean_average_chunk_arr 0.51
+mean_finish_dwnl_time 51
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.470588
+
+60
+mean_average_chunk_arr 0.511905472636
+mean_finish_dwnl_time 51.190547263681
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.468837
+
+70
 mean_average_chunk_arr 0.523341040462
 mean_finish_dwnl_time 53.07225433526
 mean_stall_count_size 28
 mean_total_stall_amount_per_second 0.527583
 
------
+80
+mean_average_chunk_arr 0.51869
+mean_finish_dwnl_time 51.869
+mean_stall_count_size 26
+mean_total_stall_amount_per_second 0.501263
 
-90%
-peer dying time: random between 10 and 30
-chunk_video_time = 0.4
-
-INFO: mean_average_chunk_arr 0.53466
-INFO: mean_finish_dwnl_time 53.466
-INFO: mean_stall_count_size 29
-INFO: mean_total_stall_amount_per_second 0.542401
+90
+mean_average_chunk_arr 0.53466
+mean_finish_dwnl_time 53.466
+mean_stall_count_size 29
+mean_total_stall_amount_per_second 0.542401

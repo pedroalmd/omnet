@@ -100,16 +100,17 @@ if peer_amount == 400:
             dying_time.append(0)
 
 if peer_amount == 500:
-    c = 10
+    c = 3
     for x in range(peer_amount):
         if x == 0:
             dying_time.append(0)
 
-        elif x % c != 0:
+        elif x % c == 0:
             dying_time.append(random.randint(10,30))
 
         else:
             dying_time.append(0)
+
 
 # print(f"int amount_serving[PEER_AMOUNT] =  {{{(', '.join(str(x) for x in amount_serving))}}};")
 # print(f"int peers_serving[PEER_AMOUNT][(PEER_AMOUNT / 5) - 1] = {{{(', '.join(str(x) for x in peers_serving))}}};")
@@ -118,4 +119,5 @@ if peer_amount == 500:
 # print(f"int contents_has[PEER_AMOUNT] = {{{str(contents_has)[1:-1]}}};")
 # print("\n")
 print(f"double peer_dying_time[PEER_AMOUNT] = {{{(', '.join(str(x) for x in dying_time))}}};")
+print(dying_time.count(0)/5 - 100)
 # print(f"int peer_main_tcp[PEER_AMOUNT] = {{{(', '.join(str(x) for x in peer_main_tcp))}}};")
