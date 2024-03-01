@@ -1,0 +1,26 @@
+10
+
+mean_average_chunk_arr 0.511548148148
+mean_finish_dwnl_time 51.154814814814
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.469164
+
+20
+
+mean_average_chunk_arr 0.51115
+mean_finish_dwnl_time 51.115
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.469529
+
+30
+mean_average_chunk_arr 0.51134
+mean_finish_dwnl_time 51.134
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.469355
+
+40
+
+mean_average_chunk_arr 0.5107
+mean_finish_dwnl_time 51.07
+mean_stall_count_size 24
+mean_total_stall_amount_per_second 0.469943

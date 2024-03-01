@@ -1,9 +1,9 @@
 #ifndef MY_GLOBALS_H
 #define MY_GLOBALS_H
 
-#define PEER_AMOUNT 500
+#define PEER_AMOUNT 150
 
-#define CHURN 70
+#define CHURN 40
 
 #define MIN_PERCENTAGE_STATISTICS 100
 
@@ -12,6 +12,10 @@
 // either directly or indirectly.
 
 extern int ex_peer_amount;
+
+extern int c_count;
+
+extern int sent_stats[PEER_AMOUNT];
 
 extern int contents_has[PEER_AMOUNT];
 extern int contents_wants[PEER_AMOUNT];

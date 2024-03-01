@@ -152,7 +152,6 @@ void Peer::handleMessage(cMessage *msg)
 
     if (ttmsg->getDestination() == 2223) {
         stop_flag = 1;
-        beforeFinishing();
 
         return;
     }
@@ -162,12 +161,12 @@ void Peer::handleMessage(cMessage *msg)
 //        EV << "Message " << ttmsg->getType() << " arrived from peer " << ttmsg->getSource_num() << "\n";
 //    }
 
-    if (peer_dying_time[getIndex()] != 0 && simTime() >= peer_dying_time[getIndex()]) {
-        is_Alive = 0;
-        cDisplayString& dispStr = getDisplayString();
-        dispStr.setTagArg("i", 1, "red");
-        beforeFinishing();
-    }
+//    if (peer_dying_time[getIndex()] != 0 && simTime() >= peer_dying_time[getIndex()]) {
+//        is_Alive = 0;
+//        cDisplayString& dispStr = getDisplayString();
+//        dispStr.setTagArg("i", 1, "red");
+//        beforeFinishing();
+//    }
 
 
 
@@ -184,7 +183,9 @@ void Peer::handleMessage(cMessage *msg)
         is_dead[getIndex()] = 1;
         cDisplayString& dispStr = getDisplayString();
         dispStr.setTagArg("i", 1, "red");
-        beforeFinishing();
+        if (percentage < 100) {
+            beforeFinishing();
+        }
         sendDeadResponseMessage();
     }
 
@@ -646,6 +647,11 @@ int Peer::getServer()
 
 
 void Peer::beforeFinishing() {
+
+    if (sent_stats[getIndex()] == 1) {
+        return;
+    }
+
     setAverageChunkTime();
 
 //    if (percentage != 100) {
@@ -659,6 +665,9 @@ void Peer::beforeFinishing() {
         ContentMsg *msg = generateStatMessage('x', average_chunk_arr, finish_dwnl_time, total_stall_time, stall_count.size());
         send(msg, "gate$o", 0);
     }
+
+    sent_stats[getIndex()] = 1;
+
 }
 
 

@@ -7,7 +7,7 @@
 
 import random, string
 
-peer_amount = 300
+peer_amount = 150
 
 five_letters = ['a', 'b', 'c', 'd', 'e', 'a']
 
@@ -99,12 +99,25 @@ for x in range(peer_amount):
 #         else:
 #             dying_time.append(0)
 
-time_range = (1, 60)
+time_range = (10, 30)
 ta = time_range[0]
 tb = time_range[1]
 
-if peer_amount == 500:
-    print("#if CHURN == 20")
+if peer_amount == 300:
+    print("#if CHURN == 10")
+    c = 10
+    for x in range(peer_amount):
+        if x % c == 0:
+            dying_time.append(random.randint(ta, tb))
+
+        else:
+            dying_time.append(0)
+
+    print(f"    double peer_dying_time[PEER_AMOUNT] = {{{(', '.join(str(x) for x in dying_time))}}};")
+
+    dying_time = []
+
+    print("\n#elif CHURN == 20")
     c = 5
     for x in range(peer_amount):
         if x % c == 0:
@@ -138,13 +151,13 @@ if peer_amount == 500:
 
         else:
             dying_time.append(0)
-
+    
     print(f"    double peer_dying_time[PEER_AMOUNT] = {{{(', '.join(str(x) for x in dying_time))}}};")
 
-    dying_time = []
 
-    print("\n#elif CHURN == 50")
-    c = 2
+if peer_amount == 150:
+    print("#if CHURN == 10")
+    c = 10
     for x in range(peer_amount):
         if x % c == 0:
             dying_time.append(random.randint(ta, tb))
@@ -156,10 +169,10 @@ if peer_amount == 500:
 
     dying_time = []
 
-    print("\n#elif CHURN == 60")
+    print("\n#elif CHURN == 20")
     c = 5
     for x in range(peer_amount):
-        if x % c in [0, 2, 3]:
+        if x % c == 0:
             dying_time.append(random.randint(ta, tb))
 
         else:
@@ -169,10 +182,10 @@ if peer_amount == 500:
 
     dying_time = []
 
-    print("\n#elif CHURN == 70")
+    print("\n#elif CHURN == 30")
     c = 3
     for x in range(peer_amount):
-        if x % c != 0:
+        if x % c == 0:
             dying_time.append(random.randint(ta, tb))
 
         else:
@@ -182,28 +195,15 @@ if peer_amount == 500:
 
     dying_time = []
 
-    print("\n#elif CHURN == 80")
+    print("\n#elif CHURN == 40")
     c = 5
     for x in range(peer_amount):
-        if x % c != 0:
+        if x % c in [0, 2]:
             dying_time.append(random.randint(ta, tb))
 
         else:
             dying_time.append(0)
-
-    print(f"    double peer_dying_time[PEER_AMOUNT] = {{{(', '.join(str(x) for x in dying_time))}}};")
-
-    dying_time = []
-
-    print("\n#elif CHURN == 90")
-    c = 10
-    for x in range(peer_amount):
-        if x % c != 0:
-            dying_time.append(random.randint(ta, tb))
-
-        else:
-            dying_time.append(0)
-
+    
     print(f"    double peer_dying_time[PEER_AMOUNT] = {{{(', '.join(str(x) for x in dying_time))}}};")
 
 print(f"int amount_serving[PEER_AMOUNT] =  {{{(', '.join(str(x) for x in amount_serving))}}};")
@@ -212,7 +212,6 @@ print("\n")
 print(f"int contents_wants[PEER_AMOUNT] = {{{str(contents_wants)[1:-1]}}};")
 print(f"int contents_has[PEER_AMOUNT] = {{{str(contents_has)[1:-1]}}};")
 print("\n")
-print(f"double peer_dying_time[PEER_AMOUNT] = {{{(', '.join(str(x) for x in dying_time))}}};")
 print(f"int peer_main_tcp[PEER_AMOUNT] = {{{(', '.join(str(x) for x in peer_main_tcp))}}};")
 
 # print(dying_time.count(0)/5 - 100)
